@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxqg1nflcrnhi"
-path="res://.godot/imported/player.png-e230e05e2d932a710303ee07f401e40f.ctex"
+uid="uid://bf72bnnk7bty6"
+path="res://.godot/imported/roguelikeChar_transparent.png-5febd3d913218fda1a901153b7c2182e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/player.png"
-dest_files=["res://.godot/imported/player.png-e230e05e2d932a710303ee07f401e40f.ctex"]
+source_file="res://assets/player/roguelikeChar_transparent.png"
+dest_files=["res://.godot/imported/roguelikeChar_transparent.png-5febd3d913218fda1a901153b7c2182e.ctex"]
 
 [params]
 
