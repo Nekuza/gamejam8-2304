@@ -1,2 +1,3 @@
+res://player/player.tscn
 res://node_2d.tscn
-res://Spritesheet/map/spritesheetInfo.txt
+res://player/player.gd
