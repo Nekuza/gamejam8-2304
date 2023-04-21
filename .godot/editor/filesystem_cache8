@@ -1,7 +1,7 @@
 2a60927148abd1d33b818b535e306557
-::res://::1682099133
+::res://::1682103309
 icon.svg::CompressedTexture2D::3562031758538509174::1682093477::1682093485::1::::<><>::
-node_2d.tscn::PackedScene::7193123574991978398::1682099087::0::1::::<><>::uid://dgfvie1qjdhal
+node_2d.tscn::PackedScene::7193123574991978398::1682103242::0::1::::<><>::uid://dgfvie1qjdhal<>uid://bfw0buko6cr8o
 README.md::TextFile::-1::1682094094::0::1::::<><>::
 ::res://addons/::1682094204
 ::res://addons/godot-git-plugin/::1682094204
@@ -11,12 +11,15 @@ THIRDPARTY.md::TextFile::-1::1682093740::0::1::::<><>::
 ::res://addons/godot-git-plugin/linux/::1682094204
 ::res://addons/godot-git-plugin/macos/::1682094204
 ::res://addons/godot-git-plugin/win64/::1682094204
+::res://player/::1682103154
+player.gd::GDScript::-1::1682101602::0::1::::<>CharacterBody2D<>::
+player.tscn::PackedScene::2784301989678313332::1682103154::0::1::::<><>::uid://b4tvs3yatstwe<>res://player/player.gd
 ::res://Spritesheet/::1682099087
 ::res://Spritesheet/map/::1682099087
 roguelikeSheet_magenta.png::CompressedTexture2D::2906459635010517905::1682099087::1682099087::1::::<><>::
 roguelikeSheet_transparent.png::CompressedTexture2D::7592006595874566479::1682099087::1682099087::1::::<><>::
 spritesheetInfo.txt::TextFile::-1::1682099087::0::1::::<><>::
-::res://start-assets/::1682099134
+::res://start-assets/::1682099138
 background.png::CompressedTexture2D::994929309606749992::1682099134::1682099138::1::::<><>::
 bumper.png::CompressedTexture2D::1657035850986715598::1682099134::1682099138::1::::<><>::
 coin.png::CompressedTexture2D::7357628839754298353::1682099134::1682099138::1::::<><>::
