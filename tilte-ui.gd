@@ -1,0 +1,29 @@
+extends Control
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	$"VBoxContainer/start-button".grab_focus()
+	$startup_sound.play()
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_startbutton_pressed():
+	get_tree().change_scene_to_file("res://node_2d.tscn")
+
+
+func _on_optionsbutton_pressed():
+	$select_sound.play()
+	pass
+	# options-menu not yet implemented
+	# var options = load("res://menus/options.tscn").instance()
+	# get_tree().current_scene.add_child(options)
+
+
+func _on_quitbutton_pressed():
+	$select_sound.play()
+	get_tree().quit()

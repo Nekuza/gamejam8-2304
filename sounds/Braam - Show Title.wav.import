@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bcgjeia5je7t8"
+path="res://.godot/imported/Braam - Show Title.wav-4fe7104249b6ab37cc46328f7d5bed87.sample"
+
+[deps]
+
+source_file="res://sounds/Braam - Show Title.wav"
+dest_files=["res://.godot/imported/Braam - Show Title.wav-4fe7104249b6ab37cc46328f7d5bed87.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2coo11qj47w2"]
+
+[ext_resource type="AudioStream" uid="uid://b7o8mis5rmnau" path="res://music/1184423_Dont-Care-Anthem-II--2023.mp3" id="1_aor22"]
+
+[node name="music_player" type="AudioStreamPlayer"]
+stream = ExtResource("1_aor22")
+autoplay = true

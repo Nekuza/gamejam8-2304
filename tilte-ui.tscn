@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://crdstyapefhm8"]
+
+[ext_resource type="Script" path="res://tilte-ui.gd" id="1_8ic8u"]
+[ext_resource type="AudioStream" uid="uid://bcgjeia5je7t8" path="res://sounds/Braam - Show Title.wav" id="3_p5v5n"]
+[ext_resource type="AudioStream" uid="uid://b8sacnusj5hl6" path="res://sounds/Drum.mp3" id="3_td3kv"]
+
+[node name="title-menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8ic8u")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -86.0
+offset_right = -33.0001
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.98859, 1.80616)
+
+[node name="start-button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "start"
+
+[node name="options-button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "options"
+
+[node name="quit-button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "quit"
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 2
+offset_left = 289.0
+offset_top = 67.0
+offset_right = 829.0
+offset_bottom = 177.0
+text = "game-title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="startup_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_p5v5n")
+
+[node name="select_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_td3kv")
+
+[connection signal="pressed" from="VBoxContainer/start-button" to="." method="_on_startbutton_pressed"]
+[connection signal="pressed" from="VBoxContainer/options-button" to="." method="_on_optionsbutton_pressed"]
+[connection signal="pressed" from="VBoxContainer/quit-button" to="." method="_on_quitbutton_pressed"]
