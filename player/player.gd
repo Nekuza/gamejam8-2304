@@ -19,3 +19,7 @@ func get_input():
 func _physics_process(delta):
 	get_input()
 	move_and_slide()
+
+
+func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+	pass # Replace with function body.

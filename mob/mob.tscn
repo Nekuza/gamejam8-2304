@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://bgmno0iiun5ai"]
+
+[ext_resource type="Texture2D" uid="uid://b034jhe6fwg4f" path="res://assets/enemy/idle/0.png" id="1_u0jiv"]
+[ext_resource type="Texture2D" uid="uid://dw3s74krqs3tf" path="res://assets/enemy/idle/1.png" id="2_cbuq5"]
+[ext_resource type="Texture2D" uid="uid://cxo0si5mrgf3y" path="res://assets/enemy/idle/2.png" id="3_hj53x"]
+[ext_resource type="Texture2D" uid="uid://bprixvx4yp01w" path="res://assets/enemy/idle/3.png" id="4_nb4my"]
+[ext_resource type="Texture2D" uid="uid://dt17tqdn2qx1s" path="res://assets/enemy/idle/4.png" id="5_tjkh4"]
+[ext_resource type="Texture2D" uid="uid://ccr4ptb84k7of" path="res://assets/enemy/idle/5.png" id="6_370gp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wmaum"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_u0jiv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_cbuq5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hj53x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nb4my")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tjkh4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_370gp")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kt2a5"]
+radius = 6.7061
+height = 20.5878
+
+[node name="Mob" type="RigidBody2D"]
+gravity_scale = 0.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wmaum")
+animation = &"idle"
+frame_progress = 0.596071
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 0.488692
+shape = SubResource("CapsuleShape2D_kt2a5")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

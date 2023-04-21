@@ -1,7 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5yjaxdhc1his"]
+[gd_scene load_steps=11 format=3 uid="uid://c5yjaxdhc1his"]
 
+[ext_resource type="Script" path="res://main_game.gd" id="1_2sd37"]
 [ext_resource type="Texture2D" uid="uid://dgfvie1qjdhal" path="res://assets/map/roguelikeSheet_transparent.png" id="1_ejnce"]
 [ext_resource type="PackedScene" path="res://player/player.tscn" id="2_sbhvi"]
+[ext_resource type="PackedScene" uid="uid://bgmno0iiun5ai" path="res://mob/mob.tscn" id="3_x3acj"]
+[ext_resource type="Script" path="res://mob/mob.gd" id="4_h75pn"]
+[ext_resource type="PackedScene" uid="uid://c337bwe0bvemr" path="res://boat/boat.tscn" id="5_lgeme"]
+[ext_resource type="Script" path="res://boat/boat.gd" id="6_5q4rm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_istaf"]
 resource_name = "Maptiles"
@@ -5315,7 +5320,15 @@ separation = Vector2i(1, 1)
 physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_istaf")
 
+[sub_resource type="Curve2D" id="Curve2D_rqa8r"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1, -1, 0, 0, 0, 0, 99, 100, 0, 0, 0, 0, 501, 1000)
+}
+point_count = 3
+
 [node name="world" type="Node2D"]
+script = ExtResource("1_2sd37")
+mob_scene = ExtResource("3_x3acj")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(272, 303)
@@ -5347,3 +5360,26 @@ position = Vector2(7, -7)
 zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 position_smoothing_speed = 12.0
+
+[node name="MobPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_rqa8r")
+
+[node name="StartPosition" type="PathFollow2D" parent="MobPath"]
+position = Vector2(1, -1)
+rotation = 0.800472
+
+[node name="Mob" parent="." instance=ExtResource("3_x3acj")]
+script = ExtResource("4_h75pn")
+
+[node name="Boat" parent="." instance=ExtResource("5_lgeme")]
+position = Vector2(500, 1000)
+script = ExtResource("6_5q4rm")
+
+[node name="StartTimer" type="Timer" parent="."]
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="MobTimer" type="Timer" parent="."]
+
+[connection signal="body_shape_entered" from="TileMap/Area2D" to="Player" method="_on_area_2d_body_shape_entered"]
+[connection signal="body_entered" from="Boat" to="Boat" method="_on_body_entered"]
