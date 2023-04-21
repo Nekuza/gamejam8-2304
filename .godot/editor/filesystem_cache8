@@ -1,13 +1,20 @@
 2a60927148abd1d33b818b535e306557
-::res://::1682095103
+::res://::1682098759
 icon.svg::CompressedTexture2D::3562031758538509174::1682094970::1682094970::1::::<><>::
-node_2d.tscn::PackedScene::7193123574991978398::1682094970::0::1::::<><>::
+node_2d.tscn::PackedScene::7193123574991978398::1682098655::0::1::::<><>::
 README.md::TextFile::-1::1682093610::0::1::::<><>::
 ::res://addons/::1682098096
 ::res://addons/assets/::1682098110
 ::res://addons/assets/sprite sheets/::1682098113
-::res://addons/assets/sprite sheets/enemy/::1682098119
+::res://addons/assets/sprite sheets/enemy/::1682099204
 32x32Ghost_Idle.png::CompressedTexture2D::2807905225557466414::1551886148::1682098121::1::::<><>::
+::res://addons/assets/sprite sheets/enemy/idle/::1682099320
+0.png::CompressedTexture2D::3549637226621720360::1682099227::1682099324::1::::<><>::
+1.png::CompressedTexture2D::1895355386663535508::1682099245::1682099324::1::::<><>::
+2.png::CompressedTexture2D::5789438275404590833::1682099259::1682099324::1::::<><>::
+3.png::CompressedTexture2D::6968690503287464985::1682099281::1682099324::1::::<><>::
+4.png::CompressedTexture2D::2161574590928803400::1682099296::1682099324::1::::<><>::
+5.png::CompressedTexture2D::1977552317334892992::1682099311::1682099324::1::::<><>::
 ::res://addons/godot-git-plugin/::1682094970
 git_plugin.gdextension::GDExtension::-1::1682094970::0::1::::<><>::
 plugin.cfg::TextFile::-1::1682094970::0::1::::<><>::

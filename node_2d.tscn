@@ -1,3 +1,83 @@
-[gd_scene format=3 uid="uid://daqnxuw2b4iiw"]
+[gd_scene load_steps=12 format=3 uid="uid://daqnxuw2b4iiw"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="Script" path="res://Mob (RigidBody2D).gd" id="1_be8kq"]
+[ext_resource type="Texture2D" uid="uid://bqtqahsa4apme" path="res://addons/assets/sprite sheets/enemy/idle/0.png" id="2_wm3gd"]
+[ext_resource type="Texture2D" uid="uid://2aehxuvpxw41" path="res://addons/assets/sprite sheets/enemy/idle/1.png" id="3_moxiy"]
+[ext_resource type="Texture2D" uid="uid://coqpg5e7yijef" path="res://addons/assets/sprite sheets/enemy/idle/2.png" id="4_imx34"]
+[ext_resource type="Texture2D" uid="uid://c6jxkxrf215fx" path="res://addons/assets/sprite sheets/enemy/idle/3.png" id="5_c0cau"]
+[ext_resource type="Texture2D" uid="uid://52c22i8ohjky" path="res://addons/assets/sprite sheets/enemy/idle/4.png" id="6_7xtqm"]
+[ext_resource type="Texture2D" uid="uid://3f686njhmhsq" path="res://addons/assets/sprite sheets/enemy/idle/5.png" id="7_j5l7x"]
+[ext_resource type="Script" path="res://VisibleOnScreenNotifier2D.gd" id="8_ajytq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sif57"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wm3gd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_moxiy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_imx34")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_c0cau")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7xtqm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_j5l7x")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_an46g"]
+radius = 4.0
+height = 11.5988
+
+[sub_resource type="Curve2D" id="Curve2D_bxm3u"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 23, -7)
+}
+point_count = 1
+
+[node name="Node" type="Node"]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Mob (RigidBody2D)" type="RigidBody2D" parent="Node2D"]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_be8kq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D/Mob (RigidBody2D)"]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_sif57")
+animation = &"idle"
+frame_progress = 0.341815
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Mob (RigidBody2D)"]
+rotation = 0.436332
+shape = SubResource("CapsuleShape2D_an46g")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Node2D/Mob (RigidBody2D)"]
+script = ExtResource("8_ajytq")
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="StarPosition" type="Marker2D" parent="."]
+position = Vector2(240, 450)
+
+[node name="MobPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_bxm3u")
