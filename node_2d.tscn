@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://daqnxuw2b4iiw"]
+[gd_scene load_steps=9 format=3 uid="uid://daqnxuw2b4iiw"]
 
 [ext_resource type="Texture2D" uid="uid://dgfvie1qjdhal" path="res://Spritesheet/map/roguelikeSheet_transparent.png" id="1_hbxq4"]
 [ext_resource type="Script" path="res://Main.gd" id="1_oycda"]
 [ext_resource type="PackedScene" uid="uid://bfw0buko6cr8o" path="res://player/player.tscn" id="2_hj54h"]
 [ext_resource type="PackedScene" uid="uid://bwoc18s05nv4" path="res://enemy/mob.tscn" id="4_evkwu"]
+[ext_resource type="PackedScene" uid="uid://ccptervhwiw6f" path="res://start-assets/boat/boat.tscn" id="5_ysa5m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_istaf"]
 resource_name = "Maptiles"
@@ -5346,6 +5347,4 @@ rotation = 0.516852
 
 [node name="Mob" parent="." instance=ExtResource("4_evkwu")]
 
-[node name="Player2" parent="." instance=ExtResource("2_hj54h")]
-
-[node name="Mob2" parent="." instance=ExtResource("4_evkwu")]
+[node name="Boat" parent="." instance=ExtResource("5_ysa5m")]
