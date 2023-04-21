@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c5yjaxdhc1his"]
 
 [ext_resource type="Texture2D" uid="uid://dgfvie1qjdhal" path="res://assets/map/roguelikeSheet_transparent.png" id="1_ejnce"]
-[ext_resource type="PackedScene" path="res://player/player.tscn" id="2_sbhvi"]
+[ext_resource type="PackedScene" uid="uid://cq6vgoux4o34p" path="res://player/player.tscn" id="2_sbhvi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_istaf"]
 resource_name = "Maptiles"
