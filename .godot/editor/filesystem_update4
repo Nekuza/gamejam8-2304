@@ -1,3 +1,5 @@
 res://node_2d.tscn
 res://Mob (RigidBody2D).gd
 res://VisibleOnScreenNotifier2D.gd
+res://node_2d.gd
+res://Main.gd

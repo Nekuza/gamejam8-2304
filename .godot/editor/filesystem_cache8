@@ -1,14 +1,21 @@
 2a60927148abd1d33b818b535e306557
-::res://::1682098759
+::res://::1682102638
 icon.svg::CompressedTexture2D::3562031758538509174::1682094970::1682094970::1::::<><>::
-node_2d.tscn::PackedScene::7193123574991978398::1682098655::0::1::::<><>::
+node_2d.tscn::PackedScene::7193123574991978398::1682102638::0::1::::<><>::res://Main.gd<>res://Mob (RigidBody2D).gd<>uid://bqtqahsa4apme<>uid://2aehxuvpxw41<>uid://coqpg5e7yijef<>uid://c6jxkxrf215fx<>uid://52c22i8ohjky<>uid://3f686njhmhsq<>res://VisibleOnScreenNotifier2D.gd<>res://node_2d.gd
 README.md::TextFile::-1::1682093610::0::1::::<><>::
+Mob (RigidBody2D).gd::GDScript::-1::1682101056::0::1::::<>RigidBody2D<>::
+Area2D.gd::GDScript::-1::1682100440::0::1::::<>Area2D<>::
+node_2d.gd::GDScript::-1::1682102502::0::1::::<>Node<>::
+Main.gd::GDScript::-1::1682102610::0::1::::<>Node2D<>::
+VisibleOnScreenNotifier2D.gd::GDScript::-1::1682099973::0::1::::<>VisibleOnScreenNotifier2D<>::
 ::res://addons/::1682098096
 ::res://addons/assets/::1682098110
-::res://addons/assets/sprite sheets/::1682098113
+::res://addons/assets/sprite sheets/::1682102952
+::res://addons/assets/sprite sheets/boat/::1682103012
+chests.png::CompressedTexture2D::5973269966724037146::1430079024::1682103014::1::::<><>::
 ::res://addons/assets/sprite sheets/enemy/::1682099204
 32x32Ghost_Idle.png::CompressedTexture2D::2807905225557466414::1551886148::1682098121::1::::<><>::
-::res://addons/assets/sprite sheets/enemy/idle/::1682099320
+::res://addons/assets/sprite sheets/enemy/idle/::1682099324
 0.png::CompressedTexture2D::3549637226621720360::1682099227::1682099324::1::::<><>::
 1.png::CompressedTexture2D::1895355386663535508::1682099245::1682099324::1::::<><>::
 2.png::CompressedTexture2D::5789438275404590833::1682099259::1682099324::1::::<><>::

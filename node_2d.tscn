@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://daqnxuw2b4iiw"]
+[gd_scene load_steps=14 format=3 uid="uid://daqnxuw2b4iiw"]
 
+[ext_resource type="Script" path="res://Main.gd" id="1_7hki0"]
 [ext_resource type="Script" path="res://Mob (RigidBody2D).gd" id="1_be8kq"]
 [ext_resource type="Texture2D" uid="uid://bqtqahsa4apme" path="res://addons/assets/sprite sheets/enemy/idle/0.png" id="2_wm3gd"]
 [ext_resource type="Texture2D" uid="uid://2aehxuvpxw41" path="res://addons/assets/sprite sheets/enemy/idle/1.png" id="3_moxiy"]
@@ -8,6 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://52c22i8ohjky" path="res://addons/assets/sprite sheets/enemy/idle/4.png" id="6_7xtqm"]
 [ext_resource type="Texture2D" uid="uid://3f686njhmhsq" path="res://addons/assets/sprite sheets/enemy/idle/5.png" id="7_j5l7x"]
 [ext_resource type="Script" path="res://VisibleOnScreenNotifier2D.gd" id="8_ajytq"]
+[ext_resource type="Script" path="res://node_2d.gd" id="9_ctrcx"]
+
+[sub_resource type="Curve2D" id="Curve2D_bxm3u"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 23, -7, 0, 0, 0, 0, 66, -5, 0, 0, 0, 0, 54, 23, 0, 0, 0, 0, 6, 33, 0, 0, 0, 0, 23, -7, 0, 0, 0, 0, 831, 380, 0, 0, 0, 0, 59, 422, 0, 0, 0, 0, -116, 142, 0, 0, 0, 0, 23, -7)
+}
+point_count = 9
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sif57"]
 animations = [{
@@ -39,33 +47,9 @@ animations = [{
 radius = 4.0
 height = 11.5988
 
-[sub_resource type="Curve2D" id="Curve2D_bxm3u"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 23, -7)
-}
-point_count = 1
-
-[node name="Node" type="Node"]
-
-[node name="Node2D" type="Node2D" parent="."]
-
-[node name="Mob (RigidBody2D)" type="RigidBody2D" parent="Node2D"]
-collision_mask = 0
-gravity_scale = 0.0
-script = ExtResource("1_be8kq")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D/Mob (RigidBody2D)"]
-scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_sif57")
-animation = &"idle"
-frame_progress = 0.341815
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Mob (RigidBody2D)"]
-rotation = 0.436332
-shape = SubResource("CapsuleShape2D_an46g")
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Node2D/Mob (RigidBody2D)"]
-script = ExtResource("8_ajytq")
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_7hki0")
+mob_scene = null
 
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -80,4 +64,40 @@ one_shot = true
 position = Vector2(240, 450)
 
 [node name="MobPath" type="Path2D" parent="."]
+position = Vector2(237, 156)
 curve = SubResource("Curve2D_bxm3u")
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
+position = Vector2(26, -6)
+rotation = 0.0464781
+
+[node name="Mob (RigidBody2D)" type="RigidBody2D" parent="."]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_be8kq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Mob (RigidBody2D)"]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_sif57")
+animation = &"idle"
+frame_progress = 0.341815
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mob (RigidBody2D)"]
+rotation = 0.436332
+shape = SubResource("CapsuleShape2D_an46g")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Mob (RigidBody2D)"]
+script = ExtResource("8_ajytq")
+
+[node name="Main" type="Node" parent="."]
+script = ExtResource("9_ctrcx")
+
+[node name="Boat" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Boat"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boat"]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Boat"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Boat"]
