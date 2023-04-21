@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://daqnxuw2b4iiw"]
+[gd_scene load_steps=5 format=3 uid="uid://c5yjaxdhc1his"]
 
-[ext_resource type="Texture2D" uid="uid://dgfvie1qjdhal" path="res://Spritesheet/map/roguelikeSheet_transparent.png" id="1_hbxq4"]
-[ext_resource type="PackedScene" uid="uid://bfw0buko6cr8o" path="res://player/player.tscn" id="2_hj54h"]
+[ext_resource type="Texture2D" uid="uid://dgfvie1qjdhal" path="res://assets/map/roguelikeSheet_transparent.png" id="1_ejnce"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="2_sbhvi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_istaf"]
 resource_name = "Maptiles"
-texture = ExtResource("1_hbxq4")
+texture = ExtResource("1_ejnce")
 separation = Vector2i(1, 1)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -5315,7 +5315,7 @@ separation = Vector2i(1, 1)
 physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_istaf")
 
-[node name="Node2D" type="Node2D"]
+[node name="world" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(272, 303)
@@ -5339,7 +5339,7 @@ layer_2/tile_data = PackedInt32Array()
 
 [node name="Area2D" type="Area2D" parent="TileMap"]
 
-[node name="Player" parent="." instance=ExtResource("2_hj54h")]
+[node name="Player" parent="." instance=ExtResource("2_sbhvi")]
 position = Vector2(490, 337)
 
 [node name="PlayerCamera" type="Camera2D" parent="Player"]
