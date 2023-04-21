@@ -5339,10 +5339,11 @@ layer_2/tile_data = PackedInt32Array()
 
 [node name="Area2D" type="Area2D" parent="TileMap"]
 
-[node name="Player" parent="TileMap" instance=ExtResource("2_hj54h")]
-position = Vector2(388, 235)
+[node name="Player" parent="." instance=ExtResource("2_hj54h")]
+position = Vector2(490, 337)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(5, 5)
+[node name="PlayerCamera" type="Camera2D" parent="Player"]
+position = Vector2(7, -7)
+zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 position_smoothing_speed = 12.0
