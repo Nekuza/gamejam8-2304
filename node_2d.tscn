@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://daqnxuw2b4iiw"]
+[gd_scene load_steps=8 format=3 uid="uid://daqnxuw2b4iiw"]
 
 [ext_resource type="Texture2D" uid="uid://dgfvie1qjdhal" path="res://Spritesheet/map/roguelikeSheet_transparent.png" id="1_hbxq4"]
+[ext_resource type="Script" path="res://Main.gd" id="1_oycda"]
 [ext_resource type="PackedScene" uid="uid://bfw0buko6cr8o" path="res://player/player.tscn" id="2_hj54h"]
+[ext_resource type="PackedScene" uid="uid://bwoc18s05nv4" path="res://enemy/mob.tscn" id="4_evkwu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_istaf"]
 resource_name = "Maptiles"
@@ -5305,7 +5307,15 @@ separation = Vector2i(1, 1)
 physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_istaf")
 
+[sub_resource type="Curve2D" id="Curve2D_y51cu"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 27, 23, 0, 0, 0, 0, 356, 210)
+}
+point_count = 2
+
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_oycda")
+mob_scene = ExtResource("2_hj54h")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(276, 305)
@@ -5320,3 +5330,22 @@ position = Vector2(388, 235)
 zoom = Vector2(5, 5)
 position_smoothing_enabled = true
 position_smoothing_speed = 12.0
+
+[node name="StartTimer" type="Timer" parent="."]
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="MobTimer" type="Timer" parent="."]
+
+[node name="MobPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_y51cu")
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
+position = Vector2(27, 23)
+rotation = 0.516852
+
+[node name="Mob" parent="." instance=ExtResource("4_evkwu")]
+
+[node name="Player2" parent="." instance=ExtResource("2_hj54h")]
+
+[node name="Mob2" parent="." instance=ExtResource("4_evkwu")]

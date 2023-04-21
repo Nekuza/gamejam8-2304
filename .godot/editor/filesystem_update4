@@ -1,3 +1,5 @@
 res://node_2d.tscn
-res://player/player.tscn
+res://enemy/Mob.gd
+res://start-assets/boat/boat.tscn
 res://player/player.gd
+res://boat/boat.gd
