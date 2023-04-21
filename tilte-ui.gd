@@ -13,7 +13,7 @@ func _process(delta):
 
 
 func _on_startbutton_pressed():
-	get_tree().change_scene_to_file("res://node_2d.tscn")
+	get_tree().change_scene_to_file("res://main_game.tscn")
 
 
 func _on_optionsbutton_pressed():
