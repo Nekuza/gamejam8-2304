@@ -1,10 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://cq6vgoux4o34p"]
+[gd_scene load_steps=16 format=3 uid="uid://cq6vgoux4o34p"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_q81pp"]
 [ext_resource type="Texture2D" uid="uid://njafh0twmv1k" path="res://assets/player/noah/0.png" id="2_tmpf4"]
 [ext_resource type="Texture2D" uid="uid://dkod0u6u5l5g6" path="res://assets/player/noah/1.png" id="3_7q8nl"]
 [ext_resource type="Texture2D" uid="uid://dun6wgg1djr6n" path="res://assets/player/noah/2.png" id="4_0jbha"]
 [ext_resource type="Texture2D" uid="uid://cueyd5u8nphlm" path="res://assets/player/noah/3.png" id="5_v40aq"]
+[ext_resource type="Texture2D" uid="uid://dnq54pc1udwdr" path="res://assets/player/noah/back/0.png" id="6_nh7iw"]
+[ext_resource type="Texture2D" uid="uid://cbpxmknnq2hcg" path="res://assets/player/noah/side/left/0.png" id="6_rmhah"]
+[ext_resource type="Texture2D" uid="uid://b57ec4yr3r71n" path="res://assets/player/noah/back/1.png" id="7_n4etj"]
+[ext_resource type="Texture2D" uid="uid://cic3ru7bu2fic" path="res://assets/player/noah/side/left/1.png" id="7_xpa76"]
+[ext_resource type="Texture2D" uid="uid://b15j2ritvhyel" path="res://assets/player/noah/side/left/2.png" id="8_a2nu1"]
+[ext_resource type="Texture2D" uid="uid://byqkjk2d2trbo" path="res://assets/player/noah/back/2.png" id="8_nn0k3"]
+[ext_resource type="Texture2D" uid="uid://xu4yecfqcl0b" path="res://assets/player/noah/back/3.png" id="9_0sa6n"]
+[ext_resource type="Texture2D" uid="uid://bwoi5g0gdis1b" path="res://assets/player/noah/side/left/3.png" id="9_76ylr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qdxc8"]
 radius = 41.8205
@@ -25,7 +33,41 @@ animations = [{
 "texture": ExtResource("5_v40aq")
 }],
 "loop": false,
-"name": &"Walk",
+"name": &"back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_nh7iw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_n4etj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_nn0k3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_0sa6n")
+}],
+"loop": true,
+"name": &"front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_rmhah")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xpa76")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_a2nu1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_76ylr")
+}],
+"loop": true,
+"name": &"side",
 "speed": 5.0
 }]
 
@@ -46,6 +88,4 @@ debug_color = Color(0.996078, 0, 0.184314, 0.419608)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, -8)
 sprite_frames = SubResource("SpriteFrames_w7ef6")
-animation = &"Walk"
-frame = 3
-frame_progress = 1.0
+animation = &"front"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bsaik1smq4a1e"]
+[gd_scene load_steps=10 format=3 uid="uid://bsaik1smq4a1e"]
 
 [ext_resource type="Script" path="res://main_game.gd" id="1_0spe2"]
 [ext_resource type="Texture2D" uid="uid://dgfvie1qjdhal" path="res://assets/map/roguelikeSheet_transparent.png" id="1_ejnce"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bgmno0iiun5ai" path="res://mob/mob.tscn" id="6_gn1sk"]
 [ext_resource type="PackedScene" uid="uid://c337bwe0bvemr" path="res://boat/boat.tscn" id="7_2ivxu"]
 [ext_resource type="Script" path="res://score/Score.gd" id="8_gefc1"]
+[ext_resource type="PackedScene" uid="uid://bq5xt3vre37ac" path="res://enemy_spawn/enemy_spawn.tscn" id="7_mk3qo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_istaf"]
 resource_name = "Maptiles"
@@ -5321,18 +5322,6 @@ separation = Vector2i(1, 1)
 physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_istaf")
 
-[sub_resource type="Curve2D" id="Curve2D_42rft"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 2, 55, 0, 0, 0, 0, 106, 39, 0, 0, 0, 0, 88, -11, 0, 0, 0, 0, -12, -19, 0, 0, 0, 0, -29, 28, 0, 0, 0, 0, 2, 55)
-}
-point_count = 6
-
-[sub_resource type="Curve2D" id="Curve2D_b5don"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 25, 80, 0, 0, 0, 0, 169, 30)
-}
-point_count = 2
-
 [node name="world" type="Node2D"]
 script = ExtResource("1_0spe2")
 mob_scene = ExtResource("6_gn1sk")
@@ -5367,7 +5356,7 @@ stream = ExtResource("4_4dbo5")
 volume_db = 5.0
 
 [node name="Player" parent="." groups=["Enemies", "Player"] instance=ExtResource("5_jwt35")]
-position = Vector2(-1, 0)
+position = Vector2(720, 503)
 
 [node name="Player@PlayerCamera" type="Camera2D" parent="Player"]
 position = Vector2(8, -7)
@@ -5416,3 +5405,6 @@ script = ExtResource("8_gefc1")
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+
+[node name="enemy_spawn" parent="." instance=ExtResource("7_mk3qo")]
+position = Vector2(1304, 327)
