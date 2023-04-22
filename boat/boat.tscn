@@ -45,5 +45,3 @@ shape = SubResource("RectangleShape2D_0el0w")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
 [connection signal="hit" from="." to="." method="_on_hit"]
-
-[connection signal="hit" from="." to="." method="_on_hit"]

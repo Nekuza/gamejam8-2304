@@ -21,7 +21,7 @@ func _ready():
 	$AnimatedSprite2D.play(mob_types[randi() % mob_types.size()])
 	
 	# select spawn_position from list of spawns
-	position = get_random_spawn_position() #[randi() % spawn_positions.size()]#spawn_position
+	position = spawn_positions[randi() % spawn_positions.size()]#get_random_spawn_position() ##spawn_position
 	
 	# TODO: get path to target (boat)
 	#path = get_node("Path2D")
