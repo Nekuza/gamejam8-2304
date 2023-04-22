@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = 100  # speed in pixels/sec
+var speed = 500  # speed in pixels/sec
 var canPick = true
 
 func _ready():
