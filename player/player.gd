@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var speed = 100  # speed in pixels/sec
-
+var direction = 0
 
 
 func get_input():
@@ -19,13 +19,24 @@ func get_input():
 
 func _physics_process(delta):
 	
-	
 	get_input()
 	move_and_slide()
 	
 func _process(delta):
-	if velocity.length() > 0:
+	if velocity.y > 0:
 		velocity = velocity.normalized() * speed
-		$AnimatedSprite2D.play()
+		$AnimatedSprite2D.play("back")
+		$AnimatedSprite2D.flip_h = false
+		
+	elif velocity.y < 0:
+		velocity = velocity.normalized() * speed
+		$AnimatedSprite2D.play("front")
+		$AnimatedSprite2D.flip_h = false
+		
+	elif velocity.x != 0:
+		$AnimatedSprite2D.play("side")
+		$AnimatedSprite2D.flip_h = velocity.x > 0
+		$AnimatedSprite2D.flip_v = false
+		
 	else:
 		$AnimatedSprite2D.stop()
