@@ -1,9 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://c1qhe5nhhlm4o"]
+[gd_scene load_steps=31 format=3 uid="uid://c1qhe5nhhlm4o"]
 
 [ext_resource type="Texture2D" uid="uid://cuts2whx8udow" path="res://assets/animals/animals3.png" id="1_2etul"]
 [ext_resource type="Script" path="res://animal/logic/animal.gd" id="1_vk5pl"]
 [ext_resource type="Texture2D" uid="uid://dqfj3ncvy2tsb" path="res://assets/animals/birds2.png" id="2_f3rib"]
 [ext_resource type="Texture2D" uid="uid://guix6uchwx5g" path="res://assets/animals/animals1.png" id="3_7sdht"]
+[ext_resource type="Texture2D" uid="uid://dg3qsuwro6kmg" path="res://assets/animals/picked/wolfPicked.png" id="5_1pci7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wgd33"]
 atlas = ExtResource("1_2etul")
@@ -76,6 +77,18 @@ region = Rect2(104, 0, 26, 36)
 [sub_resource type="AtlasTexture" id="AtlasTexture_voqku"]
 atlas = ExtResource("3_7sdht")
 region = Rect2(130, 0, 26, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cllxf"]
+atlas = ExtResource("5_1pci7")
+region = Rect2(0, 0, 26, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txyfk"]
+atlas = ExtResource("5_1pci7")
+region = Rect2(26, 0, 26, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mikhe"]
+atlas = ExtResource("5_1pci7")
+region = Rect2(52, 0, 26, 36)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0327f"]
 animations = [{
@@ -162,6 +175,20 @@ animations = [{
 "loop": true,
 "name": &"wolf",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cllxf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txyfk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mikhe")
+}],
+"loop": true,
+"name": &"wolfpicked",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7pgvn"]
@@ -172,6 +199,9 @@ height = 12.0
 radius = 15.0
 height = 38.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_tffd6"]
+radius = 97.0
+
 [node name="RigidBody2D" type="RigidBody2D"]
 mass = 0.01
 gravity_scale = 0.0
@@ -181,7 +211,9 @@ animal_type = "boris"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_0327f")
-animation = &"wolf"
+animation = &"wolfpicked"
+frame = 1
+frame_progress = 0.774537
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
@@ -196,5 +228,11 @@ visible = false
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_y4kjm")
 debug_color = Color(0.984314, 0.054902, 0.282353, 0.419608)
+
+[node name="AttackRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_tffd6")
+debug_color = Color(0.298039, 0.494118, 1, 0.419608)
 
 [connection signal="area_entered" from="PickUpArea" to="." method="_on_pick_up_area_area_entered"]

@@ -72,3 +72,4 @@ func get_random_spawn_position():
 		randi_range(minX,maxX),
 		randi_range(minY,maxY)
 		)
+		
