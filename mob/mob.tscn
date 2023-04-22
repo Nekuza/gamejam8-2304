@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bgmno0iiun5ai"]
+[gd_scene load_steps=11 format=3 uid="uid://bgmno0iiun5ai"]
 
 [ext_resource type="Texture2D" uid="uid://b034jhe6fwg4f" path="res://assets/enemy/idle/0.png" id="1_u0jiv"]
 [ext_resource type="Texture2D" uid="uid://dw3s74krqs3tf" path="res://assets/enemy/idle/1.png" id="2_cbuq5"]
@@ -37,6 +37,10 @@ animations = [{
 radius = 6.7061
 height = 20.5878
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_3x25l"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_77e0e"]
+
 [node name="Mob" type="RigidBody2D"]
 gravity_scale = 0.0
 
@@ -50,3 +54,15 @@ rotation = 0.488692
 shape = SubResource("CapsuleShape2D_kt2a5")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = -10.0
+offset_top = -15.0
+offset_right = 10.0
+offset_bottom = -12.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = SubResource("CanvasTexture_3x25l")
+texture_progress = SubResource("CanvasTexture_77e0e")
+tint_under = Color(0.219608, 0.219608, 0.219608, 1)
+tint_progress = Color(0.913725, 0.152941, 0.0784314, 1)

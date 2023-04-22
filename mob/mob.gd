@@ -6,6 +6,8 @@ var atk_speed	= 1
 var speed  		= 10
 var start_health = 10
 @export var spawn_rate 	= 1
+var health
+
 # var spawn_position = get_random_spawn_position()
 var spawn_positions = [
 	Vector2(1304,327)#,
@@ -18,6 +20,7 @@ var path_follow: PathFollow2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var health = start_health
 	var mob_types = $AnimatedSprite2D.sprite_frames.get_animation_names()
 	$AnimatedSprite2D.play(mob_types[randi() % mob_types.size()])
 	
@@ -59,6 +62,17 @@ func set_speed(value):
 	speed = value
 func set_spawn_rate(value):
 	spawn_rate = value
+
+func on_hit(damage):
+	health -= damage
+	if health <= 0:
+		on_destroy()
+	#else
+		# TODO hit_sound 
+	
+func on_destroy():
+	#TODO death_sound
+	self.queue_free()
 
 func get_random_spawn_position():
 	return spawn_positions[randi() % spawn_positions.size()]
