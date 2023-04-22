@@ -25,7 +25,6 @@ func _input(event):
 				get_node("CollisionShape2D").disabled = true
 				$AnimatedSprite2D.stop()
 				get_node("../Player").canPick = false
-				print("Geht")
 				count = 1
 
 	elif Input.is_action_just_pressed("ui_pick") and picked == true and count == 1:
@@ -34,5 +33,4 @@ func _input(event):
 		$AnimatedSprite2D.play(animal_type) 
 		get_node("CollisionShape2D").disabled = false
 		count = 0
-		print("Losgelassen")
 		picked = false
