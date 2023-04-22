@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://charheoousk2b"]
+
+[ext_resource type="Script" path="res://UI/options/ui_option_menu.gd" id="1_eqgrr"]
+[ext_resource type="PackedScene" uid="uid://dw83smnvh5bm" path="res://UI/options/ui_resolution_selector.tscn" id="1_f3tm1"]
+
+[node name="Panel" type="Panel"]
+offset_right = 539.0
+offset_bottom = 174.0
+script = ExtResource("1_eqgrr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 532.0
+offset_bottom = 246.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="UIResolutionSelector" parent="VBoxContainer" instance=ExtResource("1_f3tm1")]
+layout_mode = 2
+alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Apply" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.835294, 0, 0, 1)
+text = "Apply"
+icon_alignment = 1
+
+[connection signal="resolution_changed" from="VBoxContainer/UIResolutionSelector" to="." method="_on_UIResolutionSelector_resolution_changed"]
+[connection signal="pressed" from="VBoxContainer/Apply" to="." method="_on_ApplyButton_pressed"]

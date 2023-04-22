@@ -17,8 +17,8 @@ func _on_startbutton_pressed():
 
 
 func _on_optionsbutton_pressed():
+	get_tree().change_scene_to_file("res://UI/options/ui_option_menu.tscn")
 	$select_sound.play()
-	pass
 	# options-menu not yet implemented
 	# var options = load("res://menus/options.tscn").instance()
 	# get_tree().current_scene.add_child(options)

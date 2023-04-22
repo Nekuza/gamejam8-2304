@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://crdstyapefhm8"]
+[gd_scene load_steps=4 format=3 uid="uid://dnolnatqmss71"]
 
-[ext_resource type="Script" path="res://tilte-ui.gd" id="1_8ic8u"]
-[ext_resource type="AudioStream" uid="uid://bcgjeia5je7t8" path="res://sounds/Braam - Show Title.wav" id="3_p5v5n"]
-[ext_resource type="AudioStream" uid="uid://b8sacnusj5hl6" path="res://sounds/Drum.mp3" id="3_td3kv"]
+[ext_resource type="Script" path="res://UI/title_screen/tilte-ui.gd" id="1_b7pt4"]
+[ext_resource type="AudioStream" uid="uid://bcgjeia5je7t8" path="res://sounds/Braam - Show Title.wav" id="2_lw5h4"]
+[ext_resource type="AudioStream" uid="uid://b8sacnusj5hl6" path="res://sounds/Drum.mp3" id="3_iwh0l"]
 
 [node name="title-menu" type="Control"]
 layout_mode = 3
@@ -11,7 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_8ic8u")
+script = ExtResource("1_b7pt4")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -51,10 +51,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="startup_sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_p5v5n")
+stream = ExtResource("2_lw5h4")
 
 [node name="select_sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_td3kv")
+stream = ExtResource("3_iwh0l")
 
 [connection signal="pressed" from="VBoxContainer/start-button" to="." method="_on_startbutton_pressed"]
 [connection signal="pressed" from="VBoxContainer/options-button" to="." method="_on_optionsbutton_pressed"]
