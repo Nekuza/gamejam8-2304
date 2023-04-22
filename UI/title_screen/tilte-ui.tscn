@@ -1,9 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnolnatqmss71"]
+[gd_scene load_steps=8 format=3 uid="uid://dnolnatqmss71"]
 
 [ext_resource type="Script" path="res://UI/title_screen/tilte-ui.gd" id="1_b7pt4"]
 [ext_resource type="Texture2D" uid="uid://clu8083ocaox4" path="res://assets/ui/vince_titleui_fullsize.png" id="2_iuk2e"]
 [ext_resource type="AudioStream" uid="uid://bcgjeia5je7t8" path="res://sounds/Braam - Show Title.wav" id="2_lw5h4"]
 [ext_resource type="AudioStream" uid="uid://b8sacnusj5hl6" path="res://sounds/Drum.mp3" id="3_iwh0l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7noif"]
+bg_color = Color(0, 0.678431, 0.729412, 1)
+skew = Vector2(0.219, 0)
+corner_radius_top_left = 14
+corner_radius_bottom_right = 14
+shadow_color = Color(0.0431373, 0.25098, 0.505882, 0.6)
+shadow_size = 2
+shadow_offset = Vector2(-0.938, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0mtsl"]
+bg_color = Color(0, 0.6, 0.92549, 1)
+skew = Vector2(0.219, 0)
+corner_radius_top_left = 14
+corner_radius_bottom_right = 14
+shadow_color = Color(0.0431373, 0.25098, 0.505882, 0.6)
+shadow_size = 2
+shadow_offset = Vector2(-0.938, 0)
+
+[sub_resource type="Theme" id="Theme_cj7ch"]
+Button/styles/focus = SubResource("StyleBoxFlat_7noif")
+Button/styles/hover = SubResource("StyleBoxFlat_7noif")
+Button/styles/normal = SubResource("StyleBoxFlat_0mtsl")
+Button/styles/pressed = SubResource("StyleBoxFlat_0mtsl")
 
 [node name="title-menu" type="Control"]
 layout_mode = 3
@@ -21,28 +45,34 @@ texture = ExtResource("2_iuk2e")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.076
-anchor_top = 0.605
-anchor_right = 0.076
-anchor_bottom = 0.605
-offset_left = -71.552
-offset_top = 15.96
-offset_right = -4.55199
-offset_bottom = 116.96
-grow_horizontal = 2
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 24.0
+offset_top = 78.0
+offset_right = 136.0
+offset_bottom = 195.0
 grow_vertical = 2
 scale = Vector2(2.98859, 1.80616)
+theme = SubResource("Theme_cj7ch")
 
 [node name="start-button" type="Button" parent="VBoxContainer"]
+texture_filter = 6
 layout_mode = 2
-text = "start"
+text = "new game"
 
 [node name="options-button" type="Button" parent="VBoxContainer"]
+texture_filter = 6
 layout_mode = 2
 text = "options"
 
+[node name="about" type="Button" parent="VBoxContainer"]
+texture_filter = 6
+layout_mode = 2
+text = "about"
+
 [node name="quit-button" type="Button" parent="VBoxContainer"]
+texture_filter = 6
 layout_mode = 2
 text = "quit"
 
@@ -54,4 +84,5 @@ stream = ExtResource("3_iwh0l")
 
 [connection signal="pressed" from="VBoxContainer/start-button" to="." method="_on_startbutton_pressed"]
 [connection signal="pressed" from="VBoxContainer/options-button" to="." method="_on_optionsbutton_pressed"]
+[connection signal="pressed" from="VBoxContainer/about" to="." method="_on_about_pressed"]
 [connection signal="pressed" from="VBoxContainer/quit-button" to="." method="_on_quitbutton_pressed"]
