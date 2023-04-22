@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://olnu3qb5mr73" path="res://sounds/Horn 2.mp3" id="4_4dbo5"]
 [ext_resource type="PackedScene" uid="uid://cq6vgoux4o34p" path="res://player/player.tscn" id="5_jwt35"]
 [ext_resource type="PackedScene" uid="uid://bgmno0iiun5ai" path="res://mob/mob.tscn" id="6_am8pa"]
-[ext_resource type="PackedScene" uid="uid://cwcby0csh7fdo" path="res://boat/boat.tscn" id="6_uriau"]
+[ext_resource type="PackedScene" uid="uid://beblja4e0c6l3" path="res://boat/boat.tscn" id="6_uriau"]
 [ext_resource type="PackedScene" uid="uid://bq5xt3vre37ac" path="res://enemy_spawn/enemy_spawn.tscn" id="7_mk3qo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_istaf"]
