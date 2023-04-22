@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://bq5xt3vre37ac"]
+
+[ext_resource type="Script" path="res://enemy_spawn/enemy_spawn.gd" id="1_qaag3"]
+[ext_resource type="Texture2D" uid="uid://ddmbrx4og8qmh" path="res://assets/enemy_spawn/enemy_spawn_3animations.png" id="2_dphph"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jcbd"]
+atlas = ExtResource("2_dphph")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kbhq"]
+atlas = ExtResource("2_dphph")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3asq1"]
+atlas = ExtResource("2_dphph")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_27oxu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jcbd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kbhq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3asq1")
+}],
+"loop": true,
+"name": &"open_gate",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ulln"]
+size = Vector2(16, 16)
+
+[node name="enemy_spawn" type="Node2D"]
+script = ExtResource("1_qaag3")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D"]
+sprite_frames = SubResource("SpriteFrames_27oxu")
+animation = &"open_gate"
+frame_progress = 0.267376
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_1ulln")
