@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=9 format=3 uid="uid://cwcby0csh7fdo"]
 
 [ext_resource type="Script" path="res://boat/boat.gd" id="1_dlg1h"]
 [ext_resource type="Texture2D" uid="uid://jxs8sm15cnct" path="res://assets/boat/placeholder/0.png" id="1_ij7nv"]

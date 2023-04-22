@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bsaik1smq4a1e"]
+[gd_scene load_steps=12 format=3 uid="uid://bsaik1smq4a1e"]
 
 [ext_resource type="Script" path="res://main_game.gd" id="1_0spe2"]
 [ext_resource type="Texture2D" uid="uid://dgfvie1qjdhal" path="res://assets/map/roguelikeSheet_transparent.png" id="1_ejnce"]
 [ext_resource type="PackedScene" uid="uid://d2coo11qj47w2" path="res://music_player.tscn" id="3_umdqx"]
 [ext_resource type="AudioStream" uid="uid://olnu3qb5mr73" path="res://sounds/Horn 2.mp3" id="4_4dbo5"]
 [ext_resource type="PackedScene" uid="uid://cq6vgoux4o34p" path="res://player/player.tscn" id="5_jwt35"]
-[ext_resource type="PackedScene" path="res://boat/boat.tscn" id="6_uriau"]
+[ext_resource type="PackedScene" uid="uid://bgmno0iiun5ai" path="res://mob/mob.tscn" id="6_am8pa"]
+[ext_resource type="PackedScene" uid="uid://cwcby0csh7fdo" path="res://boat/boat.tscn" id="6_uriau"]
 [ext_resource type="PackedScene" uid="uid://bq5xt3vre37ac" path="res://enemy_spawn/enemy_spawn.tscn" id="7_mk3qo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_istaf"]
@@ -5340,9 +5341,16 @@ separation = Vector2i(1, 1)
 physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_istaf")
 
+[sub_resource type="Curve2D" id="Curve2D_3eo4t"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1304, 328, 0, 0, 0, 0, 1303, 344, 0, 0, 0, 0, 1224, 342, 0, 0, 0, 0, 1222, 296, 0, 0, 0, 0, 1082, 295, 0, 0, 0, 0, 1079, 356, 0, 0, 0, 0, 1033, 359, 0, 0, 0, 0, 1031, 262, 0, 0, 0, 0, 891, 262, 0, 0, 0, 0, 886, 200, 0, 0, 0, 0, 776, 197, 0, 0, 0, 0, 776, 356, 0, 0, 0, 0, 730, 360, 0, 0, 0, 0, 728, 473)
+}
+point_count = 14
+
 [node name="world" type="Node2D"]
 position = Vector2(448, 385)
 script = ExtResource("1_0spe2")
+mob_scene = ExtResource("6_am8pa")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(272, 303)
@@ -5391,7 +5399,24 @@ position_smoothing_enabled = true
 position_smoothing_speed = 12.0
 
 [node name="Boat" parent="." instance=ExtResource("6_uriau")]
-position = Vector2(728, 463)
+position = Vector2(728, 472)
 
 [node name="enemy_spawn" parent="." instance=ExtResource("7_mk3qo")]
 position = Vector2(1304, 327)
+
+[node name="StartTimer" type="Timer" parent="."]
+
+[node name="MobTimer" type="Timer" parent="."]
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="MobPath1" type="Path2D" parent="."]
+curve = SubResource("Curve2D_3eo4t")
+
+[node name="MobSpawnLocation1" type="PathFollow2D" parent="MobPath1"]
+position = Vector2(1304, 328)
+rotation = 1.63322
+
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]

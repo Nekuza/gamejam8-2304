@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = 100  # speed in pixels/sec
+var speed = 1000  # speed in pixels/sec
 
 func _ready():
 	$AnimatedSprite2D.play("idle")
