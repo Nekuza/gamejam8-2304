@@ -5379,9 +5379,6 @@ layer_3/y_sort_origin = 0
 layer_3/z_index = 0
 layer_3/tile_data = PackedInt32Array(65599, 1114114, 23, 65600, 1179650, 23, 65601, 1179650, 23, 65602, 1245186, 23, 66, 1245186, 22, 65, 1179650, 22, 64, 1179650, 22, 63, 1114114, 22, -65473, 917506, 14, -65472, 983042, 14, -65471, 1179650, 14, -65470, 1245186, 14)
 
-[node name="Area2D" type="Area2D" parent="TileMap"]
-position = Vector2(-720, -688)
-
 [node name="music_player" parent="." instance=ExtResource("3_umdqx")]
 volume_db = -15.0
 
