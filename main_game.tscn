@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bsaik1smq4a1e"]
+[gd_scene load_steps=15 format=3 uid="uid://bsaik1smq4a1e"]
 
 [ext_resource type="Script" path="res://main_game.gd" id="1_0spe2"]
 [ext_resource type="Texture2D" uid="uid://dgfvie1qjdhal" path="res://assets/map/roguelikeSheet_transparent.png" id="1_ejnce"]
@@ -8,7 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://bgmno0iiun5ai" path="res://mob/mob.tscn" id="6_am8pa"]
 [ext_resource type="PackedScene" uid="uid://beblja4e0c6l3" path="res://boat/boat.tscn" id="6_uriau"]
 [ext_resource type="PackedScene" uid="uid://bq5xt3vre37ac" path="res://enemy_spawn/enemy_spawn.tscn" id="7_mk3qo"]
-[ext_resource type="PackedScene" uid="uid://c1qhe5nhhlm4o" path="res://animal/logic/animal.tscn" id="9_4lj2o"]
+[ext_resource type="PackedScene" uid="uid://63e80n2iaxnu" path="res://enemy/enemy.tscn" id="9_7lm1w"]
+[ext_resource type="Script" path="res://enemy_pathFollow.gd" id="9_gpy2p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_istaf"]
 resource_name = "Maptiles"
@@ -5348,6 +5349,12 @@ _data = {
 }
 point_count = 14
 
+[sub_resource type="Curve2D" id="Curve2D_y422q"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 168, 176, 0, 0, 0, 0, 168, 232, 0, 0, 0, 0, 432, 232)
+}
+point_count = 3
+
 [node name="world" type="Node2D"]
 position = Vector2(448, 385)
 script = ExtResource("1_0spe2")
@@ -5392,7 +5399,6 @@ position = Vector2(721, 557)
 
 [node name="PlayerCamera" type="Camera2D" parent="Player"]
 position = Vector2(8, -7)
-zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 position_smoothing_speed = 12.0
 
@@ -5401,6 +5407,9 @@ position = Vector2(728, 472)
 
 [node name="enemy_spawn" parent="." instance=ExtResource("7_mk3qo")]
 position = Vector2(1304, 327)
+
+[node name="enemy_spawn2" parent="." instance=ExtResource("7_mk3qo")]
+position = Vector2(440, 407)
 
 [node name="StartTimer" type="Timer" parent="."]
 
@@ -5450,6 +5459,18 @@ offset_left = 880.0
 offset_top = 391.0
 offset_right = 1304.0
 offset_bottom = 1095.0
+
+[node name="enemyPath1" type="Path2D" parent="."]
+position = Vector2(272, 239)
+curve = SubResource("Curve2D_y422q")
+
+[node name="enemy_pathFollow" type="PathFollow2D" parent="enemyPath1"]
+position = Vector2(168, 176)
+rotation = 1.5708
+rotates = false
+script = ExtResource("9_gpy2p")
+
+[node name="enemy1" parent="enemyPath1/enemy_pathFollow" instance=ExtResource("9_7lm1w")]
 
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
