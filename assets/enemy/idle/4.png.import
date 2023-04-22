@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkod0u6u5l5g6"
-path="res://.godot/imported/1.png-39cb61fef06befc3483a16d971938955.ctex"
+uid="uid://dt17tqdn2qx1s"
+path="res://.godot/imported/4.png-c73298d450d5fac345c60981b77db16a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/noah/1.png"
-dest_files=["res://.godot/imported/1.png-39cb61fef06befc3483a16d971938955.ctex"]
+source_file="res://assets/enemy/idle/4.png"
+dest_files=["res://.godot/imported/4.png-c73298d450d5fac345c60981b77db16a.ctex"]
 
 [params]
 
