@@ -43,7 +43,7 @@ script = ExtResource("1_qaag3")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D"]
 sprite_frames = SubResource("SpriteFrames_27oxu")
 animation = &"open_gate"
-frame_progress = 0.408015
+frame_progress = 0.0996823
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_1ulln")
