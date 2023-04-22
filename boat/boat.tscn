@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://c337bwe0bvemr"]
+[gd_scene load_steps=8 format=3 uid="uid://c337bwe0bvemr"]
 
+[ext_resource type="Script" path="res://boat/boat.gd" id="1_dlg1h"]
 [ext_resource type="Texture2D" uid="uid://jxs8sm15cnct" path="res://assets/boat/placeholder/0.png" id="1_ij7nv"]
 [ext_resource type="Texture2D" uid="uid://cxph8s2iqnlyc" path="res://assets/boat/placeholder/1.png" id="2_ttjra"]
 [ext_resource type="Texture2D" uid="uid://wtmi72p6u4aq" path="res://assets/boat/placeholder/2.png" id="3_mpt2a"]
@@ -31,6 +32,7 @@ size = Vector2(16, 16)
 [node name="Boat" type="RigidBody2D"]
 mass = 1000.0
 gravity_scale = 0.0
+script = ExtResource("1_dlg1h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ufu51")
