@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5yjaxdhc1his"]
+[gd_scene load_steps=8 format=3 uid="uid://bsaik1smq4a1e"]
 
 [ext_resource type="Script" path="res://main_game.gd" id="1_0spe2"]
 [ext_resource type="Texture2D" uid="uid://dgfvie1qjdhal" path="res://assets/map/roguelikeSheet_transparent.png" id="1_ejnce"]
-[ext_resource type="PackedScene" uid="uid://cq6vgoux4o34p" path="res://player/player.tscn" id="2_sbhvi"]
 [ext_resource type="PackedScene" uid="uid://d2coo11qj47w2" path="res://music_player.tscn" id="3_umdqx"]
 [ext_resource type="AudioStream" uid="uid://olnu3qb5mr73" path="res://sounds/Horn 2.mp3" id="4_4dbo5"]
+[ext_resource type="PackedScene" uid="uid://cq6vgoux4o34p" path="res://player/player.tscn" id="5_jwt35"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_istaf"]
 resource_name = "Maptiles"
@@ -5343,18 +5343,18 @@ layer_2/tile_data = PackedInt32Array()
 
 [node name="Area2D" type="Area2D" parent="TileMap"]
 
-[node name="Player" parent="." instance=ExtResource("2_sbhvi")]
-position = Vector2(490, 337)
-
-[node name="PlayerCamera" type="Camera2D" parent="Player"]
-position = Vector2(7, -7)
-zoom = Vector2(3, 3)
-position_smoothing_enabled = true
-position_smoothing_speed = 12.0
-
 [node name="music_player" parent="." instance=ExtResource("3_umdqx")]
 volume_db = -15.0
 
 [node name="start_game_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_4dbo5")
 volume_db = 5.0
+
+[node name="Player" parent="." instance=ExtResource("5_jwt35")]
+position = Vector2(-1, 0)
+
+[node name="Player@PlayerCamera" type="Camera2D" parent="Player"]
+position = Vector2(8, -7)
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
+position_smoothing_speed = 12.0

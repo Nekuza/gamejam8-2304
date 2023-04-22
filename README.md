@@ -9,14 +9,12 @@ Links
 
 ## Assets used
 ### Art
-* Kenney's ....
-* 
+- Kenney's Roguelike/RPG pack https://kenney.nl/assets/roguelike-rpg-pack
+- 
 
 ### Music
-Don't Care Anthem II | 2023 - by Bertn1991
-https://www.newgrounds.com/audio/listen/1184423
+- Don't Care Anthem II | 2023 - by Bertn1991 https://www.newgrounds.com/audio/listen/1184423
 
 
 ### Sounds
-99 Sound effects
-https://99sounds.org/free-sound-effects/
+- 99 Sound effects https://99sounds.org/free-sound-effects/
