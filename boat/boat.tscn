@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c337bwe0bvemr"]
+[gd_scene load_steps=9 format=3]
 
 [ext_resource type="Script" path="res://boat/boat.gd" id="1_dlg1h"]
 [ext_resource type="Texture2D" uid="uid://jxs8sm15cnct" path="res://assets/boat/placeholder/0.png" id="1_ij7nv"]
+[ext_resource type="Texture2D" uid="uid://ccw4w083fuch6" path="res://assets/boat/vince_arch.png" id="2_3wby6"]
 [ext_resource type="Texture2D" uid="uid://cxph8s2iqnlyc" path="res://assets/boat/placeholder/1.png" id="2_ttjra"]
 [ext_resource type="Texture2D" uid="uid://wtmi72p6u4aq" path="res://assets/boat/placeholder/2.png" id="3_mpt2a"]
 [ext_resource type="Texture2D" uid="uid://cf4ml8xqdxp1n" path="res://assets/boat/placeholder/3.png" id="4_lxi2w"]
@@ -9,6 +10,9 @@
 [sub_resource type="SpriteFrames" id="SpriteFrames_ufu51"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3wby6")
+}, {
 "duration": 1.0,
 "texture": ExtResource("1_ij7nv")
 }, {
@@ -22,12 +26,13 @@ animations = [{
 "texture": ExtResource("4_lxi2w")
 }],
 "loop": true,
-"name": &"default",
+"name": &"destruction_states",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0el0w"]
-size = Vector2(16, 16)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5cxg7"]
+radius = 20.9978
+height = 79.9917
 
 [node name="Boat" type="RigidBody2D"]
 mass = 1000.0
@@ -36,9 +41,13 @@ script = ExtResource("1_dlg1h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ufu51")
-frame_progress = 0.552298
+animation = &"destruction_states"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_0el0w")
+position = Vector2(-1.19209e-07, 3)
+rotation = -1.58516
+shape = SubResource("CapsuleShape2D_5cxg7")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(1.42109e-14, 2)
+scale = Vector2(3.95, 2.1)

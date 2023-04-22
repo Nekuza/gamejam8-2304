@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d2coo11qj47w2" path="res://music_player.tscn" id="3_umdqx"]
 [ext_resource type="AudioStream" uid="uid://olnu3qb5mr73" path="res://sounds/Horn 2.mp3" id="4_4dbo5"]
 [ext_resource type="PackedScene" uid="uid://cq6vgoux4o34p" path="res://player/player.tscn" id="5_jwt35"]
-[ext_resource type="PackedScene" uid="uid://c337bwe0bvemr" path="res://boat/boat.tscn" id="6_uriau"]
+[ext_resource type="PackedScene" path="res://boat/boat.tscn" id="6_uriau"]
 [ext_resource type="PackedScene" uid="uid://bq5xt3vre37ac" path="res://enemy_spawn/enemy_spawn.tscn" id="7_mk3qo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_istaf"]
@@ -5391,7 +5391,7 @@ position_smoothing_enabled = true
 position_smoothing_speed = 12.0
 
 [node name="Boat" parent="." instance=ExtResource("6_uriau")]
-position = Vector2(728, 472)
+position = Vector2(728, 463)
 
 [node name="enemy_spawn" parent="." instance=ExtResource("7_mk3qo")]
 position = Vector2(1304, 327)
