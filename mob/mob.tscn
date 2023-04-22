@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://bgmno0iiun5ai"]
+[gd_scene load_steps=11 format=3 uid="uid://bgmno0iiun5ai"]
 
+[ext_resource type="Script" path="res://mob/mob.gd" id="1_1mm8q"]
 [ext_resource type="Texture2D" uid="uid://b034jhe6fwg4f" path="res://assets/enemy/idle/0.png" id="1_u0jiv"]
 [ext_resource type="Texture2D" uid="uid://dw3s74krqs3tf" path="res://assets/enemy/idle/1.png" id="2_cbuq5"]
 [ext_resource type="Texture2D" uid="uid://cxo0si5mrgf3y" path="res://assets/enemy/idle/2.png" id="3_hj53x"]
@@ -37,16 +38,31 @@ animations = [{
 radius = 6.7061
 height = 20.5878
 
+[sub_resource type="Curve2D" id="Curve2D_4cooj"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 94, 70, 0, 0, 0, 0, 121, 36)
+}
+point_count = 2
+
 [node name="Mob" type="RigidBody2D"]
 gravity_scale = 0.0
+script = ExtResource("1_1mm8q")
+spawn_positions = ["world/MobSpawn1", Vector2(100, 100), Vector2(450, 337)]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wmaum")
 animation = &"idle"
-frame_progress = 0.596071
+frame_progress = 0.0328903
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 0.488692
 shape = SubResource("CapsuleShape2D_kt2a5")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="Spawn1" type="Path2D" parent="."]
+curve = SubResource("Curve2D_4cooj")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Spawn1"]
+position = Vector2(94, 70)
+rotation = -0.899652

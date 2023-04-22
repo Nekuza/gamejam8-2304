@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://bsaik1smq4a1e"]
+[gd_scene load_steps=13 format=3 uid="uid://bsaik1smq4a1e"]
 
 [ext_resource type="Script" path="res://main_game.gd" id="1_0spe2"]
 [ext_resource type="Texture2D" uid="uid://dgfvie1qjdhal" path="res://assets/map/roguelikeSheet_transparent.png" id="1_ejnce"]
 [ext_resource type="PackedScene" uid="uid://d2coo11qj47w2" path="res://music_player.tscn" id="3_umdqx"]
 [ext_resource type="AudioStream" uid="uid://olnu3qb5mr73" path="res://sounds/Horn 2.mp3" id="4_4dbo5"]
 [ext_resource type="PackedScene" uid="uid://cq6vgoux4o34p" path="res://player/player.tscn" id="5_jwt35"]
+[ext_resource type="PackedScene" uid="uid://bgmno0iiun5ai" path="res://mob/mob.tscn" id="6_gn1sk"]
+[ext_resource type="PackedScene" uid="uid://c337bwe0bvemr" path="res://boat/boat.tscn" id="7_2ivxu"]
+[ext_resource type="Script" path="res://score/Score.gd" id="8_gefc1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_istaf"]
 resource_name = "Maptiles"
@@ -5318,6 +5321,18 @@ separation = Vector2i(1, 1)
 physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_istaf")
 
+[sub_resource type="Curve2D" id="Curve2D_42rft"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2, 55, 0, 0, 0, 0, 106, 39, 0, 0, 0, 0, 88, -11, 0, 0, 0, 0, -12, -19, 0, 0, 0, 0, -29, 28, 0, 0, 0, 0, 2, 55)
+}
+point_count = 6
+
+[sub_resource type="Curve2D" id="Curve2D_b5don"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 25, 80, 0, 0, 0, 0, 169, 30)
+}
+point_count = 2
+
 [node name="world" type="Node2D"]
 script = ExtResource("1_0spe2")
 
@@ -5350,7 +5365,7 @@ volume_db = -15.0
 stream = ExtResource("4_4dbo5")
 volume_db = 5.0
 
-[node name="Player" parent="." instance=ExtResource("5_jwt35")]
+[node name="Player" parent="." groups=["Enemies", "Player"] instance=ExtResource("5_jwt35")]
 position = Vector2(-1, 0)
 
 [node name="Player@PlayerCamera" type="Camera2D" parent="Player"]
@@ -5358,3 +5373,46 @@ position = Vector2(8, -7)
 zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 position_smoothing_speed = 12.0
+
+[node name="Mob" parent="." groups=["Enemies"] instance=ExtResource("6_gn1sk")]
+spawn_positions = ["world/MobSpawn1", Vector2(100, 100), Vector2(450, 337)]
+
+[node name="Boat" parent="." instance=ExtResource("7_2ivxu")]
+start_position = Vector2(40, 20)
+
+[node name="MobTimer" type="Timer" parent="."]
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="StartTimer" type="Timer" parent="."]
+
+[node name="MobPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_42rft")
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
+position = Vector2(2, 55)
+rotation = -0.152649
+
+[node name="MobSpawn1" type="Path2D" parent="."]
+curve = SubResource("Curve2D_b5don")
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="MobSpawn1"]
+position = Vector2(25, 80)
+rotation = -0.334198
+
+[node name="Score" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthBar" type="TextureProgressBar" parent="Score"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("8_gefc1")
+
+[connection signal="body_shape_entered" from="Boat" to="Boat" method="_on_body_shape_entered"]
+[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
