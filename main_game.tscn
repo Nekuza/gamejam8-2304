@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bsaik1smq4a1e"]
+[gd_scene load_steps=9 format=3 uid="uid://bsaik1smq4a1e"]
 
 [ext_resource type="Script" path="res://main_game.gd" id="1_0spe2"]
 [ext_resource type="Texture2D" uid="uid://dgfvie1qjdhal" path="res://assets/map/roguelikeSheet_transparent.png" id="1_ejnce"]
 [ext_resource type="PackedScene" uid="uid://d2coo11qj47w2" path="res://music_player.tscn" id="3_umdqx"]
 [ext_resource type="AudioStream" uid="uid://olnu3qb5mr73" path="res://sounds/Horn 2.mp3" id="4_4dbo5"]
 [ext_resource type="PackedScene" uid="uid://cq6vgoux4o34p" path="res://player/player.tscn" id="5_jwt35"]
+[ext_resource type="PackedScene" uid="uid://c1qhe5nhhlm4o" path="res://animal/logic/animal.tscn" id="6_hkyu7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_istaf"]
 resource_name = "Maptiles"
@@ -5357,3 +5358,6 @@ position = Vector2(-1, 0)
 position = Vector2(8, -7)
 zoom = Vector2(2.75, 2.75)
 position_smoothing_enabled = true
+
+[node name="Animal" parent="." instance=ExtResource("6_hkyu7")]
+position = Vector2(447, 336)
