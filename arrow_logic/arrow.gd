@@ -1,7 +1,7 @@
 extends Node2D
 
 # Zielposition, auf die der Pfeil zeigen soll
-var target_position: Vector2
+@export var target_position: Vector2
 
 # Pfeil-Sprite
 var arrow_sprite: Sprite2D
@@ -13,13 +13,15 @@ func _ready():
 	# Erstelle das Pfeil-Sprite und füge es dem Pfeil-Overlay hinzu
 	arrow_sprite = Sprite2D.new()
 	arrow_sprite.texture = preload("res://assets/arrow/arrow.png")
+	arrow_sprite.scale = Vector2(0.5, 0.5)
 	arrow_overlay = Node2D.new()
 	arrow_overlay.add_child(arrow_sprite)
+	arrow_overlay.apply_scale(target_position)
 	add_child(arrow_overlay)
 
 func _process(delta):
 	# Bestimme die Position des Zielobjekts relativ zur Kamera
-	var camera_position = get_viewport().get_camera().global_transform.origin
+	var camera_position = get_viewport().get_camera_2d().global_transform.origin
 	var target_relative_position = target_position - camera_position
 	
 	# Berechne den Winkel zwischen der Kamera und dem Zielobjekt

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bsaik1smq4a1e"]
+[gd_scene load_steps=11 format=3 uid="uid://bsaik1smq4a1e"]
 
 [ext_resource type="Script" path="res://main_game.gd" id="1_0spe2"]
 [ext_resource type="Texture2D" uid="uid://dgfvie1qjdhal" path="res://assets/map/roguelikeSheet_transparent.png" id="1_ejnce"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cq6vgoux4o34p" path="res://player/player.tscn" id="5_jwt35"]
 [ext_resource type="PackedScene" uid="uid://c337bwe0bvemr" path="res://boat/boat.tscn" id="6_uriau"]
 [ext_resource type="PackedScene" uid="uid://bq5xt3vre37ac" path="res://enemy_spawn/enemy_spawn.tscn" id="7_mk3qo"]
+[ext_resource type="PackedScene" uid="uid://b1cn41mk58ji3" path="res://arrow_logic/arrow_show.tscn" id="8_rlfvs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_istaf"]
 resource_name = "Maptiles"
@@ -5386,9 +5387,12 @@ position = Vector2(720, 503)
 
 [node name="Player@PlayerCamera" type="Camera2D" parent="Player"]
 position = Vector2(8, -7)
-zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 position_smoothing_speed = 12.0
+
+[node name="Arrow" parent="Player/Player@PlayerCamera" instance=ExtResource("8_rlfvs")]
+position = Vector2(-728, -496)
+target_position = Vector2(500, 500)
 
 [node name="Boat" parent="." instance=ExtResource("6_uriau")]
 position = Vector2(728, 472)
