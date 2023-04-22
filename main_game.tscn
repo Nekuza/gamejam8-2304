@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bsaik1smq4a1e"]
+[gd_scene load_steps=12 format=3 uid="uid://bsaik1smq4a1e"]
 
 [ext_resource type="Script" path="res://main_game.gd" id="1_0spe2"]
 [ext_resource type="Texture2D" uid="uid://dgfvie1qjdhal" path="res://assets/map/roguelikeSheet_transparent.png" id="1_ejnce"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://bgmno0iiun5ai" path="res://mob/mob.tscn" id="6_am8pa"]
 [ext_resource type="PackedScene" uid="uid://cwcby0csh7fdo" path="res://boat/boat.tscn" id="6_uriau"]
 [ext_resource type="PackedScene" uid="uid://bq5xt3vre37ac" path="res://enemy_spawn/enemy_spawn.tscn" id="7_mk3qo"]
-[ext_resource type="PackedScene" uid="uid://c1qhe5nhhlm4o" path="res://animal/logic/animal.tscn" id="9_4lj2o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_istaf"]
 resource_name = "Maptiles"
@@ -5417,29 +5416,6 @@ curve = SubResource("Curve2D_3eo4t")
 [node name="MobSpawnLocation1" type="PathFollow2D" parent="MobPath1"]
 position = Vector2(1304, 328)
 rotation = 1.63322
-
-[node name="RigidBody2D" parent="." instance=ExtResource("9_4lj2o")]
-position = Vector2(781, 534)
-animal_type = "eagle"
-
-[node name="RigidBody2D2" parent="." instance=ExtResource("9_4lj2o")]
-position = Vector2(674, 564)
-animal_type = "pig"
-
-[node name="RigidBody2D3" parent="." instance=ExtResource("9_4lj2o")]
-position = Vector2(606, 565)
-
-[node name="RigidBody2D4" parent="." instance=ExtResource("9_4lj2o")]
-position = Vector2(643, 618)
-animal_type = "goat"
-
-[node name="RigidBody2D5" parent="." instance=ExtResource("9_4lj2o")]
-position = Vector2(706, 617)
-animal_type = "wolf"
-
-[node name="RigidBody2D6" parent="." instance=ExtResource("9_4lj2o")]
-position = Vector2(766, 603)
-animal_type = "cow"
 
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
