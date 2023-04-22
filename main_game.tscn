@@ -5387,7 +5387,7 @@ stream = ExtResource("4_4dbo5")
 volume_db = 5.0
 
 [node name="Player" parent="." instance=ExtResource("5_jwt35")]
-position = Vector2(721, 557)
+position = Vector2(721, 508)
 
 [node name="PlayerCamera" type="Camera2D" parent="Player"]
 position = Vector2(8, -7)
