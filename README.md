@@ -10,7 +10,9 @@ Links
 ## Assets used
 ### Art
 - Kenney's Roguelike/RPG pack https://kenney.nl/assets/roguelike-rpg-pack
-- 
+- 7 souls rpg graphics pack
+
+
 
 ### Music
 - Don't Care Anthem II | 2023 - by Bertn1991 https://www.newgrounds.com/audio/listen/1184423
@@ -18,3 +20,6 @@ Links
 
 ### Sounds
 - 99 Sound effects https://99sounds.org/free-sound-effects/
+- orks and beats fx pack
+- 8 bit retro games fx
+
