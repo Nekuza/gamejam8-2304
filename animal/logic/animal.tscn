@@ -1,11 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://c1qhe5nhhlm4o"]
+[gd_scene load_steps=26 format=3 uid="uid://c1qhe5nhhlm4o"]
 
 [ext_resource type="Texture2D" uid="uid://cuts2whx8udow" path="res://assets/animals/animals3.png" id="1_2etul"]
 [ext_resource type="Script" path="res://animal/logic/animal.gd" id="1_vk5pl"]
 [ext_resource type="Texture2D" uid="uid://dqfj3ncvy2tsb" path="res://assets/animals/birds2.png" id="2_f3rib"]
 [ext_resource type="Texture2D" uid="uid://guix6uchwx5g" path="res://assets/animals/animals1.png" id="3_7sdht"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pkgbs"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7pgvn"]
 radius = 12.625
 height = 40.0
 
@@ -81,7 +81,7 @@ region = Rect2(104, 0, 26, 36)
 atlas = ExtResource("3_7sdht")
 region = Rect2(130, 0, 26, 36)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_rxtr0"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_0327f"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -168,14 +168,31 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Animal" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y4kjm"]
+radius = 13.0
+height = 40.0
+
+[node name="RigidBody2D" type="RigidBody2D"]
+mass = 0.01
+gravity_scale = 0.0
 script = ExtResource("1_vk5pl")
+animal_type = "boris"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
-shape = SubResource("CapsuleShape2D_pkgbs")
+shape = SubResource("CapsuleShape2D_7pgvn")
+disabled = true
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_rxtr0")
+sprite_frames = SubResource("SpriteFrames_0327f")
 animation = &"eagle"
+
+[node name="PickUpArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpArea"]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_y4kjm")
+debug_color = Color(0.984314, 0.054902, 0.282353, 0.419608)
+
+[connection signal="area_entered" from="PickUpArea" to="." method="_on_pick_up_area_area_entered"]
