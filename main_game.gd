@@ -5,19 +5,39 @@ var score
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$start_game_sound.play()
 	new_game()
-
+	
 func new_game():
+	var animal_loaded = preload("res://animal/logic/animal.tscn")
+	# set up the different animal types for spawning
+	var animals_array = [
+	["cow", 4, $animal_spawn_top],
+	["boris", 3, $animal_spawn_topLeft],
+	["eagle", 2, $animal_spawn_bottomLeft],
+	["goat", 5, $animal_spawn_right],
+	["pig", 4, $animal_spawn_left],
+	["wolf", 3, $animal_spawn_bottom]
+	]
+		
+	# spawn animals in their spawn areas
+	for animal in animals_array:
+		var area = animal[2]
+		for i in range(animal[1]):
+			var instanciated_animal = animal_loaded.instantiate()
+			instanciated_animal.animal_type = animal[0]
+			instanciated_animal.position =area.position + Vector2(randf() * area.size.x, randf() * area.size.y)
+			add_child(instanciated_animal)
+	
 	score = 0
+	$start_game_sound.play()
 	#$Player.start($StartPosition.position)
 	$StartTimer.start()
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+@warning_ignore("unused_parameter")
 func _process(delta):
 	pass
-
-
 
 
 ################################################################################

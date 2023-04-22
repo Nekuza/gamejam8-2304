@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://olnu3qb5mr73" path="res://sounds/Horn 2.mp3" id="4_4dbo5"]
 [ext_resource type="PackedScene" uid="uid://cq6vgoux4o34p" path="res://player/player.tscn" id="5_jwt35"]
 [ext_resource type="PackedScene" uid="uid://bgmno0iiun5ai" path="res://mob/mob.tscn" id="6_am8pa"]
-[ext_resource type="PackedScene" uid="uid://cwcby0csh7fdo" path="res://boat/boat.tscn" id="6_uriau"]
+[ext_resource type="PackedScene" uid="uid://beblja4e0c6l3" path="res://boat/boat.tscn" id="6_uriau"]
 [ext_resource type="PackedScene" uid="uid://bq5xt3vre37ac" path="res://enemy_spawn/enemy_spawn.tscn" id="7_mk3qo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_istaf"]
@@ -5379,9 +5379,6 @@ layer_3/y_sort_origin = 0
 layer_3/z_index = 0
 layer_3/tile_data = PackedInt32Array(65599, 1114114, 23, 65600, 1179650, 23, 65601, 1179650, 23, 65602, 1245186, 23, 66, 1245186, 22, 65, 1179650, 22, 64, 1179650, 22, 63, 1114114, 22, -65473, 917506, 14, -65472, 983042, 14, -65471, 1179650, 14, -65470, 1245186, 14)
 
-[node name="Area2D" type="Area2D" parent="TileMap"]
-position = Vector2(-720, -688)
-
 [node name="music_player" parent="." instance=ExtResource("3_umdqx")]
 volume_db = -15.0
 
@@ -5416,6 +5413,42 @@ curve = SubResource("Curve2D_3eo4t")
 [node name="MobSpawnLocation1" type="PathFollow2D" parent="MobPath1"]
 position = Vector2(1304, 328)
 rotation = 1.63322
+
+[node name="animal_spawn_topLeft" type="ReferenceRect" parent="."]
+offset_left = -16.0
+offset_top = -161.0
+offset_right = 200.0
+offset_bottom = 407.0
+
+[node name="animal_spawn_top" type="ReferenceRect" parent="."]
+offset_left = 144.0
+offset_top = -57.0
+offset_right = 1392.0
+offset_bottom = 263.0
+
+[node name="animal_spawn_left" type="ReferenceRect" parent="."]
+offset_left = 224.0
+offset_top = 191.0
+offset_right = 528.0
+offset_bottom = 927.0
+
+[node name="animal_spawn_bottomLeft" type="ReferenceRect" parent="."]
+offset_left = 40.0
+offset_top = 791.0
+offset_right = 800.0
+offset_bottom = 1487.0
+
+[node name="animal_spawn_bottom" type="ReferenceRect" parent="."]
+offset_left = 192.0
+offset_top = 1231.0
+offset_right = 1360.0
+offset_bottom = 1551.0
+
+[node name="animal_spawn_right" type="ReferenceRect" parent="."]
+offset_left = 880.0
+offset_top = 391.0
+offset_right = 1304.0
+offset_bottom = 1095.0
 
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
