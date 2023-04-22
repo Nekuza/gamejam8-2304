@@ -8,10 +8,11 @@ var picked = false
 
 func _ready():
 	$AnimatedSprite2D.play(animal_type)
+	get_node("CollisionShape2D").disabled = false
 
 func _physics_process(delta):
 	if picked == true:
-		self.position = get_node("../Player").position + Vector2(0, -30)
+		self.position = get_node("../Player").position + Vector2(10, -23)
 		print(self.position)
 
 func _input(event):
@@ -28,7 +29,7 @@ func _input(event):
 	if Input.is_action_just_pressed("ui_release") and picked == true:
 		picked = false
 		get_node("../Player").canPick = true
-		self.position = round(get_node("../Player").position + Vector2(30, 0))
+		self.position = round(self.position)
 		$AnimatedSprite2D.play(animal_type) 
 		get_node("CollisionShape2D").disabled = false
 		

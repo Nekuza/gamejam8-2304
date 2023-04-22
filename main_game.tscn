@@ -5426,6 +5426,21 @@ animal_type = "eagle"
 position = Vector2(674, 564)
 animal_type = "pig"
 
+[node name="RigidBody2D3" parent="." instance=ExtResource("9_4lj2o")]
+position = Vector2(606, 565)
+
+[node name="RigidBody2D4" parent="." instance=ExtResource("9_4lj2o")]
+position = Vector2(643, 618)
+animal_type = "goat"
+
+[node name="RigidBody2D5" parent="." instance=ExtResource("9_4lj2o")]
+position = Vector2(706, 617)
+animal_type = "wolf"
+
+[node name="RigidBody2D6" parent="." instance=ExtResource("9_4lj2o")]
+position = Vector2(766, 603)
+animal_type = "cow"
+
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
