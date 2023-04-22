@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnolnatqmss71"]
+[gd_scene load_steps=5 format=3 uid="uid://dnolnatqmss71"]
 
 [ext_resource type="Script" path="res://UI/title_screen/tilte-ui.gd" id="1_b7pt4"]
+[ext_resource type="Texture2D" uid="uid://clu8083ocaox4" path="res://assets/ui/vince_titleui_fullsize.png" id="2_iuk2e"]
 [ext_resource type="AudioStream" uid="uid://bcgjeia5je7t8" path="res://sounds/Braam - Show Title.wav" id="2_lw5h4"]
 [ext_resource type="AudioStream" uid="uid://b8sacnusj5hl6" path="res://sounds/Drum.mp3" id="3_iwh0l"]
 
@@ -13,6 +14,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_b7pt4")
 
+[node name="VinceTitleuiFullsize" type="Sprite2D" parent="."]
+position = Vector2(576, 322)
+scale = Vector2(0.6, 0.588889)
+texture = ExtResource("2_iuk2e")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -20,10 +26,10 @@ anchor_left = 0.076
 anchor_top = 0.605
 anchor_right = 0.076
 anchor_bottom = 0.605
-offset_left = -55.552
-offset_top = 31.96
-offset_right = 11.448
-offset_bottom = 132.96
+offset_left = -71.552
+offset_top = 15.96
+offset_right = -4.55199
+offset_bottom = 116.96
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2.98859, 1.80616)
