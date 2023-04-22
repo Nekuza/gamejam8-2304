@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cq6vgoux4o34p"]
+[gd_scene load_steps=19 format=3 uid="uid://cq6vgoux4o34p"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_q81pp"]
 [ext_resource type="Texture2D" uid="uid://njafh0twmv1k" path="res://assets/player/noah/0.png" id="2_tmpf4"]
@@ -13,9 +13,18 @@
 [ext_resource type="Texture2D" uid="uid://byqkjk2d2trbo" path="res://assets/player/noah/back/2.png" id="8_nn0k3"]
 [ext_resource type="Texture2D" uid="uid://xu4yecfqcl0b" path="res://assets/player/noah/back/3.png" id="9_0sa6n"]
 [ext_resource type="Texture2D" uid="uid://bwoi5g0gdis1b" path="res://assets/player/noah/side/left/3.png" id="9_76ylr"]
+[ext_resource type="Texture2D" uid="uid://dc5no7c7cefce" path="res://assets/player/noah/idle/Idle.png" id="10_6xgtw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qdxc8"]
 radius = 41.8205
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w356c"]
+atlas = ExtResource("10_6xgtw")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xiny"]
+atlas = ExtResource("10_6xgtw")
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w7ef6"]
 animations = [{
@@ -55,6 +64,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_w356c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xiny")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("6_rmhah")
 }, {
 "duration": 1.0,
@@ -88,4 +108,5 @@ debug_color = Color(0.996078, 0, 0.184314, 0.419608)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, -8)
 sprite_frames = SubResource("SpriteFrames_w7ef6")
-animation = &"front"
+animation = &"idle"
+frame_progress = 0.42748

@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
 var speed = 100  # speed in pixels/sec
-var direction = 0
 
+func _ready():
+	$AnimatedSprite2D.play("idle")
 
 func get_input():
 	velocity = Vector2.ZERO
@@ -39,4 +40,4 @@ func _process(delta):
 		$AnimatedSprite2D.flip_v = false
 		
 	else:
-		$AnimatedSprite2D.stop()
+		$AnimatedSprite2D.play("idle")
