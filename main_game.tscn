@@ -5417,6 +5417,42 @@ curve = SubResource("Curve2D_3eo4t")
 position = Vector2(1304, 328)
 rotation = 1.63322
 
+[node name="animal_spawn_topLeft" type="ReferenceRect" parent="."]
+offset_left = -16.0
+offset_top = -161.0
+offset_right = 200.0
+offset_bottom = 407.0
+
+[node name="animal_spawn_top" type="ReferenceRect" parent="."]
+offset_left = 144.0
+offset_top = -57.0
+offset_right = 1392.0
+offset_bottom = 263.0
+
+[node name="animal_spawn_left" type="ReferenceRect" parent="."]
+offset_left = 224.0
+offset_top = 191.0
+offset_right = 528.0
+offset_bottom = 927.0
+
+[node name="animal_spawn_bottomLeft" type="ReferenceRect" parent="."]
+offset_left = 40.0
+offset_top = 791.0
+offset_right = 800.0
+offset_bottom = 1487.0
+
+[node name="animal_spawn_bottom" type="ReferenceRect" parent="."]
+offset_left = 192.0
+offset_top = 1231.0
+offset_right = 1360.0
+offset_bottom = 1551.0
+
+[node name="animal_spawn_right" type="ReferenceRect" parent="."]
+offset_left = 880.0
+offset_top = 391.0
+offset_right = 1304.0
+offset_bottom = 1095.0
+
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
