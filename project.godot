@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Game Jame"
-run/main_scene="res://tilte-ui.tscn"
+run/main_scene="res://UI/title_screen/tilte-ui.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
 
