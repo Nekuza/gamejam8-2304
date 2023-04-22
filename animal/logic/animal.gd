@@ -6,7 +6,6 @@ var animal_type: String = "eagle"
 
 var picked = false
 var count = 0;
-var was_picked_up = false
 
 func _ready():
 	$AnimatedSprite2D.play(animal_type)
@@ -15,9 +14,7 @@ func _ready():
 func _physics_process(delta):
 	if picked == true:
 		self.position = get_node("../Player").position + Vector2(10, -23)
-		
-	if was_picked_up == true:
-		$AnimatedSprite2D.play(animal_type + "picked")
+		print(self.position)
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_pick") and picked == false:
@@ -28,6 +25,7 @@ func _input(event):
 				get_node("CollisionShape2D").disabled = true
 				$AnimatedSprite2D.stop()
 				get_node("../Player").canPick = false
+				print("Geht")
 				count = 1
 
 	elif Input.is_action_just_pressed("ui_pick") and picked == true and count == 1:
@@ -36,10 +34,5 @@ func _input(event):
 		$AnimatedSprite2D.play(animal_type) 
 		get_node("CollisionShape2D").disabled = false
 		count = 0
+		print("Losgelassen")
 		picked = false
-		was_picked_up = true
-		
-		
-
-
-
