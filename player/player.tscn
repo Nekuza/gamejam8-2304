@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cq6vgoux4o34p"]
+[gd_scene load_steps=20 format=3 uid="uid://cq6vgoux4o34p"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_q81pp"]
 [ext_resource type="Texture2D" uid="uid://njafh0twmv1k" path="res://assets/player/noah/0.png" id="2_tmpf4"]
@@ -14,9 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://xu4yecfqcl0b" path="res://assets/player/noah/back/3.png" id="9_0sa6n"]
 [ext_resource type="Texture2D" uid="uid://bwoi5g0gdis1b" path="res://assets/player/noah/side/left/3.png" id="9_76ylr"]
 [ext_resource type="Texture2D" uid="uid://dc5no7c7cefce" path="res://assets/player/noah/idle/Idle.png" id="10_6xgtw"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_qdxc8"]
-radius = 41.8205
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w356c"]
 atlas = ExtResource("10_6xgtw")
@@ -91,6 +88,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0m2bp"]
+radius = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qdxc8"]
+radius = 41.8205
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_q81pp")
 
@@ -98,15 +101,21 @@ script = ExtResource("1_q81pp")
 position = Vector2(8, -8)
 hframes = 4
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, -8)
+sprite_frames = SubResource("SpriteFrames_w7ef6")
+animation = &"idle"
+frame_progress = 0.42748
+
+[node name="Point" type="CollisionShape2D" parent="."]
+position = Vector2(8, -18)
+shape = SubResource("CircleShape2D_0m2bp")
+one_way_collision = true
+debug_color = Color(0.454902, 0.45098, 0.992157, 0.419608)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, -7)
 scale = Vector2(0.167, 0.167)
 shape = SubResource("CircleShape2D_qdxc8")
 one_way_collision = true
 debug_color = Color(0.996078, 0, 0.184314, 0.419608)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(8, -8)
-sprite_frames = SubResource("SpriteFrames_w7ef6")
-animation = &"idle"
-frame_progress = 0.42748
