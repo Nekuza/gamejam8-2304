@@ -11,5 +11,6 @@ func _process(delta):
 	pass
 	
 func spawn(enemy_type, amount):
+	$StaticBody2D/AnimatedSprite2D.play("open_gate")
 	#TODO implement spawn
 	pass
