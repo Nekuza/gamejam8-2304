@@ -5,19 +5,24 @@ extends RigidBody2D
 var health
 
 signal hit
+signal destroyed
 
-# TODO
-# stats
+# TODO load sprites for damaged ark
+#sprites = [
+#	SpriteFrames 
+#	]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	health = start_health
-	
-	pass # Replace with function body.
-
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	# TODO: change sprite on health thresholds
+	# 0, 25, 50, 75, 100 health left
+	if health <= 0:
+		destroyed.emit()
 	pass
 
 func start(pos):
@@ -32,7 +37,6 @@ func flicker_on_hit():
 	for flicker_count in flicker_time:
 		visible = !visible
 	visible = true
-	# pass
 
 func _on_body_entered(body):
 	# TODO if body == player:

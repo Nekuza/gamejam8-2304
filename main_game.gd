@@ -6,8 +6,7 @@ extends Node2D
 @export var mob_path_3: PackedScene
 @export var TEST_MOB: PackedScene
 
-var path_1
-
+var boat
 var score
 
 func get_spawn_count():
@@ -33,10 +32,13 @@ func get_mob_path(i):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 #	get_node("Emitter").connect("car_ready", self, "_on_Emitter_car_ready")
-	get_node("enemy_spawn").ark_hit.connect(_on_path_1_ark_hit)
+	get_node("enemy_spawn").ark_hit_1.connect(_on_path_1_ark_hit)
+	get_node("enemy_spawn").ark_hit_2.connect(_on_path_2_ark_hit)
+	get_node("enemy_spawn").ark_hit_3.connect(_on_path_3_ark_hit)
+	get_node("Boat").destroyed.connect(_on_ark_destroyed)
 	
 	new_game()
-	
+
 func new_game():
 	var animal_loaded = preload("res://animal/logic/animal.tscn")
 	# set up the different animal types for spawning
@@ -58,17 +60,18 @@ func new_game():
 			instanciated_animal.position =area.position + Vector2(randf() * area.size.x, randf() * area.size.y)
 			add_child(instanciated_animal)
 	
+	boat = get_node("Boat")
 	score = 0
 	$start_game_sound.play()
-	#$Player.start($StartPosition.position)
 	$StartTimer.start()
-	
-	# load paths
-	path_1 = load("res://Mob2/TESTPATH.tres")
-	print("This is path_1:")
-	print(typeof(path_1))
-	print(path_1.get_local_scene())
 
+func game_over():
+	if !$ScoreTimer.is_stopped():
+		$ScoreTimer.stop()
+	print("GAME OVER!\nFinal score:")
+	print(score)
+	# TODO display nicely
+	# start-new-game dialogue
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 @warning_ignore("unused_parameter")
@@ -82,51 +85,15 @@ func _process(delta):
 func _on_mob_timer_timeout():
 	# TODO: 
 	for i in range(get_spawn_count()):
-#		load("MobPath1/MobSpawnLocation1")
 		var spawn_index = randi_range(1,3)
-#		print("mob spawn in")
-#		print(spawn_index)
-#		var mob_path = get_mob_scene( spawn_index )
-#		var mob_on_path = mob_path.instantiate()
-#		mob_path.add_child(mob_on_path)
 		get_node("enemy_spawn").spawn(
 			get_mob_scene( spawn_index ).instantiate(), # PathFollow2D
 			1, # amount
-			get_mob_path(spawn_index) # TODO: change to Path2D
+			get_mob_path(spawn_index) # Path2D
 		)
-#		get_node("MobPath1").add_child(mob_on_path)
-#		add_child(mob_on_path)
-	var test_mob = TEST_MOB.instantiate()
-	get_node("TESTPATH")
-#	print(test_mob)
-#	print("this is main, and this is TESTPATH node:")
-#	print(get_node("TESTPATH"))
-#	add_child(test_mob) # TODO: spawn new kinematic here
-	pass
-#	var mob = mob_scene.instantiate()
-#
-#	#var mob_spawn_location = get_node("Mob/Spawn1")#get_random_spawn_position()
-#	var mob_spawn_location = get_node("MobPath1/MobSpawnLocation1")
-#	#get_node("MobSpawn1/MobSpawnLocation")
-#	mob_spawn_location.progress_ratio = 0 #randf()
-#
-#	var direction = mob_spawn_location.rotation + 0 # PI / 2
-#
-#	mob.position = mob_spawn_location.position
-#
-#	direction += 0 #randf_range(-PI/4, PI/4)
-#	mob.rotation = direction
-#
-#	var velocity = Vector2(
-#		randf_range(150.0, 250.0),
-#		0.0
-#	)
-#	mob.linear_velocity = velocity.rotated(direction)
-#
-#	add_child(mob)
-#	pass # Replace with function body.
-
-
+	# debug body with collision
+#	var test_mob = TEST_MOB.instantiate()
+#	get_node("TESTPATH")
 
 func _on_score_timer_timeout():
 	score += 1
@@ -146,29 +113,30 @@ func _on_start_timer_timeout():
 
 func damage_ark(dmg):
 	# TODO: decrease health of ark node
-	pass
+	boat.take_damage(dmg)
+	print("Ark health left:")
+	print(boat.health)
 
 func _on_ark_hit(dmg):
 	print("HIT!")
+	print(dmg)
 	damage_ark(dmg)
-	pass # Replace with function body.
 
 func _on_path_1_ark_hit():
 	_on_ark_hit(
-		# TODO: get Mob3.damage
-		1#get_node("Mob").atk_damage
+		1  # TODO: get Mob1.damage
 	)
 	
 func _on_path_2_ark_hit():
 	_on_ark_hit(
-		# TODO: get Mob3.damage
-		1#get_node("Mob").atk_damage
+		2 # TODO: get Mob2.damage
 	)
 
 func _on_path_3_ark_hit():
 	_on_ark_hit(
-		# TODO: get Mob3.damage
-		1#get_node("Mob").atk_damage
+		3 # TODO: get Mob3.damage
 	)
 
-
+func _on_ark_destroyed():
+	$ScoreTimer.stop()
+	game_over()
