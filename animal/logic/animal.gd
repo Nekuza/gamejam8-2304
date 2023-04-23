@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+signal touched
+
 @export_category("Select animal")
 @export_enum("boris", "cow", "eagle", "goat", "pig", "wolf") 
 var animal_type: String = "eagle"
@@ -17,6 +19,7 @@ var isTouched = false
 var count = 0
 var readyToFire = true
 
+var count = 0;
 
 func _ready():
 	$AnimatedSprite2D.play(animal_type)
@@ -35,6 +38,12 @@ func _physics_process(delta):
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_pick") and !picked:
+	# TODO: on first touch: touched.emit()
+	if picked == true:
+		self.position = get_node("../Player").position + Vector2(10, -23)
+
+func _input(event):
+	if Input.is_action_just_pressed("ui_pick") and picked == false:
 		var bodies = $PickUpArea.get_overlapping_bodies()
 		for body in bodies:
 			if body.name == "Player" and get_node("../Player").canPick == true:

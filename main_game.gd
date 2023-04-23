@@ -4,14 +4,21 @@ extends Node2D
 @export var mob_path_1: PackedScene
 @export var mob_path_2: PackedScene
 @export var mob_path_3: PackedScene
-@export var TEST_MOB: PackedScene
+#@export var TEST_MOB: PackedScene
 
 var boat
 var score
+var difficulty
+var base_difficulty = .01
+var progress_counter
+var target_progress
 
 func get_spawn_count():
 	# TODO return variable spawn count from game state
-	return 3
+	return floori(score/50) * ( 1 + floori(score * get_random_factor()) )
+
+func get_random_factor(): # increase difficulty for longer game runs
+	return randf_range(.0,difficulty*(1+score/100)/100)
 
 func get_mob_scene(i):
 	if i == 1:
@@ -36,10 +43,11 @@ func _ready():
 	get_node("enemy_spawn").ark_hit_2.connect(_on_path_2_ark_hit)
 	get_node("enemy_spawn").ark_hit_3.connect(_on_path_3_ark_hit)
 	get_node("Boat").destroyed.connect(_on_ark_destroyed)
+	get_node("RigidBody2D").touched.connect(_on_animal_touched)
 	
-	new_game()
+	new_game(.5)
 
-func new_game():
+func new_game(dfclt):
 	var animal_loaded = preload("res://animal/logic/animal.tscn")
 	# set up the different animal types for spawning
 	var animals_array = [
@@ -60,18 +68,33 @@ func new_game():
 			instanciated_animal.position =area.position + Vector2(randf() * area.size.x, randf() * area.size.y)
 			add_child(instanciated_animal)
 	
+	target_progress = len(animals_array)
 	boat = get_node("Boat")
 	score = 0
+	difficulty = dfclt # TODO: adjust for game difficulty
 	$start_game_sound.play()
 	$StartTimer.start()
 
 func game_over():
 	if !$ScoreTimer.is_stopped():
 		$ScoreTimer.stop()
-	print("GAME OVER!\nFinal score:")
-	print(score)
 	# TODO display nicely
 	# start-new-game dialogue
+
+func game_won():
+	if !$ScoreTimer.is_stopped():
+		$ScoreTimer.stop()
+	score += target_progress * 3 - (100 - boat.health)
+	score *= 1 + base_difficulty
+
+func progress_win_condition():
+	progress_counter += 1
+	check_win_condition()
+
+func check_win_condition():
+	if progress_counter >= target_progress:
+		$ScoreTimer.stop()
+		game_won()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 @warning_ignore("unused_parameter")
@@ -96,7 +119,7 @@ func _on_mob_timer_timeout():
 #	get_node("TESTPATH")
 
 func _on_score_timer_timeout():
-	score += 1
+	score += 1 + (difficulty - base_difficulty)
 	pass # Replace with function body.
 
 
@@ -114,12 +137,10 @@ func _on_start_timer_timeout():
 func damage_ark(dmg):
 	# TODO: decrease health of ark node
 	boat.take_damage(dmg)
-	print("Ark health left:")
-	print(boat.health)
+	get_node("Player/PlayerCamera/HealthArk").value = 100 - boat.health
 
 func _on_ark_hit(dmg):
-	print("HIT!")
-	print(dmg)
+#	print(dmg)
 	damage_ark(dmg)
 
 func _on_path_1_ark_hit():
@@ -140,3 +161,7 @@ func _on_path_3_ark_hit():
 func _on_ark_destroyed():
 	$ScoreTimer.stop()
 	game_over()
+
+func _on_animal_touched():
+	progress_win_condition()
+	
