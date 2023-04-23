@@ -20,29 +20,29 @@ var velocity = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-#	patrol_path = NodePath(
-#		get_tree().current_scene.get_path().get_concatenated_names() + "/TESTPATH"
-#		)
-	patrol_path = get_parent().get_patrol_path() # TODO: load path here?
+##	patrol_path = NodePath(
+##		get_tree().current_scene.get_path().get_concatenated_names() + "/TESTPATH"
+##		)
+#	patrol_path = get_parent().get_patrol_path() # TODO: load path here?
+##	print(patrol_path)
+#	if patrol_path.name != "TESTPATH":
+##		print("not TESTPATH!\n")
+##		print(get_tree().current_scene.get_path().get_concatenated_names())
+#		patrol_path = load("res//Mob2/TESTPATH.tres")
+##		patrol_path = get_node("root/world/TESTPATH")
 #	print(patrol_path)
-	if patrol_path.name != "TESTPATH":
-#		print("not TESTPATH!\n")
-#		print(get_tree().current_scene.get_path().get_concatenated_names())
-		patrol_path = load("res//Mob2/TESTPATH.tres")
-#		patrol_path = get_node("root/world/TESTPATH")
-	print(patrol_path)
-#	print(patrol_path.name)
-#	print(
-#		get_node(patrol_path)
-#	)
-	#.get_path_from_scene(
-	#	get_node("../..")
-	#)#get_node("../..") #.curve.get_baked_points()
-	if patrol_path:
-		patrol_points = patrol_path.curve.get_baked_points()
-#	print(patrol_path.get_curre)
-#	print(patrol_points)
-#	update_waypoints()
+##	print(patrol_path.name)
+##	print(
+##		get_node(patrol_path)
+##	)
+#	#.get_path_from_scene(
+#	#	get_node("../..")
+#	#)#get_node("../..") #.curve.get_baked_points()
+#	if patrol_path:
+#		patrol_points = patrol_path.curve.get_baked_points()
+##	print(patrol_path.get_curre)
+##	print(patrol_points)
+##	update_waypoints()
 	pass # Replace with function body.
 
 func get_waypoint(i):

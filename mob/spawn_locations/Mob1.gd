@@ -4,7 +4,7 @@ var speed = .05
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	speed = randf_range(.01,.1)
+	speed = randf_range(.01,speed)
 	pass # Replace with function body.
 
 

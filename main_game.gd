@@ -4,14 +4,19 @@ extends Node2D
 @export var mob_path_1: PackedScene
 @export var mob_path_2: PackedScene
 @export var mob_path_3: PackedScene
-@export var TEST_MOB: PackedScene
+#@export var TEST_MOB: PackedScene
 
 var boat
 var score
+var difficulty
+var base_difficulty = .01
 
 func get_spawn_count():
 	# TODO return variable spawn count from game state
-	return 3
+	return floori(score/10) * ( 1 + floori(score * get_random_factor()) )
+
+func get_random_factor(): # increase difficulty for longer game runs
+	return randf_range(.0,difficulty*(1+score/100)/100)
 
 func get_mob_scene(i):
 	if i == 1:
@@ -37,9 +42,9 @@ func _ready():
 	get_node("enemy_spawn").ark_hit_3.connect(_on_path_3_ark_hit)
 	get_node("Boat").destroyed.connect(_on_ark_destroyed)
 	
-	new_game()
+	new_game(.5)
 
-func new_game():
+func new_game(dfclt):
 	var animal_loaded = preload("res://animal/logic/animal.tscn")
 	# set up the different animal types for spawning
 	var animals_array = [
@@ -62,6 +67,7 @@ func new_game():
 	
 	boat = get_node("Boat")
 	score = 0
+	difficulty = dfclt # TODO: adjust for game difficulty
 	$start_game_sound.play()
 	$StartTimer.start()
 
@@ -96,7 +102,7 @@ func _on_mob_timer_timeout():
 #	get_node("TESTPATH")
 
 func _on_score_timer_timeout():
-	score += 1
+	score += 1 + (difficulty - base_difficulty)
 	pass # Replace with function body.
 
 
@@ -120,7 +126,7 @@ func damage_ark(dmg):
 
 func _on_ark_hit(dmg):
 	print("HIT!")
-	print(dmg)
+#	print(dmg)
 	damage_ark(dmg)
 
 func _on_path_1_ark_hit():
