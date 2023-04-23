@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+signal touched
+
 @export_category("Select animal")
 @export_enum("boris", "cow", "eagle", "goat", "pig", "wolf") 
 var animal_type: String = "eagle"
@@ -12,6 +14,7 @@ func _ready():
 	get_node("CollisionShape2D").disabled = false
 
 func _physics_process(delta):
+	# TODO: on first touch: touched.emit()
 	if picked == true:
 		self.position = get_node("../Player").position + Vector2(10, -23)
 

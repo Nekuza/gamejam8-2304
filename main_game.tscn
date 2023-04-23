@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bsaik1smq4a1e"]
+[gd_scene load_steps=25 format=3 uid="uid://bsaik1smq4a1e"]
 
 [ext_resource type="Script" path="res://main_game.gd" id="1_0spe2"]
 [ext_resource type="Texture2D" uid="uid://dgfvie1qjdhal" path="res://assets/map/roguelikeSheet_transparent.png" id="1_ejnce"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cvi8dxlqo0yyv" path="res://assets/boat/50hp.png" id="14_hqnro"]
 [ext_resource type="Texture2D" uid="uid://cjbx2vphw35a" path="res://assets/boat/0hp.png" id="15_70k7h"]
 [ext_resource type="Texture2D" uid="uid://u02fj71dypp0" path="res://assets/boat/25hp.png" id="16_dx8gv"]
+[ext_resource type="PackedScene" uid="uid://c1qhe5nhhlm4o" path="res://animal/logic/animal.tscn" id="16_eg5k2"]
 [ext_resource type="PackedScene" uid="uid://b8106vr7bp8ed" path="res://mob/spawn_locations/mob_spawn_location_1.tscn" id="16_vvsxg"]
 [ext_resource type="PackedScene" uid="uid://b40nmuoh4be00" path="res://mob/spawn_locations/mob_spawn_location_3.tscn" id="18_8j3ac"]
 
@@ -5554,6 +5555,8 @@ curve = SubResource("Curve2D_x8rhv")
 curve = SubResource("Curve2D_vuv4q")
 
 [node name="MobSpawnLocation3" parent="MobPath3" instance=ExtResource("18_8j3ac")]
+
+[node name="RigidBody2D" parent="." instance=ExtResource("16_eg5k2")]
 
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
