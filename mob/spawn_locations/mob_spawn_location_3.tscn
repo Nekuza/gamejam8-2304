@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=3 uid="uid://b40nmuoh4be00"]
+
+[ext_resource type="Script" path="res://mob/MobSpawnLocation3.gd" id="1_yeq5p"]
+[ext_resource type="Script" path="res://mob/spawn_locations/Mob3.gd" id="2_twu74"]
+[ext_resource type="Texture2D" uid="uid://b034jhe6fwg4f" path="res://assets/enemy/idle/0.png" id="3_0ktb8"]
+[ext_resource type="Texture2D" uid="uid://dw3s74krqs3tf" path="res://assets/enemy/idle/1.png" id="4_bonhy"]
+[ext_resource type="Texture2D" uid="uid://cxo0si5mrgf3y" path="res://assets/enemy/idle/2.png" id="5_akihw"]
+[ext_resource type="Texture2D" uid="uid://bprixvx4yp01w" path="res://assets/enemy/idle/3.png" id="6_qci15"]
+[ext_resource type="Texture2D" uid="uid://dt17tqdn2qx1s" path="res://assets/enemy/idle/4.png" id="7_alcfi"]
+[ext_resource type="Texture2D" uid="uid://ccr4ptb84k7of" path="res://assets/enemy/idle/5.png" id="8_e1ywd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ldo76"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q8xt8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_0ktb8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bonhy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_akihw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qci15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_alcfi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_e1ywd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MobSpawnLocation3" type="PathFollow2D"]
+position = Vector2(249, 101)
+rotation = 1.5708
+rotates = false
+loop = false
+script = ExtResource("1_yeq5p")
+
+[node name="Mob3" type="Node2D" parent="."]
+position = Vector2(-722.089, -24.509)
+rotation = -1.49949
+script = ExtResource("2_twu74")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mob3"]
+position = Vector2(-1.99994, -3)
+scale = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_ldo76")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Mob3"]
+position = Vector2(27.0001, 720)
+scale = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_q8xt8")
+frame_progress = 0.446136
+
+[node name="42223" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true

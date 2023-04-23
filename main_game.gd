@@ -1,7 +1,23 @@
 extends Node2D
 
-@export var mob_scene: PackedScene
+# import mob/spawnlocations/mobspawnlocation<i>.tscn in IDE
+@export var mob_path_1: PackedScene
+@export var mob_path_2: PackedScene
+@export var mob_path_3: PackedScene
+
 var score
+
+func get_spawn_count():
+	# TODO return variable spawn count from game state
+	return 3
+
+func get_mob_scene(i):
+	if i == 1:
+		return mob_path_1
+	elif i == 2:
+		return mob_path_2
+	else:
+		return mob_path_3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -44,28 +60,34 @@ func _process(delta):
 ### Timers                                                                   ###
 ################################################################################
 func _on_mob_timer_timeout():
-	var mob = mob_scene.instantiate()
-	
-	#var mob_spawn_location = get_node("Mob/Spawn1")#get_random_spawn_position()
-	var mob_spawn_location = get_node("MobPath1/MobSpawnLocation1")
-	#get_node("MobSpawn1/MobSpawnLocation")
-	mob_spawn_location.progress_ratio = 0 #randf()
-	
-	var direction = mob_spawn_location.rotation + 0 # PI / 2
-	
-	mob.position = mob_spawn_location.position
-	
-	direction += 0 #randf_range(-PI/4, PI/4)
-	mob.rotation = direction
-	
-	var velocity = Vector2(
-		randf_range(150.0, 250.0),
-		0.0
-	)
-	mob.linear_velocity = velocity.rotated(direction)
-	
-	add_child(mob)
+	# TODO: 
+	for i in range(get_spawn_count()):
+		var mob_path = get_mob_scene( randi_range(1,4) )
+		var mob_on_path = mob_path.instantiate()
+		add_child(mob_on_path)
+#	var mob = mob_scene.instantiate()
+#
+#	#var mob_spawn_location = get_node("Mob/Spawn1")#get_random_spawn_position()
+#	var mob_spawn_location = get_node("MobPath1/MobSpawnLocation1")
+#	#get_node("MobSpawn1/MobSpawnLocation")
+#	mob_spawn_location.progress_ratio = 0 #randf()
+#
+#	var direction = mob_spawn_location.rotation + 0 # PI / 2
+#
+#	mob.position = mob_spawn_location.position
+#
+#	direction += 0 #randf_range(-PI/4, PI/4)
+#	mob.rotation = direction
+#
+#	var velocity = Vector2(
+#		randf_range(150.0, 250.0),
+#		0.0
+#	)
+#	mob.linear_velocity = velocity.rotated(direction)
+#
+#	add_child(mob)
 #	pass # Replace with function body.
+
 
 
 func _on_score_timer_timeout():
@@ -77,3 +99,37 @@ func _on_start_timer_timeout():
 	$MobTimer.start()
 	$ScoreTimer.start()
 	pass # Replace with function body.
+
+################################################################################
+## TODO complete
+## signal functions from MobPath<i>/MobSpawnLocation<i> (i.e. the mob instances
+##   from the various paths) when reaching end of path to hit and damage ark
+
+func damage_ark(dmg):
+	# TODO: decrease health of ark node
+	pass
+	
+func _on_ark_hit(dmg):
+	print("HIT!")
+	damage_ark(dmg)
+	pass # Replace with function body.
+
+func _on_path_1_ark_hit():
+	_on_ark_hit(
+		# TODO: get Mob3.damage
+		1#get_node("Mob").atk_damage
+	)
+	
+func _on_path_2_ark_hit():
+	_on_ark_hit(
+		# TODO: get Mob3.damage
+		1#get_node("Mob").atk_damage
+	)
+
+func _on_path_3_ark_hit():
+	_on_ark_hit(
+		# TODO: get Mob3.damage
+		1#get_node("Mob").atk_damage
+	)
+
+

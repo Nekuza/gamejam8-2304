@@ -1,0 +1,63 @@
+[gd_scene load_steps=11 format=3 uid="uid://codp67agwktqi"]
+
+[ext_resource type="Script" path="res://mob/MobSpawnLocation2.gd" id="1_k7h2g"]
+[ext_resource type="Script" path="res://mob/MobV2.gd" id="2_gk3ya"]
+[ext_resource type="Texture2D" uid="uid://b034jhe6fwg4f" path="res://assets/enemy/idle/0.png" id="3_yyeoc"]
+[ext_resource type="Texture2D" uid="uid://dw3s74krqs3tf" path="res://assets/enemy/idle/1.png" id="4_lx632"]
+[ext_resource type="Texture2D" uid="uid://cxo0si5mrgf3y" path="res://assets/enemy/idle/2.png" id="5_grk2c"]
+[ext_resource type="Texture2D" uid="uid://bprixvx4yp01w" path="res://assets/enemy/idle/3.png" id="6_c7vqi"]
+[ext_resource type="Texture2D" uid="uid://dt17tqdn2qx1s" path="res://assets/enemy/idle/4.png" id="7_1ix6t"]
+[ext_resource type="Texture2D" uid="uid://ccr4ptb84k7of" path="res://assets/enemy/idle/5.png" id="8_fwuv6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ldo76"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q8xt8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_yyeoc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lx632")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_grk2c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_c7vqi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_1ix6t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_fwuv6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MobSpawnLocation2" type="PathFollow2D"]
+position = Vector2(276, 824)
+rotation = 1.49949
+rotates = false
+loop = false
+script = ExtResource("1_k7h2g")
+
+[node name="MobV2" type="Node2D" parent="."]
+position = Vector2(-722.089, -24.509)
+rotation = -1.49949
+script = ExtResource("2_gk3ya")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MobV2"]
+position = Vector2(-1.99994, -2.99994)
+shape = SubResource("CapsuleShape2D_ldo76")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MobV2"]
+position = Vector2(27.0001, 720)
+sprite_frames = SubResource("SpriteFrames_q8xt8")
+frame_progress = 0.446136
+
+[node name="51339" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
