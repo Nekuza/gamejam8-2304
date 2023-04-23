@@ -33,7 +33,9 @@ func get_mob_path(i):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 #	get_node("Emitter").connect("car_ready", self, "_on_Emitter_car_ready")
-	get_node("enemy_spawn").ark_hit.connect(_on_path_1_ark_hit)
+	get_node("enemy_spawn").ark_hit_1.connect(_on_path_1_ark_hit)
+	get_node("enemy_spawn").ark_hit_2.connect(_on_path_2_ark_hit)
+	get_node("enemy_spawn").ark_hit_3.connect(_on_path_3_ark_hit)
 	
 	new_game()
 	
@@ -150,6 +152,7 @@ func damage_ark(dmg):
 
 func _on_ark_hit(dmg):
 	print("HIT!")
+	print(dmg)
 	damage_ark(dmg)
 	pass # Replace with function body.
 
@@ -162,13 +165,13 @@ func _on_path_1_ark_hit():
 func _on_path_2_ark_hit():
 	_on_ark_hit(
 		# TODO: get Mob3.damage
-		1#get_node("Mob").atk_damage
+		2#get_node("Mob").atk_damage
 	)
 
 func _on_path_3_ark_hit():
 	_on_ark_hit(
 		# TODO: get Mob3.damage
-		1#get_node("Mob").atk_damage
+		3#get_node("Mob").atk_damage
 	)
 
 
