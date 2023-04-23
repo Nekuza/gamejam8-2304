@@ -22,7 +22,6 @@ func _ready():
 	# TODO set as global MobPath1 at res://main_game.tscn::Curve2D_3eo4t
 #	get_node("")
 #	self.Curve2D.Points = points
-	print("ModPath1") # printed once
 #	self.curve.Points[1]
 #	print(self.curve.get_closest_point())
 	pass # Replace with function body.

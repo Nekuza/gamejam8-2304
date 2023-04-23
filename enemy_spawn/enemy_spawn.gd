@@ -7,7 +7,6 @@ signal ark_hit_3
 func spawn(enemy_type: PathFollow2D, amount: int, mob_path: Path2D):
 	for i in amount:
 		mob_path.rotation = 0
-#		print(enemy_type.name)
 		if enemy_type.name == "MobSpawnLocation3":
 			enemy_type.ark_hit.connect(_on_path_3_ark_hit)
 		elif enemy_type.name == "MobSpawnLocation2":

@@ -5503,19 +5503,19 @@ offset_right = 1304.0
 offset_bottom = 1095.0
 
 [node name="Player" parent="." instance=ExtResource("5_jwt35")]
-position = Vector2(724, 663)
+position = Vector2(724, 507)
 
 [node name="PlayerCamera" type="Camera2D" parent="Player"]
 position = Vector2(8, -7)
-zoom = Vector2(3, 3)
+zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 position_smoothing_speed = 12.0
 
 [node name="HealthArk" type="TextureProgressBar" parent="Player/PlayerCamera"]
 offset_left = -39.0
-offset_top = -105.0
+offset_top = -128.0
 offset_right = 49.0
-offset_bottom = -96.0
+offset_bottom = -119.0
 fill_mode = 1
 nine_patch_stretch = true
 texture_under = SubResource("CanvasTexture_bf4p7")
@@ -5524,16 +5524,16 @@ tint_under = Color(0, 1, 0.0862745, 1)
 tint_progress = Color(1, 0, 0, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player/PlayerCamera"]
-position = Vector2(-56, -100)
+position = Vector2(-56, -123)
 scale = Vector2(0.343751, 0.385417)
 sprite_frames = SubResource("SpriteFrames_vcvcp")
 animation = &"4"
 
 [node name="GameOver_Label" type="RichTextLabel" parent="Player/PlayerCamera"]
 offset_left = -40.0
-offset_top = -93.0
+offset_top = -116.0
 offset_right = 118.0
-offset_bottom = -53.0
+offset_bottom = -76.0
 text = "Game Over"
 scroll_active = false
 visible_characters_behavior = 1

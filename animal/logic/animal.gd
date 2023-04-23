@@ -14,7 +14,6 @@ func _ready():
 func _physics_process(delta):
 	if picked == true:
 		self.position = get_node("../Player").position + Vector2(10, -23)
-		print(self.position)
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_pick") and picked == false:

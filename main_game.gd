@@ -74,8 +74,6 @@ func new_game(dfclt):
 func game_over():
 	if !$ScoreTimer.is_stopped():
 		$ScoreTimer.stop()
-	print("GAME OVER!\nFinal score:")
-	print(score)
 	# TODO display nicely
 	# start-new-game dialogue
 
@@ -120,12 +118,9 @@ func _on_start_timer_timeout():
 func damage_ark(dmg):
 	# TODO: decrease health of ark node
 	boat.take_damage(dmg)
-	print("Ark health left:")
-	print(boat.health)
 	get_node("Player/PlayerCamera/HealthArk").value = 100 - boat.health
 
 func _on_ark_hit(dmg):
-	print("HIT!")
 #	print(dmg)
 	damage_ark(dmg)
 
