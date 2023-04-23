@@ -4,6 +4,7 @@ extends Node2D
 @export var mob_path_1: PackedScene
 @export var mob_path_2: PackedScene
 @export var mob_path_3: PackedScene
+@export var TEST_MOB: PackedScene
 
 var score
 
@@ -13,11 +14,11 @@ func get_spawn_count():
 
 func get_mob_scene(i):
 	if i == 1:
-		return mob_path_1
+		return mob_path_1 #"MobPath1/MobSpawnLocation1" #mob_path_1
 	elif i == 2:
-		return mob_path_2
+		return mob_path_2 #"MobPath2/MobSpawnLocation2" #mob_path_2
 	else:
-		return mob_path_3
+		return mob_path_3 #"MobPath3/MobSpawnLocation3" #mob_path_3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -62,9 +63,19 @@ func _process(delta):
 func _on_mob_timer_timeout():
 	# TODO: 
 	for i in range(get_spawn_count()):
-		var mob_path = get_mob_scene( randi_range(1,4) )
+#		load("MobPath1/MobSpawnLocation1")
+#		print("mob spawn in")
+		var spawn_index = randi_range(1,3)
+#		print(spawn_index)
+		var mob_path = get_mob_scene( spawn_index )
 		var mob_on_path = mob_path.instantiate()
+
 		add_child(mob_on_path)
+	var test_mob = TEST_MOB.instantiate()
+	get_node("TESTPATH")
+	print(test_mob)
+#	add_child(test_mob)
+	pass
 #	var mob = mob_scene.instantiate()
 #
 #	#var mob_spawn_location = get_node("Mob/Spawn1")#get_random_spawn_position()
