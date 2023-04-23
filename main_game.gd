@@ -32,6 +32,9 @@ func get_mob_path(i):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+#	get_node("Emitter").connect("car_ready", self, "_on_Emitter_car_ready")
+	get_node("enemy_spawn").ark_hit.connect(_on_path_1_ark_hit)
+	
 	new_game()
 	
 func new_game():
@@ -139,11 +142,12 @@ func _on_start_timer_timeout():
 ## TODO complete
 ## signal functions from MobPath<i>/MobSpawnLocation<i> (i.e. the mob instances
 ##   from the various paths) when reaching end of path to hit and damage ark
+## connect signals
 
 func damage_ark(dmg):
 	# TODO: decrease health of ark node
 	pass
-	
+
 func _on_ark_hit(dmg):
 	print("HIT!")
 	damage_ark(dmg)
