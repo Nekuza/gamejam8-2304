@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://codp67agwktqi"]
+[gd_scene load_steps=11 format=3 uid="uid://db36qb637c3ad"]
 
 [ext_resource type="Script" path="res://mob/MobSpawnLocation2.gd" id="1_k7h2g"]
-[ext_resource type="Script" path="res://mob/MobV2.gd" id="2_gk3ya"]
+[ext_resource type="Script" path="res://mob/spawn_locations/MobV2.gd" id="2_cidjc"]
 [ext_resource type="Texture2D" uid="uid://b034jhe6fwg4f" path="res://assets/enemy/idle/0.png" id="3_yyeoc"]
 [ext_resource type="Texture2D" uid="uid://dw3s74krqs3tf" path="res://assets/enemy/idle/1.png" id="4_lx632"]
 [ext_resource type="Texture2D" uid="uid://cxo0si5mrgf3y" path="res://assets/enemy/idle/2.png" id="5_grk2c"]
@@ -47,7 +47,7 @@ script = ExtResource("1_k7h2g")
 [node name="MobV2" type="Node2D" parent="."]
 position = Vector2(-722.089, -24.509)
 rotation = -1.49949
-script = ExtResource("2_gk3ya")
+script = ExtResource("2_cidjc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MobV2"]
 position = Vector2(-1.99994, -2.99994)

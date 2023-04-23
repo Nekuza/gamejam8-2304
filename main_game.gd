@@ -6,6 +6,8 @@ extends Node2D
 @export var mob_path_3: PackedScene
 @export var TEST_MOB: PackedScene
 
+var path_1
+
 var score
 
 func get_spawn_count():
@@ -49,6 +51,10 @@ func new_game():
 	$start_game_sound.play()
 	#$Player.start($StartPosition.position)
 	$StartTimer.start()
+	
+	# load paths
+	path_1 = load("res://Mob2/TESTPATH.tres")
+	print(typeof(path_1))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -64,8 +70,8 @@ func _on_mob_timer_timeout():
 	# TODO: 
 	for i in range(get_spawn_count()):
 #		load("MobPath1/MobSpawnLocation1")
-#		print("mob spawn in")
 		var spawn_index = randi_range(1,3)
+#		print("mob spawn in")
 #		print(spawn_index)
 		var mob_path = get_mob_scene( spawn_index )
 		var mob_on_path = mob_path.instantiate()
@@ -73,8 +79,10 @@ func _on_mob_timer_timeout():
 		add_child(mob_on_path)
 	var test_mob = TEST_MOB.instantiate()
 	get_node("TESTPATH")
-	print(test_mob)
-#	add_child(test_mob)
+#	print(test_mob)
+#	print("this is main, and this is TESTPATH node:")
+#	print(get_node("TESTPATH"))
+#	add_child(test_mob) # TODO: spawn new kinematic here
 	pass
 #	var mob = mob_scene.instantiate()
 #

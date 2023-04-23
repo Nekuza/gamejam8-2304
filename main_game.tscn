@@ -8,7 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://cq6vgoux4o34p" path="res://player/player.tscn" id="5_jwt35"]
 [ext_resource type="PackedScene" uid="uid://beblja4e0c6l3" path="res://boat/boat.tscn" id="6_uriau"]
 [ext_resource type="PackedScene" uid="uid://bq5xt3vre37ac" path="res://enemy_spawn/enemy_spawn.tscn" id="7_mk3qo"]
-[ext_resource type="PackedScene" uid="uid://codp67agwktqi" path="res://mob/spawn_locations/mob_spawn_location_2.tscn" id="10_d5s06"]
+[ext_resource type="PackedScene" uid="uid://db36qb637c3ad" path="res://mob/spawn_locations/mob_spawn_location_2.tscn" id="10_d5s06"]
+[ext_resource type="Curve2D" uid="uid://b8qgjvw2bbqp6" path="res://Mob2/TESTPATH.tres" id="12_ex60a"]
 [ext_resource type="PackedScene" uid="uid://b8106vr7bp8ed" path="res://mob/spawn_locations/mob_spawn_location_1.tscn" id="16_vvsxg"]
 [ext_resource type="PackedScene" uid="uid://b40nmuoh4be00" path="res://mob/spawn_locations/mob_spawn_location_3.tscn" id="18_8j3ac"]
 
@@ -5362,12 +5363,6 @@ _data = {
 }
 point_count = 19
 
-[sub_resource type="Curve2D" id="Curve2D_a450k"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 662, 572, 0, 0, 0, 0, 784, 610, 0, 0, 0, 0, 803, 534, 0, 0, 0, 0, 676, 520)
-}
-point_count = 4
-
 [node name="world" type="Node2D"]
 position = Vector2(448, 385)
 script = ExtResource("1_0spe2")
@@ -5467,6 +5462,11 @@ offset_top = 391.0
 offset_right = 1304.0
 offset_bottom = 1095.0
 
+[node name="TESTPATH" type="Path2D" parent="."]
+curve = ExtResource("12_ex60a")
+
+[node name="PathFollow2D" parent="TESTPATH" instance=ExtResource("5_i36vf")]
+
 [node name="MobPath1" type="Path2D" parent="."]
 curve = SubResource("Curve2D_3eo4t")
 
@@ -5483,11 +5483,6 @@ curve = SubResource("Curve2D_x8rhv")
 curve = SubResource("Curve2D_vuv4q")
 
 [node name="MobSpawnLocation3" parent="MobPath3" instance=ExtResource("18_8j3ac")]
-
-[node name="TESTPATH" type="Path2D" parent="."]
-curve = SubResource("Curve2D_a450k")
-
-[node name="PathFollow2D" parent="TESTPATH" instance=ExtResource("5_i36vf")]
 
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
