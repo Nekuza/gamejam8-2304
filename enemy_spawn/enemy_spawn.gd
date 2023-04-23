@@ -10,7 +10,11 @@ func _ready():
 func _process(delta):
 	pass
 	
-func spawn(enemy_type, amount, spawn_rate_time):
-	$StaticBody2D/AnimatedSprite2D.play("open_gate")
+func spawn(enemy_type: PathFollow2D, amount: int, mob_path: Path2D):
+	for i in amount:
+		mob_path.rotation = 0
+		# TODO: missing hit -> fix signal
+		mob_path.add_child(enemy_type)
+		$StaticBody2D/AnimatedSprite2D.play("open_gate")
 	#TODO implement spawn
 	pass
