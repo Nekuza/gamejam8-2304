@@ -22,8 +22,19 @@ func get_mob_scene(i):
 	else:
 		return mob_path_3 #"MobPath3/MobSpawnLocation3" #mob_path_3
 
+func get_mob_path(i):
+	if i == 1:
+		return get_node("MobPath1") #"MobPath1/MobSpawnLocation1" #mob_path_1
+	elif i == 2:
+		return get_node("MobPath2") #"MobPath2/MobSpawnLocation2" #mob_path_2
+	else:
+		return get_node("MobPath3") #"MobPath3/MobSpawnLocation3" #mob_path_3
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+#	get_node("Emitter").connect("car_ready", self, "_on_Emitter_car_ready")
+	get_node("enemy_spawn").ark_hit.connect(_on_path_1_ark_hit)
+	
 	new_game()
 	
 func new_game():
@@ -54,7 +65,9 @@ func new_game():
 	
 	# load paths
 	path_1 = load("res://Mob2/TESTPATH.tres")
+	print("This is path_1:")
 	print(typeof(path_1))
+	print(path_1.get_local_scene())
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -73,12 +86,18 @@ func _on_mob_timer_timeout():
 		var spawn_index = randi_range(1,3)
 #		print("mob spawn in")
 #		print(spawn_index)
-		var mob_path = get_mob_scene( spawn_index )
-		var mob_on_path = mob_path.instantiate()
-		mob_on_path.add_to_group("enemies")
-		add_child(mob_on_path)
-#	var test_mob = TEST_MOB.instantiate()
-#	get_node("TESTPATH")
+#		var mob_path = get_mob_scene( spawn_index )
+#		var mob_on_path = mob_path.instantiate()
+#		mob_path.add_child(mob_on_path)
+		get_node("enemy_spawn").spawn(
+			get_mob_scene( spawn_index ).instantiate(), # PathFollow2D
+			1, # amount
+			get_mob_path(spawn_index) # TODO: change to Path2D
+		)
+#		get_node("MobPath1").add_child(mob_on_path)
+#		add_child(mob_on_path)
+	var test_mob = TEST_MOB.instantiate()
+	get_node("TESTPATH")
 #	print(test_mob)
 #	print("this is main, and this is TESTPATH node:")
 #	print(get_node("TESTPATH"))
@@ -123,11 +142,12 @@ func _on_start_timer_timeout():
 ## TODO complete
 ## signal functions from MobPath<i>/MobSpawnLocation<i> (i.e. the mob instances
 ##   from the various paths) when reaching end of path to hit and damage ark
+## connect signals
 
 func damage_ark(dmg):
 	# TODO: decrease health of ark node
 	pass
-	
+
 func _on_ark_hit(dmg):
 	print("HIT!")
 	damage_ark(dmg)
