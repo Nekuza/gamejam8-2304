@@ -9,13 +9,13 @@ extends Node2D
 var boat
 var score
 var difficulty
-var base_difficulty = .01
+var base_difficulty = 1
 var progress_counter
 var target_progress
 
 func get_spawn_count():
 	# TODO return variable spawn count from game state
-	return floori(score/50) * ( 1 + floori(score * get_random_factor()) )
+	return floori(score/10) * ( 1 + floori(score * get_random_factor()) )
 
 func get_random_factor(): # increase difficulty for longer game runs
 	return randf_range(.0,difficulty*(1+score/100)/100)
