@@ -25,6 +25,7 @@ func _process(delta):
 		destroyed.emit()
 		get_node("../Player/PlayerCamera/GameOver_Label").visible_characters = -1
 		$YouLoseSound.play()
+		get_node("../Player/PlayerCamera/Score_Label").text = "Score: " + str(get_parent().score)
 		
 	elif health <= 25:
 		change_state("1")

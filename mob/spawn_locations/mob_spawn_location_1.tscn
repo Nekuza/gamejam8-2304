@@ -54,3 +54,5 @@ shape = SubResource("CapsuleShape2D_0pp4w")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Mob1"]
 position = Vector2(27.0001, 720)
 sprite_frames = SubResource("SpriteFrames_sbh5d")
+
+[node name="87671" type="Timer" parent="."]

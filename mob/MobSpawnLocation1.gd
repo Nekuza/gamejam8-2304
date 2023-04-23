@@ -11,4 +11,5 @@ func _process(delta):
 	if progress_ratio > .99:
 		ark_hit.emit()
 		queue_free()
-	self.progress_ratio += $Mob1.speed * delta # move mob without 
+	progress_ratio += $Mob1.speed * delta 
+	pass
