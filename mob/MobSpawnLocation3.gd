@@ -14,5 +14,6 @@ func _process(delta):
 		ark_hit.emit()
 		queue_free()
 	
+	
 	progress_ratio += $Mob3.speed * delta
 	pass

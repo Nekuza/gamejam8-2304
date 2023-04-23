@@ -1,14 +1,19 @@
 extends PathFollow2D
 
+#var patrol_path
 
+func get_patrol_path():
+	return get_parent()
 # Called when the node enters the scene tree for the first time.
 func _ready():
+#	patrol_path = get_parent().curve
 	pass # Replace with function body.
 
 func _physics_process(delta):
 	move(delta)
 	
-func move(delta)
+func move(delta):
+	pass
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

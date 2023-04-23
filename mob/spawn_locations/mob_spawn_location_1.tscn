@@ -42,10 +42,6 @@ position = Vector2(1304, 328)
 rotation = 1.63322
 script = ExtResource("1_ylned")
 
-[node name="87671" type="Timer" parent="."]
-wait_time = 0.2
-one_shot = true
-
 [node name="Mob1" type="Node2D" parent="."]
 position = Vector2(-722.089, -24.509)
 rotation = -1.49949

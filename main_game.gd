@@ -4,6 +4,9 @@ extends Node2D
 @export var mob_path_1: PackedScene
 @export var mob_path_2: PackedScene
 @export var mob_path_3: PackedScene
+@export var TEST_MOB: PackedScene
+
+var path_1
 
 var score
 
@@ -13,11 +16,11 @@ func get_spawn_count():
 
 func get_mob_scene(i):
 	if i == 1:
-		return mob_path_1
+		return mob_path_1 #"MobPath1/MobSpawnLocation1" #mob_path_1
 	elif i == 2:
-		return mob_path_2
+		return mob_path_2 #"MobPath2/MobSpawnLocation2" #mob_path_2
 	else:
-		return mob_path_3
+		return mob_path_3 #"MobPath3/MobSpawnLocation3" #mob_path_3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -48,6 +51,10 @@ func new_game():
 	$start_game_sound.play()
 	#$Player.start($StartPosition.position)
 	$StartTimer.start()
+	
+	# load paths
+	path_1 = load("res://Mob2/TESTPATH.tres")
+	print(typeof(path_1))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -62,9 +69,21 @@ func _process(delta):
 func _on_mob_timer_timeout():
 	# TODO: 
 	for i in range(get_spawn_count()):
-		var mob_path = get_mob_scene( randi_range(1,4) )
+#		load("MobPath1/MobSpawnLocation1")
+		var spawn_index = randi_range(1,3)
+#		print("mob spawn in")
+#		print(spawn_index)
+		var mob_path = get_mob_scene( spawn_index )
 		var mob_on_path = mob_path.instantiate()
+
 		add_child(mob_on_path)
+	var test_mob = TEST_MOB.instantiate()
+	get_node("TESTPATH")
+#	print(test_mob)
+#	print("this is main, and this is TESTPATH node:")
+#	print(get_node("TESTPATH"))
+#	add_child(test_mob) # TODO: spawn new kinematic here
+	pass
 #	var mob = mob_scene.instantiate()
 #
 #	#var mob_spawn_location = get_node("Mob/Spawn1")#get_random_spawn_position()
