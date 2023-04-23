@@ -5369,7 +5369,6 @@ script = ExtResource("1_0spe2")
 mob_path_1 = ExtResource("16_vvsxg")
 mob_path_2 = ExtResource("10_d5s06")
 mob_path_3 = ExtResource("18_8j3ac")
-TEST_MOB = ExtResource("5_i36vf")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(273, 303)
