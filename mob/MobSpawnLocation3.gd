@@ -18,3 +18,4 @@ func _process(delta):
 	
 	progress_ratio += $Mob3.speed * delta
 	pass
+

@@ -5486,7 +5486,6 @@ rotation = 1.49949
 curve = ExtResource("12_ex60a")
 
 [node name="PathFollow2D" parent="TESTPATH" instance=ExtResource("5_i36vf")]
-spawn_rate = 1
 
 [node name="MobPath1" type="Path2D" parent="."]
 curve = SubResource("Curve2D_3eo4t")
