@@ -55,9 +55,9 @@ func _input(event):
 func select_enemy():
 	var enemy_progress_array = []
 	for i in enemies_inRange:
-		enemy_progress_array.append(i.offset)
-	var max_offset = enemy_progress_array.max()
-	var enemy_index = enemy_progress_array.find(max_offset)
+		enemy_progress_array.append(i.get_progress())
+	var max_progress = enemy_progress_array.max()
+	var enemy_index = enemy_progress_array.find(max_progress)
 	tageted_enemy = enemies_inRange[enemy_index]
 	
 
@@ -67,13 +67,17 @@ func fire():
 	await(rateOfFire)
 	readyToFire = true
 
-func _on_fire_range_body_entered(enemy_node):
-	if isTouched:
-		enemies_inRange.append(enemy_node.get_parent())
-		print(enemies_inRange)
+func _on_fire_range_area_entered(enemy_area):
+	print(enemy_area)
+	if enemy_area.is_in_group("enemies") :
+		if isTouched:
+			enemies_inRange.append(enemy_area.get_parent())
+			print(enemies_inRange)
 	pass # Replace with function body.
 
-func _on_fire_range_body_exited(enemy_node):
+func _on_fire_range_area_exited(enemy_node):
 	if isTouched:
 		enemies_inRange.erase(enemy_node.get_parent())
 	pass # Replace with function body.
+
+

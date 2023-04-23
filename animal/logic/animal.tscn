@@ -205,6 +205,5 @@ debug_color = Color(0.984314, 0.054902, 0.282353, 0.419608)
 [node name="Collision_fireRange" type="CollisionShape2D" parent="fire_range"]
 shape = SubResource("CircleShape2D_4y1c0")
 
-[connection signal="area_entered" from="PickUpArea" to="." method="_on_pick_up_area_area_entered"]
-[connection signal="body_entered" from="fire_range" to="." method="_on_fire_range_body_entered"]
-[connection signal="body_exited" from="fire_range" to="." method="_on_fire_range_body_exited"]
+[connection signal="area_entered" from="fire_range" to="." method="_on_fire_range_area_entered"]
+[connection signal="area_exited" from="fire_range" to="." method="_on_fire_range_area_exited"]

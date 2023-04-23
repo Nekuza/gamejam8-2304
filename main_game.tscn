@@ -5419,10 +5419,10 @@ position = Vector2(1304, 327)
 
 [node name="ScoreTimer" type="Timer" parent="."]
 
-[node name="MobPath1" type="Path2D" parent="."]
+[node name="MobPath1" type="Path2D" parent="." groups=["enemies"]]
 curve = SubResource("Curve2D_3eo4t")
 
-[node name="MobSpawnLocation1" type="PathFollow2D" parent="MobPath1"]
+[node name="MobSpawnLocation1" type="PathFollow2D" parent="MobPath1" groups=["enemies"]]
 position = Vector2(1304, 328)
 rotation = 1.63322
 
@@ -5462,23 +5462,25 @@ offset_top = 391.0
 offset_right = 1304.0
 offset_bottom = 1095.0
 
-[node name="MobPath2" type="Path2D" parent="."]
+[node name="MobPath2" type="Path2D" parent="." groups=["enemies"]]
 curve = SubResource("Curve2D_x8rhv")
 
-[node name="MobSpawnLocation2" type="PathFollow2D" parent="MobPath2"]
+[node name="MobSpawnLocation2" type="PathFollow2D" parent="MobPath2" groups=["enemies"]]
 position = Vector2(276, 824)
 rotation = 1.49949
 
-[node name="MobPath3" type="Path2D" parent="."]
+[node name="MobPath3" type="Path2D" parent="." groups=["enemies"]]
 curve = SubResource("Curve2D_vuv4q")
 
-[node name="MobSpawnLocation3" type="PathFollow2D" parent="MobPath3"]
+[node name="MobSpawnLocation3" type="PathFollow2D" parent="MobPath3" groups=["enemies"]]
 position = Vector2(249, 101)
 rotation = 1.5708
 
-[node name="MobV2" type="Node2D" parent="."]
+[node name="MobV2" type="Node2D" parent="MobPath3/MobSpawnLocation3" groups=["enemies"]]
+position = Vector2(-101, 249)
+rotation = -1.5708
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MobV2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MobPath3/MobSpawnLocation3/MobV2" groups=["enemies"]]
 
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]

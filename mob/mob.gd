@@ -21,6 +21,11 @@ var path_follow: PathFollow2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var health = start_health
+	var health_bar = get_node("HealthBar")
+	health_bar.max_value = health
+	health_bar.value = health
+	# health_bar.set_as_toplevel(true) to not rotate the healthbar, needs change in movefunc of enemy, because it also disconnects the position
+	
 	var mob_types = $AnimatedSprite2D.sprite_frames.get_animation_names()
 	$AnimatedSprite2D.play(mob_types[randi() % mob_types.size()])
 	
@@ -65,6 +70,7 @@ func set_spawn_rate(value):
 
 func on_hit(damage):
 	health -= damage
+	health_bar.value = health
 	if health <= 0:
 		on_destroy()
 	#else
