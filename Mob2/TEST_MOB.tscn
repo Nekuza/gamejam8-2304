@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b4dsp8mi4vf8l"]
+[gd_scene load_steps=14 format=3 uid="uid://b4dsp8mi4vf8l"]
 
 [ext_resource type="Script" path="res://Mob2/PathFollow2D.gd" id="1_vd737"]
 [ext_resource type="Script" path="res://Mob2/Node2D.gd" id="2_lwgmp"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bprixvx4yp01w" path="res://assets/enemy/idle/3.png" id="6_tx0ms"]
 [ext_resource type="Texture2D" uid="uid://dt17tqdn2qx1s" path="res://assets/enemy/idle/4.png" id="7_yj4uw"]
 [ext_resource type="Texture2D" uid="uid://ccr4ptb84k7of" path="res://assets/enemy/idle/5.png" id="8_80jyq"]
+[ext_resource type="AudioStream" uid="uid://bcjelt2qp4s5j" path="res://sounds/Retro_8-Bit_Game-Hit_Hurt_Fall_Drop_08.wav" id="9_uilyo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xvhgx"]
 radius = 7.57544
@@ -39,6 +40,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_emg32"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_tcbr6"]
+
 [node name="PathFollow2D" type="PathFollow2D"]
 position = Vector2(662, 572)
 rotation = 0.301951
@@ -55,6 +60,18 @@ shape = SubResource("CapsuleShape2D_xvhgx")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D"]
 sprite_frames = SubResource("SpriteFrames_u6c40")
 
+[node name="HealthBar" type="TextureProgressBar" parent="RigidBody2D"]
+offset_left = -10.0
+offset_top = -15.0
+offset_right = 10.0
+offset_bottom = -12.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = SubResource("CanvasTexture_emg32")
+texture_progress = SubResource("CanvasTexture_tcbr6")
+tint_under = Color(0.219608, 0.219608, 0.219608, 1)
+tint_progress = Color(0.913725, 0.152941, 0.0784314, 1)
+
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 
 [node name="Node2D" type="Node2D" parent="."]
@@ -62,3 +79,6 @@ sprite_frames = SubResource("SpriteFrames_u6c40")
 [node name="101731" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+
+[node name="on_hit_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_uilyo")

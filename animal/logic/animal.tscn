@@ -195,7 +195,6 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 [node name="PickUpArea" type="Area2D" parent="."]
 
 [node name="Collision_pickUp" type="CollisionShape2D" parent="PickUpArea"]
-visible = false
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_y4kjm")
 debug_color = Color(0.984314, 0.054902, 0.282353, 0.419608)
@@ -205,5 +204,5 @@ debug_color = Color(0.984314, 0.054902, 0.282353, 0.419608)
 [node name="Collision_fireRange" type="CollisionShape2D" parent="fire_range"]
 shape = SubResource("CircleShape2D_4y1c0")
 
-[connection signal="area_entered" from="fire_range" to="." method="_on_fire_range_area_entered"]
-[connection signal="area_exited" from="fire_range" to="." method="_on_fire_range_area_exited"]
+[connection signal="body_entered" from="fire_range" to="." method="_on_fire_range_body_entered"]
+[connection signal="body_exited" from="fire_range" to="." method="_on_fire_range_body_exited"]

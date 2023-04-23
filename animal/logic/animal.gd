@@ -6,7 +6,7 @@ var animal_type: String = "eagle"
 
 # tower stats
 var damage = 1
-var rateOfFire = 1
+var rateOfFire = 500
 
 
 var enemies_inRange = []
@@ -63,19 +63,21 @@ func select_enemy():
 
 func fire():
 	readyToFire = false
+	print("FIIIIIIIIIIIIIIIRE!!!!!!!!!!!")
 	tageted_enemy.on_hit(damage)
 	await(rateOfFire)
 	readyToFire = true
 
-func _on_fire_range_area_entered(enemy_area):
-	print(enemy_area)
+func _on_fire_range_body_entered(enemy_area):
+#	print(enemy_area)
 	if enemy_area.is_in_group("enemies") :
 		if isTouched:
 			enemies_inRange.append(enemy_area.get_parent())
+			print("enemies in sight: ")
 			print(enemies_inRange)
 	pass # Replace with function body.
 
-func _on_fire_range_area_exited(enemy_node):
+func _on_fire_range_body_exited(enemy_node):
 	if isTouched:
 		enemies_inRange.erase(enemy_node.get_parent())
 	pass # Replace with function body.

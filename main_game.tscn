@@ -5433,6 +5433,10 @@ curve = SubResource("Curve2D_3eo4t")
 position = Vector2(1304, 328)
 rotation = 1.63322
 
+[node name="MobSpawnLocation1" parent="MobPath1" instance=ExtResource("16_vvsxg")]
+rotates = false
+loop = false
+
 [node name="animal_spawn_topLeft" type="ReferenceRect" parent="."]
 offset_left = -16.0
 offset_top = -161.0
@@ -5475,22 +5479,20 @@ curve = SubResource("Curve2D_x8rhv")
 [node name="MobSpawnLocation2" type="PathFollow2D" parent="MobPath2" groups=["enemies"]]
 position = Vector2(276, 824)
 rotation = 1.49949
+
+[node name="MobSpawnLocation2" parent="MobPath2" instance=ExtResource("10_d5s06")]
+
 [node name="TESTPATH" type="Path2D" parent="."]
 curve = ExtResource("12_ex60a")
 
 [node name="PathFollow2D" parent="TESTPATH" instance=ExtResource("5_i36vf")]
+spawn_rate = 1
 
 [node name="MobPath1" type="Path2D" parent="."]
 curve = SubResource("Curve2D_3eo4t")
 
-[node name="MobSpawnLocation1" parent="MobPath1" instance=ExtResource("16_vvsxg")]
-rotates = false
-loop = false
-
 [node name="MobPath2" type="Path2D" parent="."]
 curve = SubResource("Curve2D_x8rhv")
-
-[node name="MobSpawnLocation2" parent="MobPath2" instance=ExtResource("10_d5s06")]
 
 [node name="MobPath3" type="Path2D" parent="." groups=["enemies"]]
 curve = SubResource("Curve2D_vuv4q")
@@ -5504,11 +5506,9 @@ position = Vector2(-101, 249)
 rotation = -1.5708
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MobPath3/MobSpawnLocation3/MobV2" groups=["enemies"]]
+
 [node name="MobSpawnLocation3" parent="MobPath3" instance=ExtResource("18_8j3ac")]
 
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
-[connection signal="ark_hit" from="MobPath1/MobSpawnLocation1" to="." method="_on_path_1_ark_hit"]
-[connection signal="ark_hit" from="MobPath2/MobSpawnLocation2" to="." method="_on_path_2_ark_hit"]
-[connection signal="ark_hit" from="MobPath3/MobSpawnLocation3" to="." method="_on_path_3_ark_hit"]

@@ -55,7 +55,7 @@ func set_spawn_rate(value):
 
 func on_hit(damage):
 	health -= damage
-	health_bar.value = health
+	#health_bar.value = health
 	if health <= 0:
 		on_destroy()
 	#else

@@ -75,10 +75,10 @@ func _on_mob_timer_timeout():
 #		print(spawn_index)
 		var mob_path = get_mob_scene( spawn_index )
 		var mob_on_path = mob_path.instantiate()
-
+		mob_on_path.add_to_group("enemies")
 		add_child(mob_on_path)
-	var test_mob = TEST_MOB.instantiate()
-	get_node("TESTPATH")
+#	var test_mob = TEST_MOB.instantiate()
+#	get_node("TESTPATH")
 #	print(test_mob)
 #	print("this is main, and this is TESTPATH node:")
 #	print(get_node("TESTPATH"))

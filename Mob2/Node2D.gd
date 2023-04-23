@@ -20,6 +20,7 @@ var velocity = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	add_to_group("enemies")
 #	patrol_path = NodePath(
 #		get_tree().current_scene.get_path().get_concatenated_names() + "/TESTPATH"
 #		)

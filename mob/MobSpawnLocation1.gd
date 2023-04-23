@@ -1,6 +1,7 @@
 extends PathFollow2D
 
 signal ark_hit
+signal move
 var PRINT
 
 #var mob = get_node("Mob").instantiate()
@@ -8,16 +9,13 @@ var PRINT
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	PRINT = true
-	print("Mob1 ready!")
 #	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if PRINT:
-		print("I'm processing!")
 		PRINT = false
-		print(get_parent().name)
 #		print(delta)
 #		print(self.progress_ratio)
 #		print($Mob1.speed)
@@ -27,6 +25,7 @@ func _process(delta):
 	
 	
 	self.progress_ratio += $Mob1.speed * delta # move mob without 
+	move.emit()
 			# collision on path. mob moves straight and leaves path intermittently
 			# but is bounced back to nearest path point on next tick
 #	print("PathFollow2D")
