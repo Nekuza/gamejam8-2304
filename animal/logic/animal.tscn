@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c1qhe5nhhlm4o"]
+[gd_scene load_steps=27 format=3 uid="uid://c1qhe5nhhlm4o"]
 
 [ext_resource type="Texture2D" uid="uid://cuts2whx8udow" path="res://assets/animals/animals3.png" id="1_2etul"]
 [ext_resource type="Script" path="res://animal/logic/animal.gd" id="1_vk5pl"]
@@ -172,6 +172,9 @@ height = 12.0
 radius = 15.0
 height = 38.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4y1c0"]
+radius = 64.4981
+
 [node name="RigidBody2D" type="RigidBody2D"]
 mass = 0.01
 gravity_scale = 0.0
@@ -191,10 +194,15 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="PickUpArea" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpArea"]
-visible = false
+[node name="Collision_pickUp" type="CollisionShape2D" parent="PickUpArea"]
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_y4kjm")
 debug_color = Color(0.984314, 0.054902, 0.282353, 0.419608)
 
-[connection signal="area_entered" from="PickUpArea" to="." method="_on_pick_up_area_area_entered"]
+[node name="fire_range" type="Area2D" parent="."]
+
+[node name="Collision_fireRange" type="CollisionShape2D" parent="fire_range"]
+shape = SubResource("CircleShape2D_4y1c0")
+
+[connection signal="body_entered" from="fire_range" to="." method="_on_fire_range_body_entered"]
+[connection signal="body_exited" from="fire_range" to="." method="_on_fire_range_body_exited"]

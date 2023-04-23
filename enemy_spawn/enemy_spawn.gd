@@ -5,6 +5,7 @@ signal ark_hit_2
 signal ark_hit_3
 
 func spawn(enemy_type: PathFollow2D, amount: int, mob_path: Path2D):
+	enemy_type.add_to_group("enemies")
 	for i in amount:
 		mob_path.rotation = 0
 #		print(enemy_type.name)

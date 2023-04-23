@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dgfvie1qjdhal" path="res://assets/map/roguelikeSheet_transparent.png" id="1_ejnce"]
 [ext_resource type="PackedScene" uid="uid://d2coo11qj47w2" path="res://music_player.tscn" id="3_umdqx"]
 [ext_resource type="AudioStream" uid="uid://olnu3qb5mr73" path="res://sounds/Horn 2.mp3" id="4_4dbo5"]
-[ext_resource type="PackedScene" uid="uid://b4dsp8mi4vf8l" path="res://Mob2/TEST_MOB.tscn" id="5_i36vf"]
+[ext_resource type="PackedScene" uid="uid://cph0biymfj7qg" path="res://Mob2/TEST_MOB.tscn" id="5_i36vf"]
 [ext_resource type="PackedScene" uid="uid://cq6vgoux4o34p" path="res://player/player.tscn" id="5_jwt35"]
 [ext_resource type="PackedScene" uid="uid://beblja4e0c6l3" path="res://boat/boat.tscn" id="6_uriau"]
 [ext_resource type="PackedScene" uid="uid://bq5xt3vre37ac" path="res://enemy_spawn/enemy_spawn.tscn" id="7_mk3qo"]
@@ -5479,10 +5479,10 @@ curve = SubResource("Curve2D_x8rhv")
 
 [node name="MobSpawnLocation2" parent="MobPath2" instance=ExtResource("10_d5s06")]
 
-[node name="MobPath3" type="Path2D" parent="."]
+[node name="MobPath3" type="Path2D" parent="." groups=["enemies"]]
 curve = SubResource("Curve2D_vuv4q")
 
-[node name="MobSpawnLocation3" parent="MobPath3" instance=ExtResource("18_8j3ac")]
+[node name="MobSpawnLocation3" parent="MobPath3" groups=["enemies"] instance=ExtResource("18_8j3ac")]
 
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
