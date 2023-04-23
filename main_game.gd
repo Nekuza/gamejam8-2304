@@ -116,6 +116,7 @@ func damage_ark(dmg):
 	boat.take_damage(dmg)
 	print("Ark health left:")
 	print(boat.health)
+	get_node("Player/PlayerCamera/HealthArk").value = 100 - boat.health
 
 func _on_ark_hit(dmg):
 	print("HIT!")

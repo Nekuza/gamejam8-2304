@@ -14,6 +14,8 @@ signal destroyed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$AnimatedSprite2D.play("4")
+	get_node("../Player/PlayerCamera/GameOver_Label").visible_characters = 0
 	health = start_health
 	pass
 
@@ -21,9 +23,29 @@ func _ready():
 func _process(delta):
 	# TODO: change sprite on health thresholds
 	# 0, 25, 50, 75, 100 health left
+	
 	if health <= 0:
+		change_state("0")
+		
 		destroyed.emit()
+		get_node("../Player/PlayerCamera/GameOver_Label").visible_characters = -1
+		$YouLoseSound.play()
+		
+	elif health <= 25:
+		change_state("1")
+		
+	elif health <= 50:
+		change_state("2")
+		
+	elif health <= 75:
+		change_state("3")
+		
 	pass
+	
+func change_state(number):
+	$BreakSound.play
+	get_node("../Player/PlayerCamera/AnimatedSprite2D").play(number)
+	$AnimatedSprite2D.play(number)
 
 func start(pos):
 	position = start_position

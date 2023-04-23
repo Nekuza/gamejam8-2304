@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bsaik1smq4a1e"]
+[gd_scene load_steps=25 format=3 uid="uid://bsaik1smq4a1e"]
 
 [ext_resource type="Script" path="res://main_game.gd" id="1_0spe2"]
 [ext_resource type="Texture2D" uid="uid://dgfvie1qjdhal" path="res://assets/map/roguelikeSheet_transparent.png" id="1_ejnce"]
@@ -9,7 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://beblja4e0c6l3" path="res://boat/boat.tscn" id="6_uriau"]
 [ext_resource type="PackedScene" uid="uid://bq5xt3vre37ac" path="res://enemy_spawn/enemy_spawn.tscn" id="7_mk3qo"]
 [ext_resource type="PackedScene" uid="uid://db36qb637c3ad" path="res://mob/spawn_locations/mob_spawn_location_2.tscn" id="10_d5s06"]
-[ext_resource type="Curve2D" uid="uid://b8qgjvw2bbqp6" path="res://Mob2/TESTPATH.tres" id="12_ex60a"]
+[ext_resource type="Texture2D" uid="uid://ccw4w083fuch6" path="res://assets/boat/100hp.png" id="12_mlhru"]
+[ext_resource type="Texture2D" uid="uid://bqis7vaichcmn" path="res://assets/boat/75hp.png" id="13_fdd8x"]
+[ext_resource type="Texture2D" uid="uid://cvi8dxlqo0yyv" path="res://assets/boat/50hp.png" id="14_hqnro"]
+[ext_resource type="Texture2D" uid="uid://cjbx2vphw35a" path="res://assets/boat/0hp.png" id="15_70k7h"]
+[ext_resource type="Texture2D" uid="uid://u02fj71dypp0" path="res://assets/boat/25hp.png" id="16_dx8gv"]
 [ext_resource type="PackedScene" uid="uid://b8106vr7bp8ed" path="res://mob/spawn_locations/mob_spawn_location_1.tscn" id="16_vvsxg"]
 [ext_resource type="PackedScene" uid="uid://b40nmuoh4be00" path="res://mob/spawn_locations/mob_spawn_location_3.tscn" id="18_8j3ac"]
 
@@ -5345,6 +5349,53 @@ separation = Vector2i(1, 1)
 physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_istaf")
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_bf4p7"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_tu6l4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vcvcp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_70k7h")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_dx8gv")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_hqnro")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_fdd8x")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_mlhru")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}]
+
 [sub_resource type="Curve2D" id="Curve2D_3eo4t"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 1304, 328, 0, 0, 0, 0, 1303, 344, 0, 0, 0, 0, 1224, 342, 0, 0, 0, 0, 1222, 296, 0, 0, 0, 0, 1082, 295, 0, 0, 0, 0, 1079, 356, 0, 0, 0, 0, 1033, 359, 0, 0, 0, 0, 1031, 262, 0, 0, 0, 0, 891, 262, 0, 0, 0, 0, 886, 200, 0, 0, 0, 0, 776, 197, 0, 0, 0, 0, 776, 356, 0, 0, 0, 0, 730, 360, 0, 0, 0, 0, 728, 473)
@@ -5399,20 +5450,11 @@ layer_3/z_index = 0
 layer_3/tile_data = PackedInt32Array(65599, 1114114, 23, 65600, 1179650, 23, 65601, 1179650, 23, 65602, 1245186, 23, 66, 1245186, 22, 65, 1179650, 22, 64, 1179650, 22, 63, 1114114, 22, -65473, 917506, 14, -65472, 983042, 14, -65471, 1179650, 14, -65470, 1245186, 14, 2162687, 3014658, 11, 2097151, 3014658, 10, 2031616, 3080194, 10, 2097152, 3080194, 11, 2228222, 917506, 8, -917510, 2031618, 14, -851974, 2031618, 15, -786438, 2031618, 16, -917509, 3276802, 6, -851973, 3276802, 7, -786437, 3276802, 8, -917508, 2162690, 14, -851972, 2162690, 15, -786436, 2162690, 16, -917507, 2031618, 14, -851971, 2883586, 8, -786435, 2031618, 16, -917506, 2097154, 14, -851970, 3604482, 9, -786434, 3604482, 10, -917505, 2162690, 14, -851969, 2883586, 8, -786433, 2162690, 16, -983040, 2031618, 14, -917504, 2031618, 15, -851968, 2031618, 16, -983039, 3276802, 6, -917503, 3276802, 7, -851967, 3276802, 8, -983038, 2162690, 14, -917502, 2162690, 15, -851966, 2162690, 16, -1114112, 3342338, 8, -1114111, 3473410, 8, -720897, 3276802, 10, -655361, 3276802, 11, -1114113, 2031618, 14, -1179648, 2097154, 14, -1179647, 2097154, 14, -1179646, 2162690, 14, -1245183, 2359298, 22, -1245184, 2359298, 22, -1048576, 2949122, 8, -1179649, 2359298, 22, -1245182, 2359298, 22, 4325377, 1179650, 10, 4390913, 1179650, 11, 4390914, 1179650, 10, 4456450, 1179650, 11, 4325379, 1179650, 10, 4390915, 1179650, 11, 4390916, 1179650, 10, 4456452, 1179650, 11, 4456449, 1179650, 10, 4521985, 1179650, 11, 4456451, 1179650, 10, 4521987, 1179650, 11, 4521986, 1179650, 9, 4521988, 1179650, 9, 4587521, 1179650, 10, 4653057, 1179650, 11, 4653058, 1179650, 10, 4718594, 1179650, 11, 4587523, 1179650, 10, 4653059, 1179650, 11, 4653060, 1179650, 10, 4718596, 1179650, 11, 4587522, 1179650, 9, 4587524, 1179650, 9, 4718595, 1179650, 9, 3670051, 2359298, 18)
 
 [node name="music_player" parent="." instance=ExtResource("3_umdqx")]
-volume_db = -15.0
+volume_db = -43.272
 
 [node name="start_game_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_4dbo5")
 volume_db = 5.0
-
-[node name="Player" parent="." instance=ExtResource("5_jwt35")]
-position = Vector2(721, 557)
-
-[node name="PlayerCamera" type="Camera2D" parent="Player"]
-position = Vector2(8, -7)
-zoom = Vector2(3, 3)
-position_smoothing_enabled = true
-position_smoothing_speed = 12.0
 
 [node name="Boat" parent="." instance=ExtResource("6_uriau")]
 position = Vector2(728, 472)
@@ -5462,10 +5504,41 @@ offset_top = 391.0
 offset_right = 1304.0
 offset_bottom = 1095.0
 
-[node name="TESTPATH" type="Path2D" parent="."]
-curve = ExtResource("12_ex60a")
+[node name="Player" parent="." instance=ExtResource("5_jwt35")]
+position = Vector2(724, 663)
 
-[node name="PathFollow2D" parent="TESTPATH" instance=ExtResource("5_i36vf")]
+[node name="PlayerCamera" type="Camera2D" parent="Player"]
+position = Vector2(8, -7)
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
+position_smoothing_speed = 12.0
+
+[node name="HealthArk" type="TextureProgressBar" parent="Player/PlayerCamera"]
+offset_left = -39.0
+offset_top = -105.0
+offset_right = 49.0
+offset_bottom = -96.0
+fill_mode = 1
+nine_patch_stretch = true
+texture_under = SubResource("CanvasTexture_bf4p7")
+texture_progress = SubResource("CanvasTexture_tu6l4")
+tint_under = Color(0, 1, 0.0862745, 1)
+tint_progress = Color(1, 0, 0, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player/PlayerCamera"]
+position = Vector2(-56, -100)
+scale = Vector2(0.343751, 0.385417)
+sprite_frames = SubResource("SpriteFrames_vcvcp")
+animation = &"4"
+
+[node name="GameOver_Label" type="RichTextLabel" parent="Player/PlayerCamera"]
+offset_left = -40.0
+offset_top = -93.0
+offset_right = 118.0
+offset_bottom = -53.0
+text = "Game Over"
+scroll_active = false
+visible_characters_behavior = 1
 
 [node name="MobPath1" type="Path2D" parent="."]
 curve = SubResource("Curve2D_3eo4t")
