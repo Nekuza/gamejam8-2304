@@ -35,9 +35,10 @@ func _ready():
 	get_node("enemy_spawn").ark_hit_1.connect(_on_path_1_ark_hit)
 	get_node("enemy_spawn").ark_hit_2.connect(_on_path_2_ark_hit)
 	get_node("enemy_spawn").ark_hit_3.connect(_on_path_3_ark_hit)
+	get_node("Boat").destroyed.connect(_on_ark_destroyed)
 	
 	new_game()
-	
+
 func new_game():
 	var animal_loaded = preload("res://animal/logic/animal.tscn")
 	# set up the different animal types for spawning
@@ -62,15 +63,15 @@ func new_game():
 	boat = get_node("Boat")
 	score = 0
 	$start_game_sound.play()
-	#$Player.start($StartPosition.position)
 	$StartTimer.start()
-	
-	# load paths
-#	path_1 = load("res://Mob2/TESTPATH.tres")
-#	print("This is path_1:")
-#	print(typeof(path_1))
-#	print(path_1.get_local_scene())
 
+func game_over():
+	if !$ScoreTimer.is_stopped():
+		$ScoreTimer.stop()
+	print("GAME OVER!\nFinal score:")
+	print(score)
+	# TODO display nicely
+	# start-new-game dialogue
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 @warning_ignore("unused_parameter")
@@ -136,4 +137,6 @@ func _on_path_3_ark_hit():
 		3 # TODO: get Mob3.damage
 	)
 
-
+func _on_ark_destroyed():
+	$ScoreTimer.stop()
+	game_over()
