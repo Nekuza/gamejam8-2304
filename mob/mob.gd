@@ -1,11 +1,18 @@
 extends RigidBody2D
 
 # stats
-var damage 		= 1
-var speed  		= 1
-var spawn_rate 	= 1
-var spawn_position = get_random_spawn_position()
-
+var atk_damage 	= 1
+var atk_speed	= 1
+var speed  		= 10
+var start_health = 10
+@export var spawn_rate 	= 1
+# var spawn_position = get_random_spawn_position()
+var spawn_positions = [
+	Vector2(1304,327)#,
+#	Vector2(20,0),
+#	Vector2(100,100),
+#	Vector2(450,337),
+]
 var path: Path2D
 var path_follow: PathFollow2D
 
@@ -15,13 +22,11 @@ func _ready():
 	$AnimatedSprite2D.play(mob_types[randi() % mob_types.size()])
 	
 	# TODO: test spawn_position
-	# if spawn_position is illegal:
-	#	pass
-	# else:
-	position = Vector2(450,337)#spawn_position
+	#position = Vector2(450,337)#spawn_position
 	
 	# TODO: get path to target (boat)
-	path = get_node("Path2D")
+	position = spawn_positions[randi() % spawn_positions.size()]
+	#path = get_node("Path2D")
 	#connect()
 	
 	#Path2D(
@@ -37,19 +42,26 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	# TODO: re-route path or deal damage if collision
+	# TODO: follow specified path
+	path_follow = get_parent().get_node("MobPath1/MobSpawnLocation1")
+	# path_follow = path.$MobSpawnLocation
+	path_follow.position += Vector2(speed * delta, speed * delta)
+	position = path_follow.get_global_transform().origin
 	pass
 
 
 # setter functions
 func set_damage(value):
-	damage = value
+	atk_damage = value
+func set_atk_speed(value):
+	atk_speed = value
 func set_speed(value):
 	speed = value
 func set_spawn_rate(value):
 	spawn_rate = value
 
 func get_random_spawn_position():
+	return spawn_positions[randi() % spawn_positions.size()]
 	# TODO: get from runtime
 	var minX = -100
 	var maxX = 1440

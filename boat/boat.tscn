@@ -1,29 +1,29 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=9 format=3 uid="uid://beblja4e0c6l3"]
 
 [ext_resource type="Script" path="res://boat/boat.gd" id="1_dlg1h"]
-[ext_resource type="Texture2D" uid="uid://jxs8sm15cnct" path="res://assets/boat/placeholder/0.png" id="1_ij7nv"]
-[ext_resource type="Texture2D" uid="uid://ccw4w083fuch6" path="res://assets/boat/vince_arch.png" id="2_3wby6"]
-[ext_resource type="Texture2D" uid="uid://cxph8s2iqnlyc" path="res://assets/boat/placeholder/1.png" id="2_ttjra"]
-[ext_resource type="Texture2D" uid="uid://wtmi72p6u4aq" path="res://assets/boat/placeholder/2.png" id="3_mpt2a"]
-[ext_resource type="Texture2D" uid="uid://cf4ml8xqdxp1n" path="res://assets/boat/placeholder/3.png" id="4_lxi2w"]
+[ext_resource type="Texture2D" uid="uid://ccw4w083fuch6" path="res://assets/boat/100hp.png" id="2_b2rf3"]
+[ext_resource type="Texture2D" uid="uid://u02fj71dypp0" path="res://assets/boat/25hp.png" id="3_ynfyj"]
+[ext_resource type="Texture2D" uid="uid://cvi8dxlqo0yyv" path="res://assets/boat/50hp.png" id="4_e5axp"]
+[ext_resource type="Texture2D" uid="uid://bqis7vaichcmn" path="res://assets/boat/75hp.png" id="5_2wb4u"]
+[ext_resource type="Texture2D" uid="uid://cjbx2vphw35a" path="res://assets/boat/0hp.png" id="6_471xy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ufu51"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_3wby6")
+"texture": ExtResource("2_b2rf3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_ij7nv")
+"texture": ExtResource("5_2wb4u")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_ttjra")
+"texture": ExtResource("4_e5axp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_mpt2a")
+"texture": ExtResource("3_ynfyj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_lxi2w")
+"texture": ExtResource("6_471xy")
 }],
 "loop": true,
 "name": &"destruction_states",

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://gneg5l7rabj2"]
+
+[ext_resource type="PackedScene" uid="uid://bgmno0iiun5ai" path="res://mob/mob.tscn" id="2_ei0pk"]
+
+[node name="MobSpawnLocation1" type="PathFollow2D"]
+position = Vector2(1304, 328)
+rotation = 1.63322
+loop = false
+
+[node name="Mob" parent="." instance=ExtResource("2_ei0pk")]
+
+[node name="24781" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
