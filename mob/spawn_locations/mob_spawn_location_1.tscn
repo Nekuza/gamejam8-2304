@@ -1,0 +1,60 @@
+[gd_scene load_steps=11 format=3 uid="uid://b8106vr7bp8ed"]
+
+[ext_resource type="Script" path="res://mob/MobSpawnLocation1.gd" id="1_ylned"]
+[ext_resource type="Script" path="res://mob/spawn_locations/Mob1.gd" id="2_ik8rk"]
+[ext_resource type="Texture2D" uid="uid://b034jhe6fwg4f" path="res://assets/enemy/idle/0.png" id="3_tlt0y"]
+[ext_resource type="Texture2D" uid="uid://dw3s74krqs3tf" path="res://assets/enemy/idle/1.png" id="4_u0eh3"]
+[ext_resource type="Texture2D" uid="uid://cxo0si5mrgf3y" path="res://assets/enemy/idle/2.png" id="5_w1s2e"]
+[ext_resource type="Texture2D" uid="uid://bprixvx4yp01w" path="res://assets/enemy/idle/3.png" id="6_2jbrm"]
+[ext_resource type="Texture2D" uid="uid://dt17tqdn2qx1s" path="res://assets/enemy/idle/4.png" id="7_bhsy3"]
+[ext_resource type="Texture2D" uid="uid://ccr4ptb84k7of" path="res://assets/enemy/idle/5.png" id="8_1qo4m"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0pp4w"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sbh5d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_tlt0y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_u0eh3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_w1s2e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2jbrm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_bhsy3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1qo4m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MobSpawnLocation1" type="PathFollow2D"]
+position = Vector2(1304, 328)
+rotation = 1.63322
+script = ExtResource("1_ylned")
+
+[node name="87671" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="Mob1" type="Node2D" parent="."]
+position = Vector2(-722.089, -24.509)
+rotation = -1.49949
+script = ExtResource("2_ik8rk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mob1"]
+position = Vector2(-1.99994, -2.99994)
+shape = SubResource("CapsuleShape2D_0pp4w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Mob1"]
+position = Vector2(27.0001, 720)
+sprite_frames = SubResource("SpriteFrames_sbh5d")

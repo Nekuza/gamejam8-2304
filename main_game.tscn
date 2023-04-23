@@ -1,13 +1,23 @@
-[gd_scene load_steps=14 format=3 uid="uid://bsaik1smq4a1e"]
+[gd_scene load_steps=27 format=3 uid="uid://bsaik1smq4a1e"]
 
 [ext_resource type="Script" path="res://main_game.gd" id="1_0spe2"]
 [ext_resource type="Texture2D" uid="uid://dgfvie1qjdhal" path="res://assets/map/roguelikeSheet_transparent.png" id="1_ejnce"]
 [ext_resource type="PackedScene" uid="uid://d2coo11qj47w2" path="res://music_player.tscn" id="3_umdqx"]
 [ext_resource type="AudioStream" uid="uid://olnu3qb5mr73" path="res://sounds/Horn 2.mp3" id="4_4dbo5"]
 [ext_resource type="PackedScene" uid="uid://cq6vgoux4o34p" path="res://player/player.tscn" id="5_jwt35"]
-[ext_resource type="PackedScene" uid="uid://bgmno0iiun5ai" path="res://mob/mob.tscn" id="6_am8pa"]
 [ext_resource type="PackedScene" uid="uid://beblja4e0c6l3" path="res://boat/boat.tscn" id="6_uriau"]
 [ext_resource type="PackedScene" uid="uid://bq5xt3vre37ac" path="res://enemy_spawn/enemy_spawn.tscn" id="7_mk3qo"]
+[ext_resource type="PackedScene" uid="uid://codp67agwktqi" path="res://mob/spawn_locations/mob_spawn_location_2.tscn" id="10_d5s06"]
+[ext_resource type="Texture2D" uid="uid://b034jhe6fwg4f" path="res://assets/enemy/idle/0.png" id="11_tprxy"]
+[ext_resource type="Texture2D" uid="uid://dw3s74krqs3tf" path="res://assets/enemy/idle/1.png" id="12_fuqsx"]
+[ext_resource type="Texture2D" uid="uid://cxo0si5mrgf3y" path="res://assets/enemy/idle/2.png" id="13_t40tl"]
+[ext_resource type="Texture2D" uid="uid://bprixvx4yp01w" path="res://assets/enemy/idle/3.png" id="14_e1dgp"]
+[ext_resource type="Texture2D" uid="uid://dt17tqdn2qx1s" path="res://assets/enemy/idle/4.png" id="15_8ipe4"]
+[ext_resource type="Texture2D" uid="uid://ccr4ptb84k7of" path="res://assets/enemy/idle/5.png" id="16_2b6n4"]
+[ext_resource type="PackedScene" uid="uid://b8106vr7bp8ed" path="res://mob/spawn_locations/mob_spawn_location_1.tscn" id="16_vvsxg"]
+[ext_resource type="Script" path="res://Mob2/PathFollow2D.gd" id="17_t5xra"]
+[ext_resource type="PackedScene" uid="uid://b40nmuoh4be00" path="res://mob/spawn_locations/mob_spawn_location_3.tscn" id="18_8j3ac"]
+[ext_resource type="Script" path="res://Mob2/Node2D.gd" id="18_chl11"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_istaf"]
 resource_name = "Maptiles"
@@ -5359,10 +5369,48 @@ _data = {
 }
 point_count = 19
 
+[sub_resource type="Curve2D" id="Curve2D_a450k"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 662, 572, 0, 0, 0, 0, 784, 610, 0, 0, 0, 0, 803, 534, 0, 0, 0, 0, 676, 520)
+}
+point_count = 4
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xvhgx"]
+radius = 7.57544
+height = 23.3838
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u6c40"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_tprxy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_fuqsx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_t40tl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_e1dgp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_8ipe4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_2b6n4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="world" type="Node2D"]
 position = Vector2(448, 385)
 script = ExtResource("1_0spe2")
-mob_scene = ExtResource("6_am8pa")
+mob_path_1 = ExtResource("16_vvsxg")
+mob_path_2 = ExtResource("10_d5s06")
+mob_path_3 = ExtResource("18_8j3ac")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(273, 303)
@@ -5468,6 +5516,15 @@ curve = SubResource("Curve2D_x8rhv")
 [node name="MobSpawnLocation2" type="PathFollow2D" parent="MobPath2" groups=["enemies"]]
 position = Vector2(276, 824)
 rotation = 1.49949
+[node name="MobPath1" type="Path2D" parent="."]
+curve = SubResource("Curve2D_3eo4t")
+
+[node name="MobSpawnLocation1" parent="MobPath1" instance=ExtResource("16_vvsxg")]
+
+[node name="MobPath2" type="Path2D" parent="."]
+curve = SubResource("Curve2D_x8rhv")
+
+[node name="MobSpawnLocation2" parent="MobPath2" instance=ExtResource("10_d5s06")]
 
 [node name="MobPath3" type="Path2D" parent="." groups=["enemies"]]
 curve = SubResource("Curve2D_vuv4q")
@@ -5481,7 +5538,32 @@ position = Vector2(-101, 249)
 rotation = -1.5708
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MobPath3/MobSpawnLocation3/MobV2" groups=["enemies"]]
+[node name="MobSpawnLocation3" parent="MobPath3" instance=ExtResource("18_8j3ac")]
+
+[node name="TESTPATH" type="Path2D" parent="."]
+curve = SubResource("Curve2D_a450k")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="TESTPATH"]
+position = Vector2(662, 572)
+rotation = 0.301951
+rotates = false
+loop = false
+script = ExtResource("17_t5xra")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="TESTPATH/PathFollow2D"]
+script = ExtResource("18_chl11")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TESTPATH/PathFollow2D/CharacterBody2D"]
+shape = SubResource("CapsuleShape2D_xvhgx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TESTPATH/PathFollow2D/CharacterBody2D"]
+sprite_frames = SubResource("SpriteFrames_u6c40")
+
+[node name="Node2D" type="Node2D" parent="TESTPATH/PathFollow2D"]
 
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="ark_hit" from="MobPath1/MobSpawnLocation1" to="." method="_on_path_1_ark_hit"]
+[connection signal="ark_hit" from="MobPath2/MobSpawnLocation2" to="." method="_on_path_2_ark_hit"]
+[connection signal="ark_hit" from="MobPath3/MobSpawnLocation3" to="." method="_on_path_3_ark_hit"]
