@@ -5,6 +5,7 @@ extends RigidBody2D
 var animal_type: String = "eagle"
 
 var picked = false
+var count = 0;
 
 func _ready():
 	$AnimatedSprite2D.play(animal_type)
@@ -16,7 +17,7 @@ func _physics_process(delta):
 		print(self.position)
 
 func _input(event):
-	if Input.is_action_just_pressed("ui_pick"):
+	if Input.is_action_just_pressed("ui_pick") and picked == false:
 		var bodies = $PickUpArea.get_overlapping_bodies()
 		for body in bodies:
 			if body.name == "Player" and get_node("../Player").canPick == true:
@@ -24,17 +25,12 @@ func _input(event):
 				get_node("CollisionShape2D").disabled = true
 				$AnimatedSprite2D.stop()
 				get_node("../Player").canPick = false
-				
-				
-	if Input.is_action_just_pressed("ui_release") and picked == true:
-		picked = false
+				count = 1
+
+	elif Input.is_action_just_pressed("ui_pick") and picked == true and count == 1:
 		get_node("../Player").canPick = true
 		self.position = round(self.position)
 		$AnimatedSprite2D.play(animal_type) 
 		get_node("CollisionShape2D").disabled = false
-		
-		print("Losgelassen")
-	
-func _process(delta):
-		pass
-	
+		count = 0
+		picked = false
