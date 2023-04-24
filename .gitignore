@@ -1,6 +1,9 @@
 # Godot 4+ specific ignores
 .godot/
+
+# local files to ignore
 .idea/
+commit.msg
 
 # Godot-specific ignores
 .import/

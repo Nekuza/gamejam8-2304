@@ -4,43 +4,18 @@ extends Node2D
 @export var mob_path_1: PackedScene
 @export var mob_path_2: PackedScene
 @export var mob_path_3: PackedScene
-#@export var TEST_MOB: PackedScene
 
+# global game state variables
 var boat
 var score
 var difficulty
-var base_difficulty = .01
 var progress_counter
 var target_progress
 
-func get_spawn_count():
-	# TODO return variable spawn count from game state
-	return floori(score/50) * ( 1 + floori(score * get_random_factor()) )
-
-func get_random_factor(): # increase difficulty for longer game runs
-	return randf_range(.0,difficulty*(1+score/100)/100)
-
-func get_mob_scene(i):
-	if i == 1:
-		return mob_path_1 #"MobPath1/MobSpawnLocation1" #mob_path_1
-	elif i == 2:
-		return mob_path_2 #"MobPath2/MobSpawnLocation2" #mob_path_2
-	else:
-		return mob_path_3 #"MobPath3/MobSpawnLocation3" #mob_path_3
-
-func get_mob_path(i):
-	if i == 1:
-		return get_node("MobPath1") #"MobPath1/MobSpawnLocation1" #mob_path_1
-	elif i == 2:
-		return get_node("MobPath2") #"MobPath2/MobSpawnLocation2" #mob_path_2
-	elif i == 3:
-		return get_node("MobPath3")
-	elif i == 4:
-		return get_node("MobPath4")
-	elif i == 5:
-		return get_node("MobPath5")
-	else:
-		return get_node("MobPath3") #"MobPath3/MobSpawnLocation3" #mob_path_3
+var config_file = "res://game.cfg"
+var config
+var base_difficulty
+var spawn_divisor
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -48,25 +23,52 @@ func _ready():
 	get_node("enemy_spawn").ark_hit_1.connect(_on_path_1_ark_hit)
 	get_node("enemy_spawn").ark_hit_2.connect(_on_path_2_ark_hit)
 	get_node("enemy_spawn").ark_hit_3.connect(_on_path_3_ark_hit)
-	get_node("enemy_spawn").ark_hit_4.connect(_on_path_4_ark_hit)
-	get_node("enemy_spawn").ark_hit_5.connect(_on_path_5_ark_hit)
+#	get_node("enemy_spawn").ark_hit_4.connect(_on_path_4_ark_hit)
+#	get_node("enemy_spawn").ark_hit_5.connect(_on_path_5_ark_hit)
 	get_node("Boat").destroyed.connect(_on_ark_destroyed)
 	get_node("RigidBody2D").touched.connect(_on_animal_touched)
 	
-	new_game(.5)
+	# load game config
+	config = ConfigFile.new()
+	var err = config.load(config_file)
+	if err != OK: # 43 is parsing error
+		print("error while loading config file:")
+		print(err)
+		return
+	
+	############################################################################
+	var mob2 = get_node("MobPath3/MobSpawnLocation3/Mob3/AnimatedSprite2D")
+	var sprite_frames = mob2.sprite_frames
+	# TODO save and load sprite_frames for dynamic loading depending on mob type
+#	for section in config.get_sections():
+#		if section.contains("animal"):
+#			print(section.split(":")[1])
+#		print(config.get_value(section,"key"))
+#		for key in config.get_section_keys(section):
+#			print(key)
+	############################################################################
+	
+	base_difficulty = config.get_value("difficulty","base_difficulty")
+	spawn_divisor = config.get_value("difficulty","spawn_divisor")
+	
+	new_game()
 
-func new_game(dfclt):
+func new_game():
 	var animal_loaded = preload("res://animal/logic/animal.tscn")
 	# set up the different animal types for spawning
-	var animals_array = [
-	["cow", 4, $animal_spawn_top],
-	["boris", 3, $animal_spawn_topLeft],
-	["eagle", 2, $animal_spawn_bottomLeft],
-	["goat", 5, $animal_spawn_right],
-	["pig", 4, $animal_spawn_left],
-	["wolf", 3, $animal_spawn_bottom]
-	]
-		
+	var animals_array = []
+	for section in config.get_sections():
+		if section.contains("animal"):
+			var animal = []
+			animal.append(section.split(":")[1]) # animal_name
+			for key in config.get_section_keys(section):
+#				print(section,key)
+				animal.append(config.get_value(section,key))
+			animals_array.append(animal)
+	for animal in animals_array:
+		animal[2] = get_node(animal[2])
+#	print(animals_array)
+	
 	# spawn animals in their spawn areas
 	for animal in animals_array:
 		var area = animal[2]
@@ -79,7 +81,7 @@ func new_game(dfclt):
 	target_progress = len(animals_array)
 	boat = get_node("Boat")
 	score = 0
-	difficulty = dfclt # TODO: adjust for game difficulty
+	difficulty = config.get_value("difficulty","difficulty") 
 	$start_game_sound.play()
 	$StartTimer.start()
 
@@ -109,12 +111,43 @@ func check_win_condition():
 func _process(delta):
 	pass
 
+################################################################################
+### Auxiliary functions
+################################################################################
+func get_spawn_count():
+	# TODO return variable spawn count from game state
+	return floori(score/spawn_divisor) * ( 1 + floori(score * get_random_factor()) )
+
+func get_random_factor(): # increase difficulty for longer game runs
+	return randf_range(.0,difficulty*(1+score/100)/100)
+
+func get_mob_scene(i):
+	if i == 1:
+		return mob_path_1 #"MobPath1/MobSpawnLocation1" #mob_path_1
+	elif i == 2:
+		return mob_path_2 #"MobPath2/MobSpawnLocation2" #mob_path_2
+	else:
+		return mob_path_3 #"MobPath3/MobSpawnLocation3" #mob_path_3
+
+func get_mob_path(i):
+	if i == 1:
+		return get_node("MobPath1") #"MobPath1/MobSpawnLocation1" #mob_path_1
+	elif i == 2:
+		return get_node("MobPath2") #"MobPath2/MobSpawnLocation2" #mob_path_2
+	elif i == 3:
+		return get_node("MobPath3")
+	elif i == 4:
+		return get_node("MobPath4")
+	elif i == 5:
+		return get_node("MobPath5")
+	else:
+		return get_node("MobPath3") #"MobPath3/MobSpawnLocation3" #mob_path_3
 
 ################################################################################
 ### Timers                                                                   ###
 ################################################################################
 func _on_mob_timer_timeout():
-	# TODO: 
+	# TODO: edit to spawn different mobs per path
 	for i in range(get_spawn_count()):
 		var spawn_index = randi_range(1,3)
 		get_node("enemy_spawn").spawn(
@@ -148,32 +181,33 @@ func damage_ark(dmg):
 	get_node("Player/PlayerCamera/HealthArk").value = 100 - boat.health
 
 func _on_ark_hit(dmg):
-#	print(dmg)
 	damage_ark(dmg)
+
+# TODO: remove code duplication with signals containing argument from mot type
 
 func _on_path_1_ark_hit():
 	_on_ark_hit(
-		1  # TODO: get Mob1.damage
+		config.get_value("difficulty","base_damage") if config.get_section_keys("mob1").is_empty() else config.get_value("mob1","damage")
 	)
 	
 func _on_path_2_ark_hit():
 	_on_ark_hit(
-		2 # TODO: get Mob2.damage
+		config.get_value("difficulty","base_damage") if config.get_section_keys("mob2").is_empty() else config.get_value("mob2","damage")
 	)
 
 func _on_path_3_ark_hit():
 	_on_ark_hit(
-		3 # TODO: get Mob3.damage
+		config.get_value("difficulty","base_damage") if config.get_section_keys("mob3").is_empty() else config.get_value("mob3","damage")
 	)
 
 func _on_path_4_ark_hit():
 	_on_ark_hit(
-		2 # TODO: get Mob3.damage
+		config.get_value("difficulty","base_damage") if config.get_section_keys("mob4").is_empty() else config.get_value("mob4","damage")
 	)
 	
 func _on_path_5_ark_hit():
 	_on_ark_hit(
-		1 # TODO: get Mob3.damage
+		config.get_value("difficulty","base_damage") if config.get_section_keys("mob5").is_empty() else config.get_value("mob5","damage")
 	)
 	
 func _on_ark_destroyed():

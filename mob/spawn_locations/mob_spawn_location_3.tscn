@@ -35,6 +35,11 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
 }]
 
 [node name="MobSpawnLocation3" type="PathFollow2D"]
@@ -56,7 +61,7 @@ shape = SubResource("CapsuleShape2D_ldo76")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Mob3"]
 position = Vector2(27.0001, 720)
 sprite_frames = SubResource("SpriteFrames_q8xt8")
-frame_progress = 0.446136
+animation = &"new_animation"
 
 [node name="42223" type="Timer" parent="."]
 wait_time = 0.2
