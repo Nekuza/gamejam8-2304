@@ -33,6 +33,12 @@ func get_mob_path(i):
 		return get_node("MobPath1") #"MobPath1/MobSpawnLocation1" #mob_path_1
 	elif i == 2:
 		return get_node("MobPath2") #"MobPath2/MobSpawnLocation2" #mob_path_2
+	elif i == 3:
+		return get_node("MobPath3")
+	elif i == 4:
+		return get_node("MobPath4")
+	elif i == 5:
+		return get_node("MobPath5")
 	else:
 		return get_node("MobPath3") #"MobPath3/MobSpawnLocation3" #mob_path_3
 
@@ -42,6 +48,8 @@ func _ready():
 	get_node("enemy_spawn").ark_hit_1.connect(_on_path_1_ark_hit)
 	get_node("enemy_spawn").ark_hit_2.connect(_on_path_2_ark_hit)
 	get_node("enemy_spawn").ark_hit_3.connect(_on_path_3_ark_hit)
+	get_node("enemy_spawn").ark_hit_4.connect(_on_path_4_ark_hit)
+	get_node("enemy_spawn").ark_hit_5.connect(_on_path_5_ark_hit)
 	get_node("Boat").destroyed.connect(_on_ark_destroyed)
 	get_node("RigidBody2D").touched.connect(_on_animal_touched)
 	
@@ -158,6 +166,16 @@ func _on_path_3_ark_hit():
 		3 # TODO: get Mob3.damage
 	)
 
+func _on_path_4_ark_hit():
+	_on_ark_hit(
+		2 # TODO: get Mob3.damage
+	)
+	
+func _on_path_5_ark_hit():
+	_on_ark_hit(
+		1 # TODO: get Mob3.damage
+	)
+	
 func _on_ark_destroyed():
 	$ScoreTimer.stop()
 	game_over()
