@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://beblja4e0c6l3"]
+[gd_scene load_steps=11 format=3 uid="uid://beblja4e0c6l3"]
 
 [ext_resource type="Script" path="res://boat/boat.gd" id="1_dlg1h"]
 [ext_resource type="Texture2D" uid="uid://ccw4w083fuch6" path="res://assets/boat/100hp.png" id="2_b2rf3"]
@@ -6,42 +6,60 @@
 [ext_resource type="Texture2D" uid="uid://cvi8dxlqo0yyv" path="res://assets/boat/50hp.png" id="4_e5axp"]
 [ext_resource type="Texture2D" uid="uid://bqis7vaichcmn" path="res://assets/boat/75hp.png" id="5_2wb4u"]
 [ext_resource type="Texture2D" uid="uid://cjbx2vphw35a" path="res://assets/boat/0hp.png" id="6_471xy"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ufu51"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_b2rf3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_2wb4u")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_e5axp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_ynfyj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_471xy")
-}],
-"loop": true,
-"name": &"destruction_states",
-"speed": 5.0
-}]
+[ext_resource type="AudioStream" uid="uid://b1n8wu5jbxr05" path="res://sounds/you_lose.ogg" id="7_7dn2p"]
+[ext_resource type="AudioStream" uid="uid://bmom8erc760sm" path="res://sounds/impact_plate_heavy_000.ogg" id="8_jd1sw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5cxg7"]
 radius = 20.9978
 height = 79.9917
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_2w7m6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_471xy")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ynfyj")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_e5axp")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_2wb4u")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_b2rf3")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}]
+
 [node name="Boat" type="RigidBody2D"]
 mass = 1000.0
 gravity_scale = 0.0
 script = ExtResource("1_dlg1h")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_ufu51")
-animation = &"destruction_states"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.19209e-07, 3)
@@ -51,3 +69,16 @@ shape = SubResource("CapsuleShape2D_5cxg7")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(1.42109e-14, 2)
 scale = Vector2(3.95, 2.1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-0.499999, 1)
+scale = Vector2(0.9875, 0.96875)
+sprite_frames = SubResource("SpriteFrames_2w7m6")
+animation = &"4"
+
+[node name="YouLoseSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_7dn2p")
+
+[node name="BreakSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_jd1sw")
+volume_db = 15.167

@@ -27,3 +27,7 @@ func _on_optionsbutton_pressed():
 func _on_quitbutton_pressed():
 	$select_sound.play()
 	get_tree().quit()
+
+
+func _on_about_pressed():
+	pass # Replace with function body.

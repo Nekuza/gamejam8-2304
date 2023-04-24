@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+signal touched
+
 @export_category("Select animal")
 @export_enum("boris", "cow", "eagle", "goat", "pig", "wolf") 
 var animal_type: String = "eagle"
@@ -17,6 +19,7 @@ var isTouched = false
 var count = 0
 var readyToFire = true
 
+var count = 0;
 
 func _ready():
 	$AnimatedSprite2D.play(animal_type)

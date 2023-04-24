@@ -11,8 +11,6 @@ var start_health = 40
 var health
 var health_bar
 
-#var mob = get_node("Mob").instantiate()
-#var spawn_rate = mob.get_spawn_rate()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	PRINT = true
@@ -26,13 +24,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if PRINT:
-		print("I'm processing!")
-		PRINT = false
-		print(get_parent().name)
-#		print(delta)
-#		print(self.progress_ratio)
-#		print($Mob1.speed)
 	if progress_ratio > .99:
 		ark_hit.emit()
 		queue_free()
@@ -57,3 +48,5 @@ func on_hit(damage):
 func on_destroy():
 	#TODO death_sound
 	self.queue_free()
+	progress_ratio += $Mob1.speed * delta 
+	pass

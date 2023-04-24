@@ -7,13 +7,10 @@ var health
 signal hit
 signal destroyed
 
-# TODO load sprites for damaged ark
-#sprites = [
-#	SpriteFrames 
-#	]
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$AnimatedSprite2D.play("4")
+	get_node("../Player/PlayerCamera/GameOver_Label").visible_characters = 0
 	health = start_health
 	pass
 
@@ -21,8 +18,30 @@ func _ready():
 func _process(delta):
 	# TODO: change sprite on health thresholds
 	# 0, 25, 50, 75, 100 health left
+	
 	if health <= 0:
+		change_state("0")
+		
 		destroyed.emit()
+		get_node("../Player/PlayerCamera/GameOver_Label").visible_characters = -1
+		$YouLoseSound.play()
+		get_node("../Player/PlayerCamera/Score_Label").text = "Score: " + str(get_parent().score)
+		
+	elif health <= 25:
+		change_state("1")
+		
+	elif health <= 50:
+		change_state("2")
+		
+	elif health <= 75:
+		change_state("3")
+		
+	pass
+	
+func change_state(number):
+	$BreakSound.play
+	get_node("../Player/PlayerCamera/AnimatedSprite2D").play(number)
+	$AnimatedSprite2D.play(number)
 	pass
 
 func start(pos):
@@ -30,6 +49,7 @@ func start(pos):
 	health = start_health
 	show()
 	$CollisionShape2D.disabled = false
+	pass
 
 func flicker_on_hit():
 	var flicker_time = 50
@@ -37,6 +57,7 @@ func flicker_on_hit():
 	for flicker_count in flicker_time:
 		visible = !visible
 	visible = true
+	pass
 
 func _on_body_entered(body):
 	# TODO if body == player:

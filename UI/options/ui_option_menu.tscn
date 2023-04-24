@@ -1,17 +1,35 @@
 [gd_scene load_steps=3 format=3 uid="uid://charheoousk2b"]
 
 [ext_resource type="Script" path="res://UI/options/ui_option_menu.gd" id="1_eqgrr"]
-[ext_resource type="PackedScene" uid="uid://dw83smnvh5bm" path="res://UI/options/ui_resolution_selector.tscn" id="1_f3tm1"]
+[ext_resource type="Texture2D" uid="uid://clu8083ocaox4" path="res://assets/ui/vince_titleui_fullsize.png" id="2_ij4g6"]
 
-[node name="Panel" type="Panel"]
-offset_right = 539.0
-offset_bottom = 174.0
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_eqgrr")
 
+[node name="VinceTitleuiFullsize" type="Sprite2D" parent="."]
+position = Vector2(961, 555)
+scale = Vector2(1.00104, 1.02037)
+texture = ExtResource("2_ij4g6")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 532.0
-offset_bottom = 246.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -922.0
+offset_top = 116.0
+offset_right = -360.0
+offset_bottom = 471.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -24,9 +42,19 @@ layout_mode = 2
 [node name="Label2" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="UIResolutionSelector" parent="VBoxContainer" instance=ExtResource("1_f3tm1")]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Resolution:"
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Label3" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -34,11 +62,11 @@ layout_mode = 2
 [node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="Apply" type="Button" parent="VBoxContainer"]
+[node name="Back" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.835294, 0, 0, 1)
-text = "Apply"
+text = "Back"
 icon_alignment = 1
 
-[connection signal="resolution_changed" from="VBoxContainer/UIResolutionSelector" to="." method="_on_UIResolutionSelector_resolution_changed"]
-[connection signal="pressed" from="VBoxContainer/Apply" to="." method="_on_ApplyButton_pressed"]
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_back_pressed"]
