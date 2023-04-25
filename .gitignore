@@ -1,6 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
 .idea/
+commit.msg
 
 # Godot-specific ignores
 .import/
