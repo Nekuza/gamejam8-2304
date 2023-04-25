@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bsaik1smq4a1e"]
+[gd_scene load_steps=27 format=3 uid="uid://bsaik1smq4a1e"]
 
 [ext_resource type="Script" path="res://main_game.gd" id="1_0spe2"]
 [ext_resource type="Texture2D" uid="uid://dgfvie1qjdhal" path="res://assets/map/roguelikeSheet_transparent.png" id="1_ejnce"]
@@ -5349,24 +5349,6 @@ separation = Vector2i(1, 1)
 physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_istaf")
 
-[sub_resource type="Curve2D" id="Curve2D_3eo4t"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1304, 328, 0, 0, 0, 0, 1303, 344, 0, 0, 0, 0, 1224, 342, 0, 0, 0, 0, 1222, 296, 0, 0, 0, 0, 1082, 295, 0, 0, 0, 0, 1079, 356, 0, 0, 0, 0, 1033, 359, 0, 0, 0, 0, 1031, 262, 0, 0, 0, 0, 891, 262, 0, 0, 0, 0, 886, 200, 0, 0, 0, 0, 776, 197, 0, 0, 0, 0, 776, 356, 0, 0, 0, 0, 730, 360, 0, 0, 0, 0, 728, 473)
-}
-point_count = 14
-
-[sub_resource type="Curve2D" id="Curve2D_x8rhv"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 276, 824, 0, 0, 0, 0, 277, 838, 0, 0, 0, 0, 375, 838, 0, 0, 0, 0, 377, 792, 0, 0, 0, 0, 455, 792, 0, 0, 0, 0, 458, 823, 0, 0, 0, 0, 504, 823, 0, 0, 0, 0, 506, 854, 0, 0, 0, 0, 551, 852, 0, 0, 0, 0, 551, 744, 0, 0, 0, 0, 507, 742, 0, 0, 0, 0, 504, 633, 0, 0, 0, 0, 443, 631, 0, 0, 0, 0, 441, 536, 0, 0, 0, 0, 487, 534, 0, 0, 0, 0, 491, 565, 0, 0, 0, 0, 584, 565, 0, 0, 0, 0, 586, 472, 0, 0, 0, 0, 646, 471, 0, 0, 0, 0, 648, 486, 0, 0, 0, 0, 724, 483)
-}
-point_count = 21
-
-[sub_resource type="Curve2D" id="Curve2D_vuv4q"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 249, 101, 0, 0, 0, 0, 249, 118, 0, 0, 0, 0, 218, 119, 0, 0, 0, 0, 218, 262, 0, 0, 0, 0, 327, 263, 0, 0, 0, 0, 328, 327, 0, 0, 0, 0, 299, 328, 0, 0, 0, 0, 298, 390, 0, 0, 0, 0, 343, 391, 0, 0, 0, 0, 346, 470, 0, 0, 0, 0, 406, 472, 0, 0, 0, 0, 410, 534, 0, 0, 0, 0, 486, 535, 0, 0, 0, 0, 490, 564, 0, 0, 0, 0, 583, 565, 0, 0, 0, 0, 587, 473, 0, 0, 0, 0, 647, 471, 0, 0, 0, 0, 650, 485, 0, 0, 0, 0, 724, 484)
-}
-point_count = 19
-
 [sub_resource type="CanvasTexture" id="CanvasTexture_bf4p7"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_tu6l4"]
@@ -5413,6 +5395,36 @@ animations = [{
 "name": &"4",
 "speed": 5.0
 }]
+
+[sub_resource type="Curve2D" id="Curve2D_3eo4t"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1304, 328, 0, 0, 0, 0, 1303, 344, 0, 0, 0, 0, 1224, 342, 0, 0, 0, 0, 1222, 296, 0, 0, 0, 0, 1082, 295, 0, 0, 0, 0, 1079, 356, 0, 0, 0, 0, 1033, 359, 0, 0, 0, 0, 1031, 262, 0, 0, 0, 0, 891, 262, 0, 0, 0, 0, 886, 200, 0, 0, 0, 0, 776, 197, 0, 0, 0, 0, 776, 356, 0, 0, 0, 0, 730, 360, 0, 0, 0, 0, 728, 473)
+}
+point_count = 14
+
+[sub_resource type="Curve2D" id="Curve2D_x8rhv"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 276, 824, 0, 0, 0, 0, 277, 838, 0, 0, 0, 0, 375, 838, 0, 0, 0, 0, 377, 792, 0, 0, 0, 0, 455, 792, 0, 0, 0, 0, 458, 823, 0, 0, 0, 0, 504, 823, 0, 0, 0, 0, 506, 854, 0, 0, 0, 0, 551, 852, 0, 0, 0, 0, 551, 744, 0, 0, 0, 0, 507, 742, 0, 0, 0, 0, 504, 633, 0, 0, 0, 0, 443, 631, 0, 0, 0, 0, 441, 536, 0, 0, 0, 0, 487, 534, 0, 0, 0, 0, 491, 565, 0, 0, 0, 0, 584, 565, 0, 0, 0, 0, 586, 472, 0, 0, 0, 0, 646, 471, 0, 0, 0, 0, 648, 486, 0, 0, 0, 0, 724, 483)
+}
+point_count = 21
+
+[sub_resource type="Curve2D" id="Curve2D_vuv4q"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 249, 101, 0, 0, 0, 0, 249, 118, 0, 0, 0, 0, 218, 119, 0, 0, 0, 0, 218, 262, 0, 0, 0, 0, 327, 263, 0, 0, 0, 0, 328, 327, 0, 0, 0, 0, 299, 328, 0, 0, 0, 0, 298, 390, 0, 0, 0, 0, 343, 391, 0, 0, 0, 0, 346, 470, 0, 0, 0, 0, 406, 472, 0, 0, 0, 0, 410, 534, 0, 0, 0, 0, 486, 535, 0, 0, 0, 0, 490, 564, 0, 0, 0, 0, 583, 565, 0, 0, 0, 0, 587, 473, 0, 0, 0, 0, 647, 471, 0, 0, 0, 0, 650, 485, 0, 0, 0, 0, 724, 484)
+}
+point_count = 19
+
+[sub_resource type="Curve2D" id="Curve2D_jybhc"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1266, 1466, 0, 0, 0, 0, 1266, 1479, 0, 0, 0, 0, 1162, 1478, 0, 0, 0, 0, 1160, 1400, 0, 0, 0, 0, 1050, 1397, 0, 0, 0, 0, 1046, 1303, 0, 0, 0, 0, 938, 1299, 0, 0, 0, 0, 936, 1238, 0, 0, 0, 0, 794, 1237, 0, 0, 0, 0, 792, 953, 0, 0, 0, 0, 1098, 949, 0, 0, 0, 0, 1097, 776, 0, 0, 0, 0, 1157, 775, 0, 0, 0, 0, 1160, 537, 0, 0, 0, 0, 1003, 536, 0, 0, 0, 0, 999, 613, 0, 0, 0, 0, 730, 616, 0, 0, 0, 0, 728, 483)
+}
+point_count = 18
+
+[sub_resource type="Curve2D" id="Curve2D_vvmwi"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 326, 1413, 0, 0, 0, 0, 359, 1415, 0, 0, 0, 0, 361, 1477, 0, 0, 0, 0, 281, 1478, 0, 0, 0, 0, 282, 1369, 0, 0, 0, 0, 359, 1369, 0, 0, 0, 0, 362, 1396, 0, 0, 0, 0, 470, 1401, 0, 0, 0, 0, 474, 1525, 0, 0, 0, 0, 647, 1527, 0, 0, 0, 0, 648, 1447, 0, 0, 0, 0, 635, 1447, 0, 0, 0, 0, 634, 1275, 0, 0, 0, 0, 648, 1270, 0, 0, 0, 0, 648, 1147, 0, 0, 0, 0, 663, 1140, 0, 0, 0, 0, 667, 1117, 0, 0, 0, 0, 716, 1065, 0, 0, 0, 0, 757, 1061, 0, 0, 0, 0, 766, 1048, 0, 0, 0, 0, 950, 1048, 0, 0, 0, 0, 954, 1108, 0, 0, 0, 0, 983, 1110, 0, 0, 0, 0, 984, 1238, 0, 0, 0, 0, 796, 1236, 0, 0, 0, 0, 796, 955, 0, 0, 0, 0, 1097, 950, 0, 0, 0, 0, 1100, 776, 0, 0, 0, 0, 1159, 774, 0, 0, 0, 0, 1160, 539, 0, 0, 0, 0, 1002, 535, 0, 0, 0, 0, 998, 611, 0, 0, 0, 0, 731, 613, 0, 0, 0, 0, 728, 483)
+}
+point_count = 34
 
 [node name="world" type="Node2D"]
 position = Vector2(448, 385)
@@ -5503,25 +5515,6 @@ offset_top = 391.0
 offset_right = 1304.0
 offset_bottom = 1095.0
 
-[node name="MobPath1" type="Path2D" parent="."]
-curve = SubResource("Curve2D_3eo4t")
-
-[node name="MobSpawnLocation1" parent="MobPath1" instance=ExtResource("16_vvsxg")]
-rotates = false
-loop = false
-
-[node name="MobPath2" type="Path2D" parent="."]
-curve = SubResource("Curve2D_x8rhv")
-
-[node name="MobSpawnLocation2" parent="MobPath2" instance=ExtResource("10_d5s06")]
-
-[node name="MobPath3" type="Path2D" parent="."]
-curve = SubResource("Curve2D_vuv4q")
-
-[node name="MobSpawnLocation3" parent="MobPath3" instance=ExtResource("18_8j3ac")]
-
-[node name="RigidBody2D" parent="." instance=ExtResource("16_eg5k2")]
-
 [node name="Player" parent="." instance=ExtResource("5_jwt35")]
 position = Vector2(724, 507)
 
@@ -5563,6 +5556,39 @@ offset_left = -39.0
 offset_top = -95.0
 offset_right = 81.0
 offset_bottom = -74.0
+
+[node name="MobPath1" type="Path2D" parent="."]
+curve = SubResource("Curve2D_3eo4t")
+
+[node name="MobSpawnLocation1" parent="MobPath1" instance=ExtResource("16_vvsxg")]
+rotates = false
+loop = false
+
+[node name="MobPath2" type="Path2D" parent="."]
+curve = SubResource("Curve2D_x8rhv")
+
+[node name="MobSpawnLocation2" parent="MobPath2" instance=ExtResource("10_d5s06")]
+
+[node name="MobPath3" type="Path2D" parent="."]
+curve = SubResource("Curve2D_vuv4q")
+
+[node name="MobSpawnLocation3" parent="MobPath3" instance=ExtResource("18_8j3ac")]
+
+[node name="MobPath4" type="Path2D" parent="."]
+curve = SubResource("Curve2D_jybhc")
+
+[node name="MobSpawnLocation4" type="PathFollow2D" parent="MobPath4"]
+position = Vector2(1266, 1466)
+rotation = 1.5708
+
+[node name="MobPath5" type="Path2D" parent="."]
+curve = SubResource("Curve2D_vvmwi")
+
+[node name="MobSpawnLocation5" type="PathFollow2D" parent="MobPath5"]
+position = Vector2(326, 1413)
+rotation = 0.060532
+
+[node name="RigidBody2D" parent="." instance=ExtResource("16_eg5k2")]
 
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
