@@ -82,6 +82,7 @@ func new_game():
 	boat = get_node("Boat")
 	score = 0
 	difficulty = config.get_value("difficulty","difficulty")
+	$start_game_sound.volume_db = config.get_value("start_sound","volume")
 	$start_game_sound.play()
 	$StartTimer.start()
 

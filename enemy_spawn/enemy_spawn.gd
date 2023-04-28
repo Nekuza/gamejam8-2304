@@ -16,6 +16,7 @@ func spawn(enemy_type: PathFollow2D, amount: int, mob_path: Path2D):
 			enemy_type.ark_hit.connect(_on_path_1_ark_hit)
 		mob_path.add_child(enemy_type)
 		$StaticBody2D/AnimatedSprite2D.play("open_gate")
+		# TODO: play spawn sound?
 
 func _on_path_1_ark_hit():
 	ark_hit_1.emit()
