@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b8106vr7bp8ed"]
+[gd_scene load_steps=11 format=3 uid="uid://b8106vr7bp8ed"] # TODO steps=14 ?
 
 [ext_resource type="Script" path="res://mob/MobSpawnLocation1.gd" id="1_ylned"]
 [ext_resource type="Script" path="res://mob/spawn_locations/Mob1.gd" id="2_ik8rk"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bprixvx4yp01w" path="res://assets/enemy/idle/3.png" id="6_2jbrm"]
 [ext_resource type="Texture2D" uid="uid://dt17tqdn2qx1s" path="res://assets/enemy/idle/4.png" id="7_bhsy3"]
 [ext_resource type="Texture2D" uid="uid://ccr4ptb84k7of" path="res://assets/enemy/idle/5.png" id="8_1qo4m"]
+[ext_resource type="AudioStream" uid="uid://6j58ub0ls72i" path="res://sounds/Retro_8-Bit_Game-Hit_Hurt_Fall_Drop_08.wav" id="9_ilx5v"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0pp4w"]
 
@@ -37,22 +38,39 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_t37fq"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_fep7e"]
+
 [node name="MobSpawnLocation1" type="PathFollow2D"]
 position = Vector2(1304, 328)
 rotation = 1.63322
 script = ExtResource("1_ylned")
 
 [node name="Mob1" type="Node2D" parent="."]
-position = Vector2(-722.089, -24.509)
-rotation = -1.49949
+position = Vector2(-722.089, -24.509) # TODO remove?
+rotation = -1.49949 # TODO remove?
 script = ExtResource("2_ik8rk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mob1"]
-position = Vector2(-1.99994, -2.99994)
+position = Vector2(-1.99994, -2.99994) # TODO remove?
 shape = SubResource("CapsuleShape2D_0pp4w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Mob1"]
-position = Vector2(27.0001, 720)
+position = Vector2(27.0001, 720) # TODO remove?
 sprite_frames = SubResource("SpriteFrames_sbh5d")
 
-[node name="87671" type="Timer" parent="."]
+[node name="HealthBar" type="TextureProgressBar" parent="Mob1"]
+offset_left = -8.98253
+offset_top = -15.4698
+offset_right = 12.0175
+offset_bottom = -12.4698
+value = 50.0
+nine_patch_stretch = true
+texture_under = SubResource("CanvasTexture_t37fq")
+texture_progress = SubResource("CanvasTexture_fep7e")
+tint_under = Color(0.313726, 0.313726, 0.313726, 1)
+tint_progress = Color(1, 0.129412, 0.0588235, 1)
+
+[node name="on_hit_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_ilx5v")

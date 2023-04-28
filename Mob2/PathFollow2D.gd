@@ -5,26 +5,52 @@ extends PathFollow2D
 func get_patrol_path():
 	return get_parent()
 # Called when the node enters the scene tree for the first time.
-func _ready():
-#	patrol_path = get_parent().curve
-	pass # Replace with function body.
 
-func _physics_process(delta):
-	move(delta)
-	
-func move(delta):
-	pass
-	
+# stats
+var atk_damage 	= 1
+var atk_speed	= 1
+var speed  		= .5
+var start_health = 40
+@export var spawn_rate 	= 1
+var health
+var health_bar
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	health = start_health
+	health_bar = get_node("RigidBody2D").get_node("HealthBar")
+	health_bar.max_value = health
+	health_bar.value = health
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	var move_delta = $Node2D.speed * delta
-#	self.move_local_x(move_delta)
-#	self.move_local_y(move_delta)
-	# TODO: remove child when reached certain position
-#	if $Node2D.global_position == get_parent().curve.get_baked_points()[-1]:
-#		remove_child($Node2D)
+func _process(delta):
+	# TODO: follow specified path
+#	path_follow = get_parent().get_node("MobPath1/MobSpawnLocation1")
+#	# path_follow = path.$MobSpawnLocation
+#	path_follow.position += Vector2(speed * delta, speed * delta)
+#	position = path_follow.get_global_transform().origin
+	pass
+
+
+# setter functions
+func set_damage(value):
+	atk_damage = value
+func set_atk_speed(value):
+	atk_speed = value
+func set_speed(value):
+	speed = value
+func set_spawn_rate(value):
+	spawn_rate = value
+
+func on_hit(damage):
+	health -= damage
+	health_bar.value = health
+	if health <= 0:
+		on_destroy()
+	else:
+		$on_hit_sound.play() 
 	
-#	if $Node2D/RigidBody2D.get_contact_count() > 0:
-#		print("COLLISION!")
-#	pass
+func on_destroy():
+	#TODO death_sound
+	self.queue_free()
