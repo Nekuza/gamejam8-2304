@@ -14,9 +14,24 @@ func spawn(enemy_type: PathFollow2D, amount: int, mob_path: Path2D):
 			enemy_type.ark_hit.connect(_on_path_2_ark_hit)
 		else:
 			enemy_type.ark_hit.connect(_on_path_1_ark_hit)
+			$StaticBody2D/AnimatedSprite2D.play("open_gate")
 		mob_path.add_child(enemy_type)
-		$StaticBody2D/AnimatedSprite2D.play("open_gate")
 		# TODO: play spawn sound?
+
+func ready_enemy(mob_name,param):
+	var config = ConfigFile.new()
+	config.load("res://game.cfg")
+	if param == "speed": # special case for speed
+		return get_enemy_speed(mob_name)
+	return config.get_value(mob_name,param)
+
+func get_enemy_speed(mob_name):
+	var config = ConfigFile.new()
+	config.load("res://game.cfg")
+	var variation = config.get_value(mob_name,"speed_variation")
+	var speed = config.get_value(mob_name,"base_speed") + randf_range(-variation,variation)
+	return speed
+	
 
 func _on_path_1_ark_hit():
 	ark_hit_1.emit()

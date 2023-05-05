@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b8106vr7bp8ed"]
+[gd_scene load_steps=13 format=3 uid="uid://b8106vr7bp8ed"]
 
 [ext_resource type="Script" path="res://mob/MobSpawnLocation1.gd" id="1_ylned"]
 [ext_resource type="Script" path="res://mob/spawn_locations/Mob1.gd" id="2_ik8rk"]
@@ -37,6 +37,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_me6fu"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_g75ag"]
+
 [node name="MobSpawnLocation1" type="PathFollow2D"]
 position = Vector2(1304, 328)
 rotation = 1.63322
@@ -54,5 +58,18 @@ shape = SubResource("CapsuleShape2D_0pp4w")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Mob1"]
 position = Vector2(27.0001, 720)
 sprite_frames = SubResource("SpriteFrames_sbh5d")
+
+[node name="HealthBar" type="TextureProgressBar" parent="Mob1"]
+offset_left = 16.9993
+offset_top = 706.0
+offset_right = 37.9993
+offset_bottom = 709.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = SubResource("CanvasTexture_me6fu")
+texture_progress = SubResource("CanvasTexture_g75ag")
+tint_under = Color(0.313726, 0.313726, 0.313726, 1)
+tint_progress = Color(1, 0.129412, 0.0588235, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="87671" type="Timer" parent="."]

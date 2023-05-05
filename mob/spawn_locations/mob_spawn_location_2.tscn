@@ -49,19 +49,19 @@ rotates = false
 loop = false
 script = ExtResource("1_k7h2g")
 
-[node name="MobV2" type="RigidBody2D" parent="."]
+[node name="Mob2" type="RigidBody2D" parent="."]
 rotation = -1.49949
 freeze = true
 script = ExtResource("2_cidjc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MobV2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mob2"]
 shape = SubResource("CapsuleShape2D_ldo76")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MobV2"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Mob2"]
 sprite_frames = SubResource("SpriteFrames_q8xt8")
 frame_progress = 0.446136
 
-[node name="HealthBar" type="TextureProgressBar" parent="MobV2"]
+[node name="HealthBar" type="TextureProgressBar" parent="Mob2"]
 offset_left = -10.0
 offset_top = -16.0
 offset_right = 11.0
@@ -73,6 +73,9 @@ texture_progress = SubResource("CanvasTexture_e43wh")
 tint_under = Color(0.313726, 0.313726, 0.313726, 1)
 tint_progress = Color(1, 0.129412, 0.0588235, 1)
 metadata/_edit_use_anchors_ = true
+
+[node name="Mob2_" type="StaticBody2D" parent="."]
+visible = false
 
 [node name="51339" type="Timer" parent="."]
 wait_time = 0.2

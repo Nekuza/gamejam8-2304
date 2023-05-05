@@ -37,8 +37,8 @@ func _ready():
 		return
 
 	############################################################################
-	var mob2 = get_node("MobPath3/MobSpawnLocation3/Mob3/AnimatedSprite2D")
-	var sprite_frames = mob2.sprite_frames
+#	var mob2 = get_node("MobPath3/MobSpawnLocation3/Mob3/AnimatedSprite2D")
+#	var sprite_frames = mob2.sprite_frames
 	# TODO save and load sprite_frames for dynamic loading depending on mob type
 #	for section in config.get_sections():
 #		if section.contains("animal"):
@@ -54,6 +54,7 @@ func _ready():
 	new_game()
 
 func new_game():
+	## spawn towers
 	var animal_loaded = preload("res://animal/logic/animal.tscn")
 	# set up the different animal types for spawning
 	var animals_array = []
@@ -78,6 +79,7 @@ func new_game():
 			instanciated_animal.position =area.position + Vector2(randf() * area.size.x, randf() * area.size.y)
 			add_child(instanciated_animal)
 	
+	## initialize game variables
 	target_progress = len(animals_array)
 	boat = get_node("Boat")
 	score = 0
@@ -156,6 +158,12 @@ func _on_mob_timer_timeout():
 			1, # amount
 			get_mob_path(spawn_index) # Path2D
 		)
+	print("spawning new mob2!")
+	get_node("enemy_spawn").spawn(
+		get_mob_scene( 2 ).instantiate(), # PathFollow2D
+			1, # amount
+			get_mob_path(2) # Path2D
+	)
 	# debug body with collision
 #	var test_mob = TEST_MOB.instantiate()
 #	get_node("TESTPATH")
