@@ -173,11 +173,12 @@ radius = 15.0
 height = 38.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4y1c0"]
-radius = 64.4981
+radius = 60.0
 
 [node name="RigidBody2D" type="RigidBody2D"]
 mass = 0.01
 gravity_scale = 0.0
+contact_monitor = true
 script = ExtResource("1_vk5pl")
 animal_type = "boris"
 
@@ -189,8 +190,7 @@ animation = &"wolf"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
 shape = SubResource("CapsuleShape2D_7pgvn")
-disabled = true
-debug_color = Color(0, 0.6, 0.701961, 0.419608)
+debug_color = Color(0.623529, 0.533333, 0, 0.419608)
 
 [node name="PickUpArea" type="Area2D" parent="."]
 

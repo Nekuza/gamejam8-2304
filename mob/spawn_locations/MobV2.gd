@@ -6,6 +6,7 @@ var health
 var spawn_rate
 var speed
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.freeze = true
