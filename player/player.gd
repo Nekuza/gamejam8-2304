@@ -4,6 +4,10 @@ var speed = 1000  # speed in pixels/sec
 var canPick = true
 
 func _ready():
+	var config = ConfigFile.new()
+	config.load("res://game.cfg")
+	
+	speed = config.get_value("player","speed")
 	$AnimatedSprite2D.play("idle")
 
 func get_input():

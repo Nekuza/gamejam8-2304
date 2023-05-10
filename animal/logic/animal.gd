@@ -10,12 +10,13 @@ var animal_type: String = "eagle"
 
 # tower stats
 var damage = 1
-var rateOfFire = 500
+var rateOfFire = 0.1 # TODO: load from config
+#var fireTimer
 #var fire_range = $fire_range/Collision_fireRange.get_CollisionShape2D.getRadius()
 
-
+var eligible_targets = ["Mob1","Mob2","Mob3","Mob4","Mob5"] # TODO: dirty
 var enemies_inRange = []
-var tageted_enemy
+var targeted_enemy
 var picked = false
 var isTouched = false
 var count = 0
@@ -23,19 +24,24 @@ var readyToFire = true
 
 
 func _ready():
+	var config = ConfigFile.new()
+	config.load("res://game.cfg")
+	
 	$AnimatedSprite2D.play(animal_type)
 	get_node("CollisionShape2D").disabled = false
 	
+#	get_node("fireTimer").wait_time = float(1 / rateOfFire) # TODO: not working
+#	print(get_node("fireTimer").wait_time)
+	pass
 
 func _physics_process(delta):
 	if picked:
 		self.position = get_node("../Player").position + Vector2(10, -23)
-	if enemies_inRange.size() != 0 and !picked:
-		select_enemy()
-		fire()
-	else:
-		tageted_enemy = null
-
+#	if enemies_inRange.size() != 0 and !picked:
+#		select_enemy()
+#		fire()
+#	else:
+#		targeted_enemy = null
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_pick") and !picked:
@@ -44,6 +50,7 @@ func _input(event):
 			if body.name == "Player" and get_node("../Player").canPick == true:
 				picked = true
 				isTouched = true
+				touched.emit()
 				get_node("CollisionShape2D").disabled = true
 				$AnimatedSprite2D.stop()
 				get_node("../Player").canPick = false
@@ -63,19 +70,24 @@ func select_enemy():
 		enemy_progress_array.append(i.progress)
 	var max_progress = enemy_progress_array.max()
 	var enemy_index = enemy_progress_array.find(max_progress)
-	tageted_enemy = enemies_inRange[enemy_index]
+	targeted_enemy = enemies_inRange[enemy_index]
 
-
-func fire():
+func _on_fire_timer_timeout():
+#	print("i waited")
+	if enemies_inRange.size() != 0 and !picked:
+		select_enemy()
+		fire()
+	else:
+		targeted_enemy = null
 	
-	print("FIIIIIIIIIIIIIIIRE!!!!!!!!!!!")
-	tageted_enemy.on_hit(damage)
-	#await(rateOfFire)
-	print("i waited")
+func fire():
+#	print("FIIIIIIIIIIIIIIIRE!!!!!!!!!!!")
+	targeted_enemy.on_hit(damage)
 	
 	
 func _on_fire_range_body_entered(body: RigidBody2D):
-	if body.name == "Mob2":
+	if body.name in eligible_targets: # TODO: dirty
+#		if :#"Mob2":
 		print("erkannt")
 		enemies_inRange.append(body.get_parent())
 	
@@ -95,3 +107,16 @@ func _on_fire_range_body_exited(body: RigidBody2D):
 	pass # Replace with function body.
 
 
+
+
+
+
+func _on_touched():
+	# configure fire timer on first isTouched #TODO: move to physics_process
+	get_node("fireTimer").wait_time = rateOfFire
+	print("wait time is:")
+	print(get_node("fireTimer").wait_time)
+	print("wait time should be:")
+	print(rateOfFire)
+	get_node("fireTimer").start()
+	pass # Replace with function body.

@@ -158,7 +158,7 @@ func _on_mob_timer_timeout():
 			1, # amount
 			get_mob_path(spawn_index) # Path2D
 		)
-	print("spawning new mob2!")
+	print("spawning new mob2!") # TODO: debug only, spawns @ path2 every timeout!
 	get_node("enemy_spawn").spawn(
 		get_mob_scene( 2 ).instantiate(), # PathFollow2D
 			1, # amount

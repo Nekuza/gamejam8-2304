@@ -5429,6 +5429,7 @@ point_count = 34
 [node name="world" type="Node2D"]
 position = Vector2(448, 385)
 script = ExtResource("1_0spe2")
+mob_path_1 = ExtResource("15_66eof")
 mob_path_2 = ExtResource("10_d5s06")
 mob_path_3 = ExtResource("18_8j3ac")
 
@@ -5590,5 +5591,6 @@ rotation = 0.060532
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="ark_hit" from="MobPath1/MobSpawnLocation1" to="enemy_spawn" method="_on_path_1_ark_hit"]
 [connection signal="ark_hit" from="MobPath2/MobSpawnLocation2" to="." method="_on_path_2_ark_hit"]
 [connection signal="ark_hit" from="MobPath3/MobSpawnLocation3" to="." method="_on_path_3_ark_hit"]

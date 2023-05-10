@@ -4,6 +4,10 @@ signal ark_hit_1
 signal ark_hit_2
 signal ark_hit_3
 
+func _ready():
+#	get_parent().get_node("MobPath1/MobSpawnLocation1")._on_path_1_ark_hit.connect(ark_hit_1)
+	pass
+
 func spawn(enemy_type: PathFollow2D, amount: int, mob_path: Path2D):
 	enemy_type.add_to_group("enemies")
 	for i in amount:

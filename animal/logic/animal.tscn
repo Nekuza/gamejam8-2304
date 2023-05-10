@@ -204,5 +204,9 @@ debug_color = Color(0.984314, 0.054902, 0.282353, 0.419608)
 [node name="Collision_fireRange" type="CollisionShape2D" parent="fire_range"]
 shape = SubResource("CircleShape2D_4y1c0")
 
+[node name="fireTimer" type="Timer" parent="."]
+
+[connection signal="touched" from="." to="." method="_on_touched"]
 [connection signal="body_entered" from="fire_range" to="." method="_on_fire_range_body_entered"]
 [connection signal="body_exited" from="fire_range" to="." method="_on_fire_range_body_exited"]
+[connection signal="timeout" from="fireTimer" to="." method="_on_fire_timer_timeout"]
