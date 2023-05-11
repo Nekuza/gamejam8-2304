@@ -124,8 +124,3 @@ func _on_touched():
 
 
 
-
-
-
-func _on_fire_range_area_entered(area):
-	pass # Replace with function body.

@@ -214,7 +214,6 @@ debug_color = Color(0.984314, 0.054902, 0.282353, 0.419608)
 gizmo_extents = 1.0
 
 [connection signal="touched" from="." to="." method="_on_touched"]
-[connection signal="area_entered" from="fire_range" to="." method="_on_fire_range_area_entered"]
 [connection signal="body_entered" from="fire_range" to="." method="_on_fire_range_body_entered"]
 [connection signal="body_exited" from="fire_range" to="." method="_on_fire_range_body_exited"]
 [connection signal="timeout" from="fireTimer" to="." method="_on_fire_timer_timeout"]
