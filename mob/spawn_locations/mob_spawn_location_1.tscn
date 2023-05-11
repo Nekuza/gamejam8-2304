@@ -43,12 +43,10 @@ animations = [{
 
 [node name="MobSpawnLocation1" type="PathFollow2D"]
 position = Vector2(1304, 328)
-rotation = 1.63322
+rotates = false
 script = ExtResource("1_ylned")
 
 [node name="Mob1" type="Node2D" parent="."]
-position = Vector2(-722.089, -24.509)
-rotation = -1.49949
 script = ExtResource("2_ik8rk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mob1"]
@@ -56,14 +54,14 @@ position = Vector2(-1.99994, -2.99994)
 shape = SubResource("CapsuleShape2D_0pp4w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Mob1"]
-position = Vector2(27.0001, 720)
+position = Vector2(-2.00002, -3)
 sprite_frames = SubResource("SpriteFrames_sbh5d")
 
 [node name="HealthBar" type="TextureProgressBar" parent="Mob1"]
-offset_left = 16.9993
-offset_top = 706.0
-offset_right = 37.9993
-offset_bottom = 709.0
+offset_left = -11.0
+offset_top = -21.0
+offset_right = 10.0
+offset_bottom = -18.0
 value = 50.0
 nine_patch_stretch = true
 texture_under = SubResource("CanvasTexture_me6fu")

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dt5036pe8v5fr"]
+
+[ext_resource type="Script" path="res://animal/projectile/projectile.gd" id="1_22ve7"]
+[ext_resource type="Texture2D" uid="uid://y6fgnhe4tec5" path="res://assets/animals/projectile/laserRed01.png" id="1_m5ofi"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dcu1r"]
+radius = 4.0
+height = 54.0
+
+[node name="Area2D_Bullet" type="Area2D"]
+script = ExtResource("1_22ve7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 25)
+rotation = 1.5708
+texture = ExtResource("1_m5ofi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 25)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_dcu1r")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

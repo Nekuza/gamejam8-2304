@@ -10,8 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://ccr4ptb84k7of" path="res://assets/enemy/idle/5.png" id="8_fwuv6"]
 [ext_resource type="AudioStream" uid="uid://6j58ub0ls72i" path="res://sounds/Retro_8-Bit_Game-Hit_Hurt_Fall_Drop_08.wav" id="9_2d5jq"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ldo76"]
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_q8xt8"]
 animations = [{
 "frames": [{
@@ -42,6 +40,8 @@ animations = [{
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_e43wh"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ldo76"]
+
 [node name="MobSpawnLocation2" type="PathFollow2D"]
 position = Vector2(276, 824)
 rotation = 1.49949
@@ -51,11 +51,10 @@ script = ExtResource("1_k7h2g")
 
 [node name="Mob2" type="RigidBody2D" parent="."]
 rotation = -1.49949
+max_contacts_reported = 1
+contact_monitor = true
 freeze = true
 script = ExtResource("2_cidjc")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Mob2"]
-shape = SubResource("CapsuleShape2D_ldo76")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Mob2"]
 sprite_frames = SubResource("SpriteFrames_q8xt8")
@@ -73,6 +72,10 @@ texture_progress = SubResource("CanvasTexture_e43wh")
 tint_under = Color(0.313726, 0.313726, 0.313726, 1)
 tint_progress = Color(1, 0.129412, 0.0588235, 1)
 metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mob2"]
+scale = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_ldo76")
 
 [node name="Mob2_" type="StaticBody2D" parent="."]
 visible = false

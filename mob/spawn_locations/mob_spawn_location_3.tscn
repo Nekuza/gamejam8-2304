@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ccr4ptb84k7of" path="res://assets/enemy/idle/5.png" id="8_e1ywd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ldo76"]
+radius = 8.45499
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q8xt8"]
 animations = [{
@@ -35,11 +36,6 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"new_animation",
-"speed": 5.0
 }]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_l187h"]
@@ -48,30 +44,28 @@ animations = [{
 
 [node name="MobSpawnLocation3" type="PathFollow2D"]
 position = Vector2(249, 101)
-rotation = 1.5708
 rotates = false
 loop = false
 script = ExtResource("1_yeq5p")
 
 [node name="Mob3" type="Node2D" parent="."]
-position = Vector2(-722.089, -24.509)
-rotation = -1.49949
+position = Vector2(-10, -5.99997)
 script = ExtResource("2_twu74")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mob3"]
-position = Vector2(-1.99994, -3)
+position = Vector2(5.545, 1.00002)
 shape = SubResource("CapsuleShape2D_ldo76")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Mob3"]
-position = Vector2(27.0001, 720)
+position = Vector2(5, -4.57764e-05)
 sprite_frames = SubResource("SpriteFrames_q8xt8")
-animation = &"new_animation"
 
 [node name="HealthBar" type="TextureProgressBar" parent="Mob3"]
-offset_left = 16.9992
-offset_top = 706.0
-offset_right = 37.9992
-offset_bottom = 709.0
+offset_left = -4.00108
+offset_top = -16.9999
+offset_right = 16.9989
+offset_bottom = -13.9999
+size_flags_horizontal = 0
 value = 50.0
 nine_patch_stretch = true
 texture_under = SubResource("CanvasTexture_l187h")

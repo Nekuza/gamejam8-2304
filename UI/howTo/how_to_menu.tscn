@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bho2r01xacsml"]
+
+[ext_resource type="Script" path="res://UI/howTo/how_to_menu.gd" id="1_33ch5"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_33ch5")
+
+[node name="PopupMenu" type="PopupMenu" parent="."]
+
+[connection signal="id_pressed" from="PopupMenu" to="." method="_on_popup_menu_id_pressed"]
+[connection signal="index_pressed" from="PopupMenu" to="." method="_on_popup_menu_index_pressed"]

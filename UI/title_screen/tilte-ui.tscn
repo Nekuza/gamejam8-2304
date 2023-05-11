@@ -55,8 +55,8 @@ grow_vertical = 2
 script = ExtResource("1_b7pt4")
 
 [node name="VinceTitleuiFullsize" type="Sprite2D" parent="."]
-position = Vector2(958, 545)
-scale = Vector2(0.997917, 1.00185)
+position = Vector2(577.5, 325)
+scale = Vector2(0.601563, 0.594444)
 texture = ExtResource("2_iuk2e")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -65,9 +65,9 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 50.0
-offset_top = 242.0
+offset_top = 106.0
 offset_right = 262.0
-offset_bottom = 373.0
+offset_bottom = 237.0
 grow_vertical = 2
 scale = Vector2(0.966, 0.966)
 theme = SubResource("Theme_cj7ch")
@@ -81,9 +81,9 @@ icon_alignment = 1
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
 layout_mode = 2
 offset_left = 66.0
-offset_top = 851.856
+offset_top = 507.856
 offset_right = 318.0
-offset_bottom = 1051.86
+offset_bottom = 707.86
 grow_vertical = 2
 scale = Vector2(0.666, 0.666)
 theme = SubResource("Theme_cj7ch")

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4qonubidpaax"]
+
+[ext_resource type="PackedScene" uid="uid://dt5036pe8v5fr" path="res://animal/projectile/projectile.tscn" id="1_81xpa"]
+
+[node name="Area2D_Bullet" instance=ExtResource("1_81xpa")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(14.2094, -0.297638)
+scale = Vector2(0.933858, 0.489239)
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(14, 0)

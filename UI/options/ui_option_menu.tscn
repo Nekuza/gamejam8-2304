@@ -13,8 +13,8 @@ grow_vertical = 2
 script = ExtResource("1_eqgrr")
 
 [node name="VinceTitleuiFullsize" type="Sprite2D" parent="."]
-position = Vector2(961, 555)
-scale = Vector2(1.00104, 1.02037)
+position = Vector2(576.501, 325.5)
+scale = Vector2(0.60052, 0.59537)
 texture = ExtResource("2_ij4g6")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -24,9 +24,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -922.0
+offset_left = -567.0
 offset_top = 116.0
-offset_right = -360.0
+offset_right = -5.0
 offset_bottom = 471.0
 grow_horizontal = 2
 grow_vertical = 2

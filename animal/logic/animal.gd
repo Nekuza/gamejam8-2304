@@ -3,7 +3,7 @@ extends RigidBody2D
 signal touched
 
 
-
+@export var projectile : PackedScene
 @export_category("Select animal")
 @export_enum("boris", "cow", "eagle", "goat", "pig", "wolf") 
 var animal_type: String = "eagle"
@@ -37,11 +37,11 @@ func _ready():
 func _physics_process(delta):
 	if picked:
 		self.position = get_node("../Player").position + Vector2(10, -23)
-#	if enemies_inRange.size() != 0 and !picked:
-#		select_enemy()
-#		fire()
-#	else:
-#		targeted_enemy = null
+	if enemies_inRange.size() != 0 and !picked:
+		select_enemy()
+	else:
+		targeted_enemy = null
+	
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_pick") and !picked:
@@ -75,23 +75,24 @@ func select_enemy():
 func _on_fire_timer_timeout():
 #	print("i waited")
 	if enemies_inRange.size() != 0 and !picked:
-		select_enemy()
 		fire()
 	else:
 		targeted_enemy = null
 	
 func fire():
 #	print("FIIIIIIIIIIIIIIIRE!!!!!!!!!!!")
+	var b = projectile.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
+	$"projectile-spawner".look_at(targeted_enemy.position)
+	$"projectile-spawner".add_child(b)
 	targeted_enemy.on_hit(damage)
 	
-	
 func _on_fire_range_body_entered(body: RigidBody2D):
+	print(body)
 	if body.name in eligible_targets: # TODO: dirty
 #		if :#"Mob2":
 		print("erkannt")
 		enemies_inRange.append(body.get_parent())
 	
-
 'func _on_fire_range_body_entered(enemy_Node2D):
 #	print(enemy_area)
 	print("New Mob detected")
@@ -119,4 +120,12 @@ func _on_touched():
 	print("wait time should be:")
 	print(rateOfFire)
 	get_node("fireTimer").start()
+	pass # Replace with function body.
+
+
+
+
+
+
+func _on_fire_range_area_entered(area):
 	pass # Replace with function body.
