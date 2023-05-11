@@ -169,12 +169,12 @@ animations = [{
 radius = 6.0
 height = 12.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4y1c0"]
+radius = 60.0
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y4kjm"]
 radius = 15.0
 height = 38.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_4y1c0"]
-radius = 60.0
 
 [node name="RigidBody2D" type="RigidBody2D"]
 mass = 0.01
@@ -195,18 +195,18 @@ position = Vector2(0, -2)
 shape = SubResource("CapsuleShape2D_7pgvn")
 debug_color = Color(0.623529, 0.533333, 0, 0.419608)
 
+[node name="fire_range" type="Area2D" parent="."]
+
+[node name="Collision_fireRange" type="CollisionShape2D" parent="fire_range"]
+shape = SubResource("CircleShape2D_4y1c0")
+one_way_collision_margin = 0.0
+
 [node name="PickUpArea" type="Area2D" parent="."]
 
 [node name="Collision_pickUp" type="CollisionShape2D" parent="PickUpArea"]
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_y4kjm")
 debug_color = Color(0.984314, 0.054902, 0.282353, 0.419608)
-
-[node name="fire_range" type="Area2D" parent="."]
-
-[node name="Collision_fireRange" type="CollisionShape2D" parent="fire_range"]
-shape = SubResource("CircleShape2D_4y1c0")
-one_way_collision_margin = 0.0
 
 [node name="fireTimer" type="Timer" parent="."]
 

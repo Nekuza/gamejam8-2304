@@ -74,7 +74,6 @@ tint_progress = Color(1, 0.129412, 0.0588235, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mob2"]
-scale = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_ldo76")
 
 [node name="Mob2_" type="StaticBody2D" parent="."]
